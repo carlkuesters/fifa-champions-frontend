@@ -1,1 +1,7 @@
-<p>{{tournament.date}}, {{tournament.type}}<br>{{tournament.location}}</p>
+<div class="image">
+  <img [src]="'assets/images/tournaments/' + tournament.type + '_300.png'">
+</div>
+<div class="text">
+  <div>{{TOURNAMENT_TYPES[tournament.type].title}}</div>
+  <div class="location">{{tournament.location}}</div>
+</div>

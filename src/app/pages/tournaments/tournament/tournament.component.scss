@@ -1,0 +1,49 @@
+@import '../../../../styles/breakpoints';
+@import '../../../../styles/colors';
+
+:host {
+  flex-basis: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #DDEEFF;
+  }
+
+  @include bp-md {
+    flex-basis: 50%;
+  }
+
+  @include bp-lg {
+    flex-basis: 33%;
+  }
+
+  @include bp-xl {
+    flex-basis: 25%;
+  }
+}
+
+.image {
+  width: 64px;
+  height: 64px;
+  margin-right: 10px;
+  text-align: center;
+
+  img {
+    height: 100%;
+  }
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .location {
+    font-size: 14px;
+    color: $color-grey;
+  }
+}

@@ -1,0 +1,10 @@
+<h2>{{tournamentYear.year}}</h2>
+<div class="tournaments">
+  <fc-tournament *ngIf="tournamentYear.dfcCup" [tournament]="tournamentYear.dfcCup"></fc-tournament>
+  <fc-tournament *ngIf="tournamentYear.internationalTournament" [tournament]="tournamentYear.internationalTournament"></fc-tournament>
+  <fc-tournament *ngIf="tournamentYear.euroLeague" [tournament]="tournamentYear.euroLeague"></fc-tournament>
+  <fc-tournament *ngIf="tournamentYear.championsLeague" [tournament]="tournamentYear.championsLeague"></fc-tournament>
+</div>
+<div class="tournaments">
+  <fc-tournament *ngFor="let otherTournament of tournamentYear.otherTournaments" [tournament]="otherTournament"></fc-tournament>
+</div>

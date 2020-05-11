@@ -11,6 +11,7 @@ import {OtherComponent} from './other/other.component';
 import {QuoteComponent} from './quote/quote.component';
 import {RankingsComponent} from './ranking/rankings.component';
 import {TournamentComponent} from './tournaments/tournament/tournament.component';
+import {TournamentYearComponent} from './tournaments/tournament-year/tournament-year.component';
 import {TournamentsComponent} from './tournaments/tournaments.component';
 
 @NgModule({
@@ -28,6 +29,7 @@ import {TournamentsComponent} from './tournaments/tournaments.component';
     QuoteComponent,
     RankingsComponent,
     TournamentComponent,
+    TournamentYearComponent,
     TournamentsComponent
   ],
   providers: [],

@@ -1,0 +1,21 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/sizes';
+
+:host {
+  display: block;
+
+  &:not(:last-child) {
+    margin-bottom: $baseline-2;
+  }
+}
+
+.tournaments {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: $baseline;
+
+  & + .tournaments {
+    border-top: 1px solid $color-light-grey;
+  }
+}

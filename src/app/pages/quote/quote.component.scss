@@ -1,11 +1,19 @@
-p {
-  font-size: 18px;
+@import '../../../styles/sizes';
+
+a {
+  display: block;
+  margin-bottom: 5px;
+  cursor: pointer;
 }
 
-p img {
-  height: 28px;
-  margin-right: 10px;
-  vertical-align: middle
+p {
+  font-size: 18px;
+
+  img {
+    height: 28px;
+    margin-right: $baseline;
+    vertical-align: middle
+  }
 }
 
 .date {
