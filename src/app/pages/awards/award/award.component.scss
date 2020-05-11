@@ -1,0 +1,38 @@
+@import '../../../../styles/breakpoints';
+
+:host {
+  display: block;
+  flex: 1 0 47%;
+  text-align: center;
+  margin-bottom: 20px;
+
+  @include bp-xs-max {
+    flex-basis: 100%;
+  }
+
+  @include bp-md {
+    flex-basis: 33%;
+  }
+
+  @include bp-lg {
+    flex-basis: 0;
+  }
+}
+
+.imageWrapper, .imageAward {
+  width: 53px;
+  height: 100px;
+}
+
+.imageWrapper {
+  position: relative;
+  margin: 0 auto;
+}
+
+.imageMember {
+  position: absolute;
+  top: 64px;
+  left: 14px;
+  width: 25px;
+  height: 25px;
+}

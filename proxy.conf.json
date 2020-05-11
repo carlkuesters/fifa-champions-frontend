@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "http://fifa-champions.de",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

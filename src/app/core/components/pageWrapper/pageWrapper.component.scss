@@ -1,0 +1,10 @@
+@import '../../../../styles/breakpoints';
+
+#page-wrapper {
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.14);
+
+  @include bp-xl {
+    width: 1200px;
+    margin: 0 auto;
+  }
+}

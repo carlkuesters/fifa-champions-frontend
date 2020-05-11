@@ -1,0 +1,52 @@
+$breakpoint-sm: 420px;
+$breakpoint-md: 600px;
+$breakpoint-lg: 900px;
+$breakpoint-xl: 1230px;
+
+@mixin bp-xs-max {
+  @media (max-width: ($breakpoint-sm - 1)) {
+    @content;
+  }
+}
+
+@mixin bp-sm {
+  @media (min-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin bp-sm-max {
+  @media (max-width: ($breakpoint-md - 1)) {
+    @content;
+  }
+}
+
+@mixin bp-md {
+  @media (min-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin bp-md-max {
+  @media (max-width: ($breakpoint-lg - 1)) {
+    @content;
+  }
+}
+
+@mixin bp-lg {
+  @media (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin bp-lg-max {
+  @media (max-width: ($breakpoint-xl - 1)) {
+    @content;
+  }
+}
+
+@mixin bp-xl {
+  @media (min-width: $breakpoint-xl) {
+    @content;
+  }
+}

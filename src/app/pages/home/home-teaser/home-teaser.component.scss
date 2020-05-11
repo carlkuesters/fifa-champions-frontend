@@ -1,0 +1,27 @@
+@import '../../../../styles/breakpoints';
+
+:host {
+  flex: 1 0 0;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  @include bp-md-max {
+    flex-basis: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+img {
+  margin-right: 20px;
+}
+
+h2 {
+  margin-bottom: 5px;
+}
+
+p {
+  font-size: 14px;
+}

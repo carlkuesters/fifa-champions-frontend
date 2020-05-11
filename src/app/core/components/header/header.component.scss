@@ -1,0 +1,52 @@
+@import '../../../../styles/breakpoints';
+
+header {
+  border-bottom: 1px solid #DDD;
+}
+
+@include bp-xs-max {
+  header {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  nav a {
+    flex-basis: 50%;
+  }
+}
+
+.banner {
+  background: #058;
+  height: 200px;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background: #FFF;
+
+  a {
+    padding-left: 20px;
+    padding-right: 20px;
+    line-height: 45px;
+    text-align: center;
+    border-top: 3px solid #FFF;
+    color: #111;
+
+    &.active, &:hover {
+      border-top-color: #0CF;
+      box-sizing: border-box;
+      color: #0CF;
+      text-decoration: none;
+    }
+
+    @include bp-sm-max {
+      flex: 1 0 33%;
+
+      & + a {
+        margin-left: 0;
+      }
+    }
+  }
+}

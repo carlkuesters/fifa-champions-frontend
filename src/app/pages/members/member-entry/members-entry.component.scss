@@ -1,0 +1,52 @@
+@import '../../../../styles/breakpoints';
+
+:host {
+  flex: 0 0 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+
+  @include bp-md {
+    flex-direction: row;
+  }
+
+  @include bp-lg {
+    flex-basis: 47%;
+  }
+}
+
+img {
+  flex-shrink: 0;
+  width: 150px;
+  height: 150px;
+
+  @include bp-md {
+    margin-right: 20px;
+  }
+
+  @include bp-lg {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@include bp-sm-max {
+  h2 {
+    text-align: center;
+  }
+
+  img {
+    align-self: center;
+  }
+}
+
+.memberInfo {
+  flex-grow: 1;
+}
+
+p {
+  white-space: pre-wrap;
+}

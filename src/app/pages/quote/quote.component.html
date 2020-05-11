@@ -1,0 +1,6 @@
+<ng-container *ngIf="displayedQuote">
+  <h1>Spruch <span *ngIf="member"> von {{member.name}}</span></h1>
+  <p><img *ngIf="member" [src]="member.images.small">{{displayedQuote.text}}</p>
+  <div class="date">(Beim Turnier am {{displayedQuote.date}})</div>
+  <a (click)="displayNewRandomQuote()">Neuen Spruch laden</a>
+</ng-container>

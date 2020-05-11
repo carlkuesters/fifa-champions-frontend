@@ -1,0 +1,123 @@
+@import './styles/breakpoints';
+@import './styles/colors';
+@import './styles/sizes';
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: $baseline;
+  background-color: #F5F5F5;
+}
+
+body, input[type=text], textarea, button {
+  font-family: 'Open Sans', Tahoma, sans-serif;
+  font-size: 16px;
+  color: $color-dark-grey;
+}
+
+// TODO: Here?
+
+a {
+  &, &:visited {
+    color: $color-link;
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: $color-link-hover;
+    text-decoration: underline;
+  }
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: $baseline;
+  font-size: 24px;
+  font-weight: normal;
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  display: flex;
+  flex-direction: row;
+
+  &:not(:last-child) {
+    margin-bottom: $baseline / 2;
+  }
+
+  &:before {
+    content: '–';
+    margin-right: 5px + $baseline;
+    align-self: flex-start;
+  }
+
+  a:not(:hover) {
+    &, &:visited {
+      color: $color-dark-grey;
+    }
+  }
+}
+
+figure {
+  margin: 0;
+}
+
+blockquote {
+  margin: 0;
+}
+
+input[type=text], textarea, button {
+  padding: $baseline;
+  border: 1px solid $color-grey;
+}
+
+input[type=text], textarea {
+  width: 100%;
+
+  &:focus {
+    outline: none;
+    border-color: #FC0;
+  }
+}
+
+textarea {
+  resize: none;
+  // https://stackoverflow.com/questions/47719919/how-to-remove-margin-from-the-text-area
+  vertical-align: bottom;
+}
+
+button {
+  padding-left: $baseline * 1.5;
+  padding-right: $baseline * 1.5;
+  background: #F5F5F5;
+  border-color: #AAA;
+  cursor: pointer;
+
+  &:hover {
+    background: #FBFBFB;
+    border-color: $color-link;
+    color: $color-link;
+  }
+}

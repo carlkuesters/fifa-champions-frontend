@@ -1,0 +1,7 @@
+<h1>Awards</h1>
+<ng-container *ngFor="let year of years">
+  <h2>{{year}}</h2>
+  <div class="awards">
+    <fc-award *ngFor="let award of awards[year]" [award]="award"></fc-award>
+  </div>
+</ng-container>

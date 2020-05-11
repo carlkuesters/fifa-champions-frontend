@@ -1,0 +1,19 @@
+@import '../../../../styles/breakpoints';
+
+footer {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background: #058;
+  color: #FFF;
+  text-align: center;
+}
+
+@include bp-sm-max {
+  .copyright {
+    display: block;
+  }
+
+  .separator {
+    display: none;
+  }
+}
