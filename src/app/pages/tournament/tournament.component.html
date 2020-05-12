@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="info">
+    <h1>{{getTitle()}}</h1>
+    <div class="location">{{tournament.location}}</div>
+    <fc-tournament-meta-list [metas]="tournament.meta['news']"></fc-tournament-meta-list>
+    <div class="groups">
+      <fc-tournament-group
+        *ngFor="let group of tournament.results.groups; let i = index"
+        [groupName]="getGroupName(i)"
+        [group]="group"
+      ></fc-tournament-group>
+    </div>
+    <fc-tournament-meta-list *ngIf="tournament.meta['match'].length > 0" title="Spiel des Abends" [metas]="tournament.meta['match']"></fc-tournament-meta-list>
+    <fc-tournament-meta-list *ngIf="tournament.meta['goal'].length > 0" title="Tor des Abends" [metas]="tournament.meta['goal']"></fc-tournament-meta-list>
+    <fc-tournament-meta-list *ngIf="tournament.meta['scorer'].length > 0" title="Torjäger des Abends" [metas]="tournament.meta['scorer']"></fc-tournament-meta-list>
+    <fc-tournament-meta-list *ngIf="tournament.meta['action'].length > 0" title="Aktion des Abends" [metas]="tournament.meta['action']"></fc-tournament-meta-list>
+    <fc-tournament-meta-list *ngIf="tournament.meta['scandal'].length > 0" title="Skandal des Abends" [metas]="tournament.meta['scandal']"></fc-tournament-meta-list>
+    <fc-tournament-meta-list *ngIf="tournament.meta['quote'].length > 0"  title="Sprüche des Abends" [metas]="tournament.meta['quote']"></fc-tournament-meta-list>
+  </div>
+  <div class="matches">
+    <fc-tournament-match-list
+      [matches]="tournament.results.matches"
+    ></fc-tournament-match-list>
+  </div>
+</div>

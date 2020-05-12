@@ -7,6 +7,7 @@ import {MembersComponent} from './pages/members/members.component';
 import {OtherComponent} from './pages/other/other.component';
 import {QuoteComponent} from './pages/quote/quote.component';
 import {RankingsComponent} from './pages/ranking/rankings.component';
+import {TournamentComponent} from './pages/tournament/tournament.component';
 import {TournamentsComponent} from './pages/tournaments/tournaments.component';
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'members', component: MembersComponent },
   { path: 'rankings', component: RankingsComponent },
   { path: 'tournaments', component: TournamentsComponent },
+  { path: 'tournament/:tournamentSeoId', component: TournamentComponent },
   { path: 'other', component: OtherComponent },
   { path: 'awards', component: AwardsComponent },
   { path: 'quote', component: QuoteComponent }

@@ -1,0 +1,12 @@
+h2 {
+  text-align: right;
+}
+
+li {
+  justify-content: flex-end;
+  margin-bottom: 5px;
+
+  &:before {
+    display: none;
+  }
+}

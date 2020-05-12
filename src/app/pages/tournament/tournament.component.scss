@@ -1,0 +1,45 @@
+@import '../../../styles/breakpoints';
+@import '../../../styles/sizes';
+
+h1 {
+  margin-bottom: 0px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  @include bp-lg {
+    flex-direction: row;
+  }
+}
+
+.location {
+  margin-bottom: $baseline-2;
+}
+
+.groups {
+  max-width: 690px;
+  margin-top: $baseline-2;
+}
+
+fc-tournament-group {
+  margin-bottom: $baseline-2;
+}
+
+.info {
+  @include bp-lg {
+    flex-grow: 1;
+  }
+}
+
+.matches {
+  @include bp-lg {
+    flex: 0 0 250px;
+    margin-left: $baseline-2;
+  }
+}
+
+fc-tournament-meta-list + fc-tournament-meta-list {
+  margin-top: $baseline-2;
+}

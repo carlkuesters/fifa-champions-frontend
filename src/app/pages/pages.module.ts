@@ -10,7 +10,14 @@ import {MembersEntryComponent} from './members/member-entry/members-entry.compon
 import {OtherComponent} from './other/other.component';
 import {QuoteComponent} from './quote/quote.component';
 import {RankingsComponent} from './ranking/rankings.component';
-import {TournamentComponent} from './tournaments/tournament/tournament.component';
+import {TournamentComponent} from './tournament/tournament.component';
+import {TournamentGroupComponent} from './tournament/tournament-group/tournament-group.component';
+import {TournamentGroupPlayerComponent} from './tournament/tournament-group-player/tournament-group-player.component';
+import {TournamentMatchListComponent} from './tournament/tournament-match-list/tournament-match-list.component';
+import {TournamentMatchComponent} from './tournament/tournament-match/tournament-match.component';
+import {TournamentMetaComponent} from './tournament/tournament-meta/tournament-meta.component';
+import {TournamentMetaListComponent} from './tournament/tournament-meta-list/tournament-meta-list.component';
+import {TournamentEntryComponent} from './tournaments/tournament-entry/tournament-entry.component';
 import {TournamentYearComponent} from './tournaments/tournament-year/tournament-year.component';
 import {TournamentsComponent} from './tournaments/tournaments.component';
 
@@ -29,6 +36,13 @@ import {TournamentsComponent} from './tournaments/tournaments.component';
     QuoteComponent,
     RankingsComponent,
     TournamentComponent,
+    TournamentEntryComponent,
+    TournamentGroupComponent,
+    TournamentGroupPlayerComponent,
+    TournamentMatchComponent,
+    TournamentMatchListComponent,
+    TournamentMetaComponent,
+    TournamentMetaListComponent,
     TournamentYearComponent,
     TournamentsComponent
   ],

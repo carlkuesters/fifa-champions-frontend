@@ -1,0 +1,17 @@
+@import '../../../../styles/sizes';
+
+:host {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+img {
+  width: 24px;
+  height: 24px;
+}
+
+div {
+  width: $baseline * 6;
+  text-align: center;
+}

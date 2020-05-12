@@ -6,6 +6,7 @@ import {GeneralInformation} from '../../../model/general-information.model';
 import {Member} from '../../../model/member.model';
 import {MemberDetails} from '../../../model/member-details.model';
 import {Tournament} from '../../../model/tournament.model';
+import {TournamentEntry} from '../../../model/tournament-entry.model';
 import {TournamentMeta} from '../../../model/tournamentMeta.model';
 
 @Injectable()
@@ -28,8 +29,12 @@ export class BackendInformationService {
     return this.getCached<MemberDetails>('member/index.php?id=' + id);
   }
 
-  getTournaments(): Promise<Tournament[]> {
-    return this.getCached<Tournament[]>('tournaments/index.php');
+  getTournaments(): Promise<TournamentEntry[]> {
+    return this.getCached<TournamentEntry[]>('tournaments/index.php');
+  }
+
+  getTournament(id: number): Promise<Tournament> {
+    return this.getCached<Tournament>('tournament/index.php?id=' + id);
   }
 
   getAwards(): Promise<Awards> {
