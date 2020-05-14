@@ -1,6 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import {StateService} from '../../core/services/state/state.service';
+import {Observable} from 'rxjs';
+
+import {MemberStoreFacadeService} from '../../core/services/member-store-facade/member-store-facade.service';
 import {Member} from '../../model/member.model';
 
 @Component({
@@ -8,13 +10,16 @@ import {Member} from '../../model/member.model';
   templateUrl: './members.component.html',
   styleUrls: ['./members.component.scss']
 })
-export class MembersComponent {
+export class MembersComponent implements OnInit {
 
-  constructor(private state: StateService) {
+  members: Observable<Member[]>;
+
+  constructor(private memberStoreFacadeService: MemberStoreFacadeService) {
   }
 
-  get members(): Member[] {
-    return Object.keys(this.state.model.members)
-      .map(memberId => this.state.model.members[memberId]);
+  ngOnInit(): void {
+    this.members = this.memberStoreFacadeService.getMembers();
+
+    this.memberStoreFacadeService.loadMembers();
   }
 }

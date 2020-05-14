@@ -1,2 +1,2 @@
 <h1>Turniere (X)</h1>
-<fc-tournament-year *ngFor="let tournamentYear of tournamentYears" [tournamentYear]="tournamentYear"></fc-tournament-year>
+<fc-tournament-year *ngFor="let tournamentYear of (tournamentYears | async)" [tournamentYear]="tournamentYear"></fc-tournament-year>

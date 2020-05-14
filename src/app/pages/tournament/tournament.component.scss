@@ -34,6 +34,10 @@ fc-tournament-group {
 }
 
 .matches {
+  @include bp-md-max {
+    margin-top: $baseline-2;
+  }
+
   @include bp-lg {
     flex: 0 0 250px;
     margin-left: $baseline-2;

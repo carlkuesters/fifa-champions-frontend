@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 
-import {BackendInformationService} from '../../core/services/backend-information/backend-information.service';
-import {StateService} from '../../core/services/state/state.service';
-import {GeneralInformation} from '../../model/general-information.model';
+import {Observable} from 'rxjs';
+
+import {GeneralStoreFacadeService} from '../../core/services/general-store-facade/general-store-facade.service';
+import {MemberStoreFacadeService} from '../../core/services/member-store-facade/member-store-facade.service';
 
 @Component({
   selector: 'fc-home',
@@ -11,19 +12,24 @@ import {GeneralInformation} from '../../model/general-information.model';
 })
 export class HomeComponent implements OnInit {
 
-  private generalInformation: GeneralInformation;
+  homeMessage: Observable<string>;
+  totalGoals: Observable<number>;
+  totalMatches: Observable<number>;
+  totalTournaments: Observable<number>;
+  membersCount: Observable<number>;
 
-  constructor(private state: StateService,
-              private backendInformationService: BackendInformationService) {
+  constructor(private generalStoreFacadeService: GeneralStoreFacadeService,
+              private memberStoreFacadeService: MemberStoreFacadeService) {
   }
 
   ngOnInit(): void {
-    this.backendInformationService.getGeneralInformation().then(generalInformation => {
-      this.generalInformation = generalInformation;
-    });
-  }
+    this.homeMessage = this.generalStoreFacadeService.getHomeMessage();
+    this.totalGoals = this.generalStoreFacadeService.getTotalGoals();
+    this.totalMatches = this.generalStoreFacadeService.getTotalMatches();
+    this.totalTournaments = this.generalStoreFacadeService.getTotalTournaments();
+    this.membersCount = this.memberStoreFacadeService.getMembersCount();
 
-  get membersCount(): number {
-    return Object.keys(this.state.model.members).length;
+    this.generalStoreFacadeService.loadGeneralInformation();
+    this.memberStoreFacadeService.loadMembers();
   }
 }

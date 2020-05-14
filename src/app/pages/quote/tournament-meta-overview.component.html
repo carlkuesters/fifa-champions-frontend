@@ -1,0 +1,16 @@
+<h1>{{title}}</h1>
+<ul>
+  <li>Insgesamt: {{tournamentMetaTotalCount | async}}</li>
+</ul>
+<div *ngIf="displayedIsolatedTournamentMeta | async as displayedIsolatedTournamentMeta" class="random">
+  <div class="title">
+    <h2>
+      <span>Zufällig: </span>
+      <img *ngIf="displayedIsolatedTournamentMeta.memberImage" [src]="displayedIsolatedTournamentMeta.memberImage">
+      <span *ngIf="displayedIsolatedTournamentMeta.memberName">{{displayedIsolatedTournamentMeta.memberName}}</span>
+    </h2>
+    <a (click)="displayNewRandomMeta()">Neu laden</a>
+  </div>
+  <p>{{displayedIsolatedTournamentMeta.text}}</p>
+  <div class="date">(Beim {{displayedIsolatedTournamentMeta.tournamentType}} am {{displayedIsolatedTournamentMeta.tournamentDate}}, {{displayedIsolatedTournamentMeta.locationName}})</div>
+</div>

@@ -1,7 +1,7 @@
 <h1>Awards</h1>
-<ng-container *ngFor="let year of years">
-  <h2>{{year}}</h2>
+<ng-container *ngFor="let awardYear of (awardYears | async)">
+  <h2>{{awardYear.year}}</h2>
   <div class="awards">
-    <fc-award *ngFor="let award of awards[year]" [award]="award"></fc-award>
+    <fc-award *ngFor="let award of awardYear.awards" [award]="award"></fc-award>
   </div>
 </ng-container>

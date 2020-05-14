@@ -5,7 +5,7 @@ import {AwardsComponent} from './pages/awards/awards.component';
 import {HomeComponent} from './pages/home/home.component';
 import {MembersComponent} from './pages/members/members.component';
 import {OtherComponent} from './pages/other/other.component';
-import {QuoteComponent} from './pages/quote/quote.component';
+import {TournamentMetaOverviewComponent} from './pages/quote/tournament-meta-overview.component';
 import {RankingsComponent} from './pages/ranking/rankings.component';
 import {TournamentComponent} from './pages/tournament/tournament.component';
 import {TournamentsComponent} from './pages/tournaments/tournaments.component';
@@ -19,7 +19,13 @@ const routes: Routes = [
   { path: 'tournament/:tournamentSeoId', component: TournamentComponent },
   { path: 'other', component: OtherComponent },
   { path: 'awards', component: AwardsComponent },
-  { path: 'quote', component: QuoteComponent }
+  { path: 'overview/actions', component: TournamentMetaOverviewComponent, data: { metaType: 'action' } },
+  { path: 'overview/goals', component: TournamentMetaOverviewComponent, data: { metaType: 'goal' } },
+  { path: 'overview/matches', component: TournamentMetaOverviewComponent, data: { metaType: 'match' } },
+  { path: 'overview/news', component: TournamentMetaOverviewComponent, data: { metaType: 'news' } },
+  { path: 'overview/scandals', component: TournamentMetaOverviewComponent, data: { metaType: 'scandal' } },
+  { path: 'overview/scorers', component: TournamentMetaOverviewComponent, data: { metaType: 'scorer' } },
+  { path: 'overview/quotes', component: TournamentMetaOverviewComponent, data: { metaType: 'quote' } },
 ];
 
 @NgModule({

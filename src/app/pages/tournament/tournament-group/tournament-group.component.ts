@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 
-import {TournamentGroupPlayer} from '../../../model/tournament-group-player.model';
+import {DisplayedTournamentGroup} from '../../../model/displayed-tournament-group.model';
 
 @Component({
   selector: 'fc-tournament-group',
@@ -8,6 +8,5 @@ import {TournamentGroupPlayer} from '../../../model/tournament-group-player.mode
   styleUrls: ['./tournament-group.component.scss']
 })
 export class TournamentGroupComponent {
-  @Input() groupName: string;
-  @Input() group: TournamentGroupPlayer[];
+  @Input() group: DisplayedTournamentGroup;
 }

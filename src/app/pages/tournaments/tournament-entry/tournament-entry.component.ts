@@ -1,7 +1,7 @@
 import {Component, HostListener, Input} from '@angular/core';
 import {Router} from '@angular/router';
 
-import {TournamentEntry} from '../../../model/tournament-entry.model';
+import {TournamentOverview} from '../../../model/tournament-overview.model';
 import {TOURNAMENT_TYPES} from '../../../model/tournament.constants';
 
 @Component({
@@ -16,7 +16,7 @@ export class TournamentEntryComponent {
   constructor(private router: Router) {
   }
 
-  @Input() tournament: TournamentEntry;
+  @Input() tournament: TournamentOverview;
 
   @HostListener('click', ['$event'])
   onClick(event: Event): void {

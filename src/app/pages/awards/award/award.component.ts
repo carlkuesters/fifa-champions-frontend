@@ -1,8 +1,6 @@
 import {Component, Input} from '@angular/core';
 
-import {StateService} from '../../../core/services/state/state.service';
-import {Award} from '../../../model/award.model';
-import {Member} from '../../../model/member.model';
+import {DisplayedAward} from '../../../model/displayed-award.model';
 
 @Component({
   selector: 'fc-award',
@@ -11,12 +9,6 @@ import {Member} from '../../../model/member.model';
 })
 export class AwardComponent {
 
-  @Input() award: Award;
+  @Input() award: DisplayedAward;
 
-  constructor(private state: StateService) {
-  }
-
-  get member(): Member {
-    return this.state.model.members[this.award.memberId];
-  }
 }

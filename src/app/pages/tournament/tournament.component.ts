@@ -1,11 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 
-import {BackendInformationService} from '../../core/services/backend-information/backend-information.service';
-import {Tournament} from '../../model/tournament.model';
-import {TOURNAMENT_TYPES} from '../../model/tournament.constants';
+import {Observable} from 'rxjs';
 
-const GROUP_NAMES = ['A', 'B', 'C', 'D'];
+// tslint:disable:max-line-length
+import {TournamentDetailStoreFacadeService} from '../../core/services/tournament-detail-store-facade/tournament-detail-store-facade.service';
+import {DisplayedTournamentDetails} from '../../model/displayed-tournament-details.model';
+import {MemberStoreFacadeService} from '../../core/services/member-store-facade/member-store-facade.service';
+// tslint:enable:max-line-length
 
 @Component({
   selector: 'fc-tournament',
@@ -14,33 +16,17 @@ const GROUP_NAMES = ['A', 'B', 'C', 'D'];
 })
 export class TournamentComponent implements OnInit {
 
-  tournament: Tournament;
+  displayedTournamentDetails: Observable<DisplayedTournamentDetails>;
 
   constructor(private activatedRoute: ActivatedRoute,
-              private backendInformationService: BackendInformationService) {
+              private tournamentDetailStoreFacadeService: TournamentDetailStoreFacadeService,
+              private memberStoreFacadeService: MemberStoreFacadeService) {
   }
 
   ngOnInit(): void {
-    const tournamentSeoId = this.activatedRoute.snapshot.paramMap.get('tournamentSeoId');
-    const tournamentId = Number(tournamentSeoId);
-    this.backendInformationService.getTournament(tournamentId).then(tournament => {
-      this.tournament = tournament;
-      console.log(tournament);
-    });
-  }
-
-  getTitle(): string {
-    const tournamentType = TOURNAMENT_TYPES[this.tournament.type];
-    let title = tournamentType.title + ' (';
-    const date = new Date(this.tournament.date * 1000);
-    if (!tournamentType.isYearly) {
-      title += date.getMonth() + ' ';
-    }
-    title += date.getFullYear() + ')';
-    return title;
-  }
-
-  getGroupName(groupIndex: number): string {
-    return ((this.tournament.results.groups.length > 1) ? GROUP_NAMES[groupIndex] : null);
+    const seoId = this.activatedRoute.snapshot.paramMap.get('tournamentSeoId');
+    this.displayedTournamentDetails = this.tournamentDetailStoreFacadeService.getDisplayedTournamentDetails(seoId);
+    this.tournamentDetailStoreFacadeService.loadTournamentDetails(seoId);
+    this.memberStoreFacadeService.loadMembers();
   }
 }

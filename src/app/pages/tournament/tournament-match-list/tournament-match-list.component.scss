@@ -1,10 +1,17 @@
+@import '../../../../styles/breakpoints';
+
 h2 {
-  text-align: right;
+  @include bp-lg {
+    text-align: right;
+  }
 }
 
 li {
-  justify-content: flex-end;
   margin-bottom: 5px;
+
+  @include bp-lg {
+    justify-content: flex-end;
+  }
 
   &:before {
     display: none;

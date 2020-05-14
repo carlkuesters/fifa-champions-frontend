@@ -1,4 +1,4 @@
-<h2 *ngIf="groupName">Gruppe {{groupName}}</h2>
+<h2 *ngIf="group.name">Gruppe {{group.name}}</h2>
 <div class="players">
-  <fc-tournament-group-player *ngFor="let groupPlayer of group" [groupPlayer]="groupPlayer"></fc-tournament-group-player>
+  <fc-tournament-group-player *ngFor="let groupPlayer of group.players" [groupPlayer]="groupPlayer"></fc-tournament-group-player>
 </div>

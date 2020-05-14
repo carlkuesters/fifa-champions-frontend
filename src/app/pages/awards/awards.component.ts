@@ -1,8 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 
-import {BackendInformationService} from '../../core/services/backend-information/backend-information.service';
-import {StateService} from '../../core/services/state/state.service';
-import {Awards} from '../../model/awards.model';
+import {Observable} from 'rxjs';
+
+import {AwardStoreFacadeService} from '../../core/services/award-store-facade/award-store-facade.service';
+import {MemberStoreFacadeService} from '../../core/services/member-store-facade/member-store-facade.service';
+import {AwardYear} from '../../model/awards-year.model';
 
 @Component({
   selector: 'fc-awards',
@@ -12,16 +14,16 @@ import {Awards} from '../../model/awards.model';
 export class AwardsComponent implements OnInit {
 
   years: string[];
-  awards: Awards;
+  awardYears: Observable<AwardYear[]>;
 
-  constructor(private state: StateService,
-              private backendInformationService: BackendInformationService) {
+  constructor(private awardStoreFacadeService: AwardStoreFacadeService,
+              private memberStoreFacadeService: MemberStoreFacadeService) {
   }
 
   ngOnInit(): void {
-    this.backendInformationService.getAwards().then(awards => {
-      this.years = Object.keys(awards);
-      this.awards = awards;
-    });
+    this.awardYears = this.awardStoreFacadeService.getAwardYears();
+
+    this.awardStoreFacadeService.loadAwards();
+    this.memberStoreFacadeService.loadMembers();
   }
 }

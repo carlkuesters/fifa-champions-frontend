@@ -1,4 +1,4 @@
-<h1>Mitglieder ({{members.length}})</h1>
+<h1>Mitglieder ({{(members | async).length}})</h1>
 <div class="members">
-  <fc-members-entry *ngFor="let member of members" [member]="member"></fc-members-entry>
+  <fc-members-entry *ngFor="let member of (members | async)" [member]="member"></fc-members-entry>
 </div>

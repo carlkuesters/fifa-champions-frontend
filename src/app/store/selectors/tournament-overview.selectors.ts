@@ -1,0 +1,19 @@
+import {createFeatureSelector, createSelector} from '@ngrx/store';
+
+import {mapTournamentYears} from '../../core/util/tournament-overview/tournament-overview.util';
+import {TournamentOverviewState} from '../state/tournament-overview-state.model';
+
+const getTournamentOverviewsState = createFeatureSelector<TournamentOverviewState>('tournamentOverview');
+
+const getTournamentOverviews = createSelector(
+  getTournamentOverviewsState, state => state.tournamentOverviews
+);
+
+export const getTournamentYears = createSelector(
+  getTournamentOverviews, tournamentsOverviews => {
+    if (!tournamentsOverviews) {
+      return null;
+    }
+    return mapTournamentYears(tournamentsOverviews);
+  }
+);

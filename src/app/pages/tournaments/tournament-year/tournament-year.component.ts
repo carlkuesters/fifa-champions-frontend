@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 
-import {TournamentYear} from '../model/tournament-year.model';
+import {TournamentYear} from '../../../model/tournament-year.model';
 
 @Component({
   selector: 'fc-tournament-year',

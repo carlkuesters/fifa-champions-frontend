@@ -1,5 +1,5 @@
 import {Member} from './member.model';
 
-export type Members = {
+export interface Members {
   [memberId: number]: Member;
-};
+}
