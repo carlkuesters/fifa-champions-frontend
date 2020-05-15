@@ -14,14 +14,14 @@ export class TournamentHttpService {
   }
 
   getTournamentOverviews(): Observable<TournamentOverview[]> {
-    return this.httpClient.get<TournamentOverview[]>('api/tournaments/index.php');
+    return this.httpClient.get<TournamentOverview[]>('/api/tournaments/index.php');
   }
 
   getTournamentDetails(id: number): Observable<TournamentDetails> {
-    return this.httpClient.get<TournamentDetails>('api/tournament/index.php?id=' + id);
+    return this.httpClient.get<TournamentDetails>('/api/tournament/index.php?id=' + id);
   }
 
   getIsolatedTournamentMetas(metaType: string): Observable<IsolatedTournamentMeta[]> {
-    return this.httpClient.get<IsolatedTournamentMeta[]>('api/tournamentMeta/index.php?type=' + encodeURIComponent(metaType));
+    return this.httpClient.get<IsolatedTournamentMeta[]>('/api/tournamentMeta/index.php?type=' + encodeURIComponent(metaType));
   }
 }
