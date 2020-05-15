@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 
-import {TournamentMatch} from '../../../model/tournament-match.model';
+import {DisplayedTournamentMatchPlayer} from '../../../model/displayed-tournament-match-player.model';
 
 @Component({
   selector: 'fc-tournament-match',
@@ -8,5 +8,5 @@ import {TournamentMatch} from '../../../model/tournament-match.model';
   styleUrls: ['./tournament-match.component.scss']
 })
 export class TournamentMatchComponent {
-  @Input() match: TournamentMatch;
+  @Input() players: DisplayedTournamentMatchPlayer[];
 }

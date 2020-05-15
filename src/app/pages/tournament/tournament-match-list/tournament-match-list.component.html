@@ -1,6 +1,6 @@
-<h2>Spiele</h2>
+<h2>{{MATCH_CONSTANTS[type].title}}</h2>
 <ul>
-  <li *ngFor="let match of matches">
-    <fc-tournament-match [match]="match"></fc-tournament-match>
+  <li *ngFor="let players of matches">
+    <fc-tournament-match [players]="players"></fc-tournament-match>
   </li>
 </ul>

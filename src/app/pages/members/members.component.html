@@ -1,4 +1,6 @@
-<h1>Mitglieder ({{(members | async).length}})</h1>
-<div class="members">
-  <fc-members-entry *ngFor="let member of (members | async)" [member]="member"></fc-members-entry>
-</div>
+<ng-container *ngIf="displayedMembers | async as displayedMembers">
+  <h1>Mitglieder ({{displayedMembers.length}})</h1>
+  <div class="members">
+    <fc-members-entry *ngFor="let member of displayedMembers" [member]="member"></fc-members-entry>
+  </div>
+</ng-container>

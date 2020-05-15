@@ -3,7 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 
 import {MemberStoreFacadeService} from '../../core/services/member-store-facade/member-store-facade.service';
-import {Member} from '../../model/member.model';
+import {DisplayedMember} from '../../model/displayed-member.model';
 
 @Component({
   selector: 'fc-members',
@@ -12,13 +12,13 @@ import {Member} from '../../model/member.model';
 })
 export class MembersComponent implements OnInit {
 
-  members: Observable<Member[]>;
+  displayedMembers: Observable<DisplayedMember[]>;
 
   constructor(private memberStoreFacadeService: MemberStoreFacadeService) {
   }
 
   ngOnInit(): void {
-    this.members = this.memberStoreFacadeService.getMembers();
+    this.displayedMembers = this.memberStoreFacadeService.getDisplayedMembers();
 
     this.memberStoreFacadeService.loadMembers();
   }

@@ -2,6 +2,7 @@ import {DisplayedIsolatedTournamentMeta} from '../../../model/displayed-isolated
 import {IsolatedTournamentMeta} from '../../../model/isolated-tournament-meta.model';
 import {Member} from '../../../model/member.model';
 import {TournamentMetaOverview} from '../../../model/tournament-meta-overview.model';
+import {getMemberImage} from '../member/member.util';
 
 export function createTournamentMetaOverview(type: string, isolatedTournamentMetas: IsolatedTournamentMeta[]): TournamentMetaOverview {
   const initialTournamentMetaOverview = {
@@ -37,7 +38,7 @@ export function mapDisplayedIsolatedTournamentMeta(
   return {
     memberId: (member ? member.id : null),
     memberName: (member ? member.name : null),
-    memberImage: (member ? member.images.small : null),
+    memberImage: (member ? getMemberImage(member.id, 32) : null),
     text: isolatedTournamentMeta.text,
     tournamentType: isolatedTournamentMeta.tournamentType,
     tournamentDate: isolatedTournamentMeta.tournamentDate,

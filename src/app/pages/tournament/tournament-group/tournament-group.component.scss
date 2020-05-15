@@ -1,8 +1,38 @@
+@import '../../../../styles/breakpoints';
+@import '../../../../styles/sizes';
+
 :host {
   display: block;
 }
 
-.players {
+.table {
   display: flex;
   flex-direction: column;
+
+  .head {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    margin-bottom: $baseline;
+
+    h2 {
+      flex-grow: 1;
+      margin-bottom: 0;
+    }
+
+    div {
+      flex-basis: $baseline-3;
+      text-align: center;
+    }
+
+    .section-start {
+      @include bp-md {
+        margin-left: $baseline-3;
+      }
+    }
+  }
+}
+
+fc-tournament-group-player + fc-tournament-group-player {
+  margin-top: 5px;
 }

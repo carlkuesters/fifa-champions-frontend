@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 
-import {Member} from '../../../model/member.model';
+import {DisplayedMember} from '../../../model/displayed-member.model';
 
 @Component({
   selector: 'fc-members-entry',
@@ -8,5 +8,5 @@ import {Member} from '../../../model/member.model';
   styleUrls: ['./members-entry.component.scss']
 })
 export class MembersEntryComponent {
-  @Input() member: Member;
+  @Input() member: DisplayedMember;
 }

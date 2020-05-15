@@ -1,6 +1,7 @@
 import {Award} from '../../../model/award.model';
 import {AwardYear} from '../../../model/awards-year.model';
 import {Member} from '../../../model/member.model';
+import {getMemberImage} from '../member/member.util';
 
 export function mapAwardYears(awards: Award[], members: Member[]): AwardYear[] {
   const awardYears: AwardYear[] = [];
@@ -18,7 +19,7 @@ export function mapAwardYears(awards: Award[], members: Member[]): AwardYear[] {
       type: award.type,
       memberId: member.id,
       memberName: member.name,
-      memberImage: member.images.small,
+      memberImage: getMemberImage(member.id, 32),
     });
   });
   awardYears.sort((a, b) => (b.year - a.year));

@@ -1,4 +1,14 @@
-<h2 *ngIf="group.name">Gruppe {{group.name}}</h2>
-<div class="players">
+<div class="table">
+  <div class="head">
+    <h2 *ngIf="group.name">Gruppe {{group.name}}</h2>
+    <div>SP</div>
+    <div class="section-start">S</div>
+    <div>U</div>
+    <div>N</div>
+    <div class="section-start">T</div>
+    <div>GT</div>
+    <div>TD</div>
+    <div class="section-start">PKT</div>
+  </div>
   <fc-tournament-group-player *ngFor="let groupPlayer of group.players" [groupPlayer]="groupPlayer"></fc-tournament-group-player>
 </div>

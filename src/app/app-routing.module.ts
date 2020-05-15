@@ -5,7 +5,7 @@ import {AwardsComponent} from './pages/awards/awards.component';
 import {HomeComponent} from './pages/home/home.component';
 import {MembersComponent} from './pages/members/members.component';
 import {OtherComponent} from './pages/other/other.component';
-import {TournamentMetaOverviewComponent} from './pages/quote/tournament-meta-overview.component';
+import {TournamentMetaOverviewComponent} from './pages/tournament-meta-overview/tournament-meta-overview.component';
 import {RankingsComponent} from './pages/ranking/rankings.component';
 import {TournamentComponent} from './pages/tournament/tournament.component';
 import {TournamentsComponent} from './pages/tournaments/tournaments.component';

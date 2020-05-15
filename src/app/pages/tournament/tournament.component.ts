@@ -27,6 +27,7 @@ export class TournamentComponent implements OnInit {
     const seoId = this.activatedRoute.snapshot.paramMap.get('tournamentSeoId');
     this.displayedTournamentDetails = this.tournamentDetailStoreFacadeService.getDisplayedTournamentDetails(seoId);
     this.tournamentDetailStoreFacadeService.loadTournamentDetails(seoId);
+
     this.memberStoreFacadeService.loadMembers();
   }
 }

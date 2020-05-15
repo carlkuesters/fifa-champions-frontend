@@ -1,10 +1,8 @@
-import {MemberImages} from './member-images.model';
-
 export class MemberDetails {
   id: number;
   name: string;
   description: string;
-  images: MemberImages;
+  image: string;
   joinDate: number;
   tournaments: number;
   matches: number;

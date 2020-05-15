@@ -1,5 +1,9 @@
 @import '../../../../styles/breakpoints';
 
+:host {
+  display: block;
+}
+
 h2 {
   @include bp-lg {
     text-align: right;

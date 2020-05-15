@@ -1,5 +1,7 @@
 export class DisplayedTournamentGroupPlayer {
   place: number;
+  teamId: number;
+  teamName: string;
   playerName: string;
   playerImage: string;
   games: number;

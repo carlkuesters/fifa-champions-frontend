@@ -14,8 +14,6 @@
     <fc-tournament-meta-list *ngIf="displayedTournamentDetails.meta['quote'].length > 0" title="Sprüche des Abends" [metas]="displayedTournamentDetails.meta['quote']"></fc-tournament-meta-list>
   </div>
   <div class="matches">
-    <fc-tournament-match-list
-      [matches]="displayedTournamentDetails.results.matches"
-    ></fc-tournament-match-list>
+    <fc-tournament-matches [matches]="displayedTournamentDetails.matches"></fc-tournament-matches>
   </div>
 </div>

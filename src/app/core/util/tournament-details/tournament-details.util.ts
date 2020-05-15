@@ -1,10 +1,16 @@
-import {TournamentDetails} from '../../../model/tournament-details.model';
 import {DisplayedTournamentDetails} from '../../../model/displayed-tournament-details.model';
-import {DisplayedTournamentGroupPlayer} from '../../../model/displayed-tournament-group-player.model';
 import {DisplayedTournamentGroup} from '../../../model/displayed-tournament-group.model';
+import {DisplayedTournamentGroupPlayer} from '../../../model/displayed-tournament-group-player.model';
+import {DisplayedTournamentMatches} from '../../../model/displayed-tournament-matches.model';
+import {DisplayedTournamentMatchPlayer} from '../../../model/displayed-tournament-match-player.model';
+import {TournamentDetails} from '../../../model/tournament-details.model';
+import {TournamentMatch} from '../../../model/tournament-match.model';
+import {TournamentMatchPlayer} from '../../../model/tournament-match-player.model';
 import {Member} from '../../../model/member.model';
 import {TOURNAMENT_TYPES} from '../../../model/tournament.constants';
 import {TournamentGroupPlayer} from '../../../model/tournament-group-player.model';
+import {TournamentPlayer} from '../../../model/tournament-player.model';
+import {getMemberImage} from '../member/member.util';
 
 const GROUP_NAMES = ['A', 'B', 'C', 'D'];
 
@@ -13,8 +19,8 @@ export function mapDisplayedTournamentDetails(tournamentDetails: TournamentDetai
     title: getTitle(tournamentDetails),
     location: tournamentDetails.location,
     groups: getDisplayedGroups(tournamentDetails, members),
-    meta: tournamentDetails.meta,
-    results: tournamentDetails.results
+    matches: getDisplayedMatches(tournamentDetails.results.matches, members),
+    meta: tournamentDetails.meta
   };
 }
 
@@ -33,17 +39,27 @@ function getDisplayedGroups(tournamentDetails: TournamentDetails, members: Membe
   return tournamentDetails.results.groups.map((groupPlayers, index) => {
     return {
       name: getGroupName(tournamentDetails, index),
-      players: groupPlayers.map((groupPlayer, groupPlayerIndex) => getDisplayedGroupPlayer(groupPlayerIndex, groupPlayer, members))
+      players: groupPlayers.map((groupPlayer, groupPlayerIndex) => {
+        const tournamentPlayer = tournamentDetails.players.find(tp => tp.playerId === groupPlayer.playerId);
+        const member = members.find(m => m.id === groupPlayer.playerId);
+        return getDisplayedGroupPlayer(groupPlayerIndex, groupPlayer, tournamentPlayer, member);
+      })
     };
   });
 }
 
-function getDisplayedGroupPlayer(place: number, groupPlayer: TournamentGroupPlayer, members): DisplayedTournamentGroupPlayer {
-  const member = members.find(m => m.id === groupPlayer.playerId);
+function getDisplayedGroupPlayer(
+  groupPlayerIndex: number,
+  groupPlayer: TournamentGroupPlayer,
+  tournamentPlayer: TournamentPlayer,
+  member: Member
+): DisplayedTournamentGroupPlayer {
   return {
-    place,
+    place: (groupPlayerIndex + 1),
+    teamId: tournamentPlayer.team.id,
+    teamName: tournamentPlayer.team.name,
     playerName: member.name,
-    playerImage: member.images.small,
+    playerImage: getMemberImage(member.id, 32),
     games: groupPlayer.games,
     wins: groupPlayer.wins,
     draws: groupPlayer.draws,
@@ -57,4 +73,27 @@ function getDisplayedGroupPlayer(place: number, groupPlayer: TournamentGroupPlay
 
 function getGroupName(tournamentDetails: TournamentDetails, groupIndex: number): string {
   return ((tournamentDetails.results.groups.length > 1) ? GROUP_NAMES[groupIndex] : null);
+}
+
+function getDisplayedMatches(tournamentMatches: TournamentMatch[], members: Member[]): DisplayedTournamentMatches {
+  const displayedTournamentMatches: DisplayedTournamentMatches = {};
+  tournamentMatches.forEach(tournamentMatch => {
+    let typeMatches = displayedTournamentMatches[tournamentMatch.type];
+    if (typeMatches == null) {
+      typeMatches = [];
+      displayedTournamentMatches[tournamentMatch.type] = typeMatches;
+    }
+    typeMatches.push(tournamentMatch.players.map(tmp => getDisplayedMatchPlayer(tmp, members)));
+  });
+  return displayedTournamentMatches;
+}
+
+function getDisplayedMatchPlayer(tournamentMatchPlayer: TournamentMatchPlayer, members: Member[]): DisplayedTournamentMatchPlayer {
+  const member = members.find(m => m.id === tournamentMatchPlayer.id);
+  return {
+    id: member.id,
+    name: member.name,
+    image: getMemberImage(member.id, 32),
+    goals: tournamentMatchPlayer.goals
+  };
 }

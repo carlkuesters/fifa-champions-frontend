@@ -1,10 +1,11 @@
-<div class="place">{{groupPlayer.place}}</div>
-<div class="player">{{groupPlayer.playerName}}</div>
-<div class="games">{{groupPlayer.games}}</div>
-<div class="wins">{{groupPlayer.wins}}</div>
-<div class="draws">{{groupPlayer.draws}}</div>
-<div class="losses">{{groupPlayer.losses}}</div>
-<div class="goalsScored">{{groupPlayer.goals_scored}}</div>
-<div class="goalsObtained">{{groupPlayer.goals_obtained}}</div>
-<div class="goalsDifference">{{groupPlayer.goals_difference}}</div>
-<div class="points">{{groupPlayer.points}}</div>
+<div>{{groupPlayer.place}}.</div>
+<img [src]="groupPlayer.playerImage">
+<div class="grow">{{groupPlayer.playerName}}</div>
+<div>{{groupPlayer.games}}</div>
+<div class="section-start">{{groupPlayer.wins}}</div>
+<div>{{groupPlayer.draws}}</div>
+<div>{{groupPlayer.losses}}</div>
+<div class="section-start">{{groupPlayer.goals_scored}}</div>
+<div>{{groupPlayer.goals_obtained}}</div>
+<div>{{groupPlayer.goals_difference}}</div>
+<div class="section-start">{{groupPlayer.points}}</div>
