@@ -121,3 +121,11 @@ button {
     color: $color-link;
   }
 }
+
+hr {
+  margin-top: $baseline-2;
+  margin-bottom: $baseline-2;
+  border-width: 1px 0 0 0;
+  border-style: solid;
+  border-color: $color-light-grey;
+}

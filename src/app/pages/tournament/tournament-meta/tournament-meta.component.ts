@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 
-import {TournamentMeta} from '../../../model/tournament-meta.model';
+import {DisplayedTournamentMeta} from '../../../model/displayed-tournament-meta.model';
 
 @Component({
   selector: 'fc-tournament-meta',
@@ -8,5 +8,5 @@ import {TournamentMeta} from '../../../model/tournament-meta.model';
   styleUrls: ['./tournament-meta.component.scss']
 })
 export class TournamentMetaComponent {
-  @Input() meta: TournamentMeta;
+  @Input() meta: DisplayedTournamentMeta;
 }

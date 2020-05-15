@@ -5,17 +5,16 @@
 }
 
 h2 {
+  text-align: center;
+
   @include bp-lg {
     text-align: right;
   }
 }
 
 li {
+  display: block;
   margin-bottom: 5px;
-
-  @include bp-lg {
-    justify-content: flex-end;
-  }
 
   &:before {
     display: none;

@@ -3,12 +3,14 @@ import {DisplayedTournamentGroup} from '../../../model/displayed-tournament-grou
 import {DisplayedTournamentGroupPlayer} from '../../../model/displayed-tournament-group-player.model';
 import {DisplayedTournamentMatches} from '../../../model/displayed-tournament-matches.model';
 import {DisplayedTournamentMatchPlayer} from '../../../model/displayed-tournament-match-player.model';
+import {DisplayedTournamentMeta} from '../../../model/displayed-tournament-meta.model';
 import {TournamentDetails} from '../../../model/tournament-details.model';
 import {TournamentMatch} from '../../../model/tournament-match.model';
 import {TournamentMatchPlayer} from '../../../model/tournament-match-player.model';
 import {Member} from '../../../model/member.model';
-import {TOURNAMENT_TYPES} from '../../../model/tournament.constants';
+import {TOURNAMENT_CONSTANTS} from '../../../model/tournament.constants';
 import {TournamentGroupPlayer} from '../../../model/tournament-group-player.model';
+import {TournamentMeta} from '../../../model/tournament-meta.model';
 import {TournamentPlayer} from '../../../model/tournament-player.model';
 import {getMemberImage} from '../member/member.util';
 
@@ -20,12 +22,12 @@ export function mapDisplayedTournamentDetails(tournamentDetails: TournamentDetai
     location: tournamentDetails.location,
     groups: getDisplayedGroups(tournamentDetails, members),
     matches: getDisplayedMatches(tournamentDetails.results.matches, members),
-    meta: tournamentDetails.meta
+    meta: getDisplayedTournamentMetas(tournamentDetails.meta, members)
   };
 }
 
 function getTitle(tournamentDetails: TournamentDetails): string {
-  const tournamentType = TOURNAMENT_TYPES[tournamentDetails.type];
+  const tournamentType = TOURNAMENT_CONSTANTS[tournamentDetails.type];
   let title = tournamentType.title + ' (';
   const date = new Date(tournamentDetails.date * 1000);
   if (!tournamentType.isYearly) {
@@ -79,7 +81,7 @@ function getDisplayedMatches(tournamentMatches: TournamentMatch[], members: Memb
   const displayedTournamentMatches: DisplayedTournamentMatches = {};
   tournamentMatches.forEach(tournamentMatch => {
     let typeMatches = displayedTournamentMatches[tournamentMatch.type];
-    if (typeMatches == null) {
+    if (!typeMatches) {
       typeMatches = [];
       displayedTournamentMatches[tournamentMatch.type] = typeMatches;
     }
@@ -95,5 +97,30 @@ function getDisplayedMatchPlayer(tournamentMatchPlayer: TournamentMatchPlayer, m
     name: member.name,
     image: getMemberImage(member.id, 32),
     goals: tournamentMatchPlayer.goals
+  };
+}
+
+function getDisplayedTournamentMetas(
+  tournamentMetas: {[type: string]: TournamentMeta[]},
+  members: Member[]): {[type: string]: DisplayedTournamentMeta[]
+}  {
+  const displayedTournamentMetas = {};
+  Object.keys(tournamentMetas).forEach(metaType => {
+    displayedTournamentMetas[metaType] = tournamentMetas[metaType].map(
+      tournamentMeta => getDisplayedTournamentMeta(tournamentMeta, members)
+    );
+  });
+  return displayedTournamentMetas;
+}
+
+
+function getDisplayedTournamentMeta(tournamentMeta: TournamentMeta, members: Member[]): DisplayedTournamentMeta {
+  const member = members.find(m => m.id === tournamentMeta.playerId);
+  return {
+    memberId: (member ? member.id : null),
+    memberName: (member ? member.name : null),
+    memberImage: (member ? getMemberImage(member.id, 32) : null),
+    text: tournamentMeta.text,
+    youtubeVideoId: tournamentMeta.youtubeVideoId
   };
 }

@@ -1,8 +1,8 @@
 import {Component, HostListener, Input} from '@angular/core';
 import {Router} from '@angular/router';
 
+import {TOURNAMENT_CONSTANTS} from '../../../model/tournament.constants';
 import {TournamentOverview} from '../../../model/tournament-overview.model';
-import {TOURNAMENT_TYPES} from '../../../model/tournament.constants';
 
 @Component({
   selector: 'fc-tournament-entry',
@@ -11,15 +11,17 @@ import {TOURNAMENT_TYPES} from '../../../model/tournament.constants';
 })
 export class TournamentEntryComponent {
 
-  TOURNAMENT_TYPES = TOURNAMENT_TYPES;
-
   constructor(private router: Router) {
   }
 
   @Input() tournament: TournamentOverview;
 
-  @HostListener('click', ['$event'])
-  onClick(event: Event): void {
+  get title(): string {
+    return TOURNAMENT_CONSTANTS[this.tournament.type].title;
+  }
+
+  @HostListener('click')
+  onClick(): void {
     this.router.navigate(['/tournament/' + this.tournament.id]);
   }
 }

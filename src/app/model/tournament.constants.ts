@@ -1,4 +1,4 @@
-export const TOURNAMENT_TYPES = {
+export const TOURNAMENT_CONSTANTS = {
   monthly_tournament: {
     isYearly: false,
     title: 'Monatsturnier',

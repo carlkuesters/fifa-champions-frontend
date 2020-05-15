@@ -4,9 +4,11 @@ import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
 
 // tslint:disable:max-line-length
+import {MemberStoreFacadeService} from '../../core/services/member-store-facade/member-store-facade.service';
 import {TournamentDetailStoreFacadeService} from '../../core/services/tournament-detail-store-facade/tournament-detail-store-facade.service';
 import {DisplayedTournamentDetails} from '../../model/displayed-tournament-details.model';
-import {MemberStoreFacadeService} from '../../core/services/member-store-facade/member-store-facade.service';
+import {MatchType} from '../../model/match-type.enum';
+import {TournamentMetaType} from '../../model/tournament-meta-type.enum';
 // tslint:enable:max-line-length
 
 @Component({
@@ -15,6 +17,9 @@ import {MemberStoreFacadeService} from '../../core/services/member-store-facade/
   styleUrls: ['./tournament.component.scss']
 })
 export class TournamentComponent implements OnInit {
+
+  MatchType = MatchType;
+  TournamentMetaType = TournamentMetaType;
 
   displayedTournamentDetails: Observable<DisplayedTournamentDetails>;
 

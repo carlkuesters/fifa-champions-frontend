@@ -12,7 +12,6 @@ import {RankingsComponent} from './ranking/rankings.component';
 import {TournamentComponent} from './tournament/tournament.component';
 import {TournamentGroupComponent} from './tournament/tournament-group/tournament-group.component';
 import {TournamentGroupPlayerComponent} from './tournament/tournament-group-player/tournament-group-player.component';
-import {TournamentMatchesComponent} from './tournament/tournament-matches/tournament-matches.component';
 import {TournamentMatchListComponent} from './tournament/tournament-match-list/tournament-match-list.component';
 import {TournamentMatchComponent} from './tournament/tournament-match/tournament-match.component';
 import {TournamentMetaComponent} from './tournament/tournament-meta/tournament-meta.component';
@@ -40,7 +39,6 @@ import {TournamentsComponent} from './tournaments/tournaments.component';
     TournamentGroupComponent,
     TournamentGroupPlayerComponent,
     TournamentMatchComponent,
-    TournamentMatchesComponent,
     TournamentMatchListComponent,
     TournamentMetaComponent,
     TournamentMetaListComponent,

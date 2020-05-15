@@ -1,6 +1,6 @@
 <h2 *ngIf="title">{{title}}</h2>
-<ul *ngFor="let meta of metas">
-  <li>
+<ul>
+  <li *ngFor="let meta of metas">
     <fc-tournament-meta [meta]="meta"></fc-tournament-meta>
   </li>
 </ul>

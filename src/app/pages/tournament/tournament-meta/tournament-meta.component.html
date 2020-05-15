@@ -1,5 +1,5 @@
 <div class="title">
-  <img *ngIf="meta.playerId" [src]="'assets/images/members/' + meta.playerId + '_32.png'">
+  <img *ngIf="meta.memberImage" [src]="meta.memberImage">
   <div *ngIf="meta.text">{{meta.text}}</div>
 </div>
 <div *ngIf="meta.youtubeVideoId" class="media">{{meta.youtubeVideoId}}</div>
