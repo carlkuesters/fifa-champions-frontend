@@ -12,5 +12,6 @@
     <a (click)="displayNewRandomMeta()">Neu laden</a>
   </div>
   <p>{{displayedIsolatedTournamentMeta.text}}</p>
+  <fc-youtube-video *ngIf="displayedIsolatedTournamentMeta.youtubeVideoId" [youtubeVideoId]="displayedIsolatedTournamentMeta.youtubeVideoId"></fc-youtube-video>
   <div class="date">(Beim {{displayedIsolatedTournamentMeta.tournamentType}} am {{displayedIsolatedTournamentMeta.tournamentDate}}, {{displayedIsolatedTournamentMeta.locationName}})</div>
 </div>

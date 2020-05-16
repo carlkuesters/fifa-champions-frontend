@@ -14,12 +14,14 @@ import {TournamentOverviewStoreFacadeService} from '../../core/services/tourname
 })
 export class TournamentsComponent implements OnInit {
 
+  tournamentCount: Observable<number>;
   tournamentYears: Observable<TournamentYear[]>;
 
   constructor(private tournamentOverviewStoreFacadeService: TournamentOverviewStoreFacadeService) {
   }
 
   ngOnInit(): void {
+    this.tournamentCount = this.tournamentOverviewStoreFacadeService.getTournamentCount();
     this.tournamentYears = this.tournamentOverviewStoreFacadeService.getTournamentYears();
 
     this.tournamentOverviewStoreFacadeService.loadTournamentOverviews();

@@ -9,6 +9,10 @@ const getTournamentOverviews = createSelector(
   getTournamentOverviewsState, state => state.tournamentOverviews
 );
 
+export const getTournamentCount = createSelector(
+  getTournamentOverviews, tournamentsOverviews => tournamentsOverviews ? tournamentsOverviews.length : null
+);
+
 export const getTournamentYears = createSelector(
   getTournamentOverviews, tournamentsOverviews => {
     if (!tournamentsOverviews) {

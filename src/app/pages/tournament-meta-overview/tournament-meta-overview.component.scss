@@ -1,3 +1,4 @@
+@import '../../../styles/breakpoints';
 @import '../../../styles/sizes';
 
 .title {
@@ -33,6 +34,15 @@ a {
 
 p {
   font-size: 18px;
+}
+
+fc-youtube-video {
+  width: 100%;
+  margin-top: $baseline;
+
+  @include bp-lg {
+    width: 800px;
+  }
 }
 
 .date {

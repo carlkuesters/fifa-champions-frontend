@@ -40,6 +40,7 @@ export function mapDisplayedIsolatedTournamentMeta(
     memberName: (member ? member.name : null),
     memberImage: (member ? getMemberImage(member.id, 32) : null),
     text: isolatedTournamentMeta.text,
+    youtubeVideoId: isolatedTournamentMeta.youtubeVideoId,
     tournamentType: isolatedTournamentMeta.tournamentType,
     tournamentDate: isolatedTournamentMeta.tournamentDate,
     locationName: isolatedTournamentMeta.locationName,

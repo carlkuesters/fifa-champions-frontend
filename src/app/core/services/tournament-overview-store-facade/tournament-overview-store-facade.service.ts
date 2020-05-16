@@ -5,13 +5,17 @@ import {Observable} from 'rxjs';
 
 import {TournamentYear} from '../../../model/tournament-year.model';
 import * as TournamentOverviewActions from '../../../store/actions/tournament-overview.actions';
-import { getTournamentYears } from '../../../store/selectors/tournament-overview.selectors';
+import { getTournamentCount, getTournamentYears } from '../../../store/selectors/tournament-overview.selectors';
 import {TournamentOverviewState} from '../../../store/state/tournament-overview-state.model';
 
 @Injectable()
 export class TournamentOverviewStoreFacadeService {
 
   constructor(private store: Store<TournamentOverviewState>) {
+  }
+
+  getTournamentCount(): Observable<number> {
+    return this.store.select(getTournamentCount);
   }
 
   getTournamentYears(): Observable<TournamentYear[]> {

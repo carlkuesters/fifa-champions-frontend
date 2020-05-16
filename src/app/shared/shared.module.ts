@@ -4,18 +4,18 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 
+import {YoutubeVideoComponent} from './youtube-video/youtube-video.component';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,
-    RouterModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    RouterModule
   ],
   declarations: [
-    // Custom components
-
-    // Custom directives
+    YoutubeVideoComponent
   ],
   providers: [],
   exports: [
@@ -24,9 +24,7 @@ import {RouterModule} from '@angular/router';
     ReactiveFormsModule,
     RouterModule,
 
-    // Custom components
-
-    // Custom directives
+    YoutubeVideoComponent
   ],
 })
 export class SharedModule { }

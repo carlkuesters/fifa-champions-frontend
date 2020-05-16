@@ -3,6 +3,7 @@ export class DisplayedIsolatedTournamentMeta {
   memberName: string;
   memberImage: string;
   text: string;
+  youtubeVideoId: string;
   tournamentType: string;
   tournamentDate: number;
   locationName: string;

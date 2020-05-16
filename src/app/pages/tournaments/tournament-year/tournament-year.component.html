@@ -1,5 +1,5 @@
 <h2>{{tournamentYear.year}}</h2>
-<div class="tournaments">
+<div *ngIf="tournamentYear.dfcCup || tournamentYear.internationalTournament || tournamentYear.euroLeague || tournamentYear.championsLeague" class="tournaments">
   <fc-tournament-entry *ngIf="tournamentYear.dfcCup" [tournament]="tournamentYear.dfcCup"></fc-tournament-entry>
   <fc-tournament-entry *ngIf="tournamentYear.internationalTournament" [tournament]="tournamentYear.internationalTournament"></fc-tournament-entry>
   <fc-tournament-entry *ngIf="tournamentYear.euroLeague" [tournament]="tournamentYear.euroLeague"></fc-tournament-entry>
