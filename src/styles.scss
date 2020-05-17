@@ -21,7 +21,10 @@ body, input[type=text], textarea, button {
   color: $color-dark-grey;
 }
 
-// TODO: Here?
+main {
+  padding: $baseline-2;
+  background: #FFF;
+}
 
 a {
   &, &:visited {

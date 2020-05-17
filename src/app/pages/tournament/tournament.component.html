@@ -1,4 +1,4 @@
-<div *ngIf="displayedTournamentDetails | async as displayedTournamentDetails" class="container">
+<main *ngIf="displayedTournamentDetails | async as displayedTournamentDetails">
   <div class="info">
     <h1>{{displayedTournamentDetails.title}}</h1>
     <div class="location">{{displayedTournamentDetails.location}}</div>
@@ -19,4 +19,4 @@
     <fc-tournament-match-list *ngIf="displayedTournamentDetails.matches[MatchType.SEMIFINAL] && displayedTournamentDetails.matches[MatchType.SEMIFINAL].length > 0" [type]="MatchType.SEMIFINAL" [matches]="displayedTournamentDetails.matches[MatchType.SEMIFINAL]"></fc-tournament-match-list>
     <fc-tournament-match-list *ngIf="displayedTournamentDetails.matches[MatchType.FINAL] && displayedTournamentDetails.matches[MatchType.FINAL].length > 0" [type]="MatchType.FINAL" [matches]="displayedTournamentDetails.matches[MatchType.FINAL]"></fc-tournament-match-list>
   </div>
-</div>
+</main>

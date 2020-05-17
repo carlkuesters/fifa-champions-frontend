@@ -1,21 +1,23 @@
-<div class="welcome">
-  <h1>Die {{membersCount | async}} besten FIFA-Spieler der Welt in einer Gruppe!</h1>
-  <p>Fast jeden Monat spielen wir ein Turnier, in dem man zeigen kann, wer den Wanderpokal verdient hat. Einmal im Jahr spielen wir um den DFC-Pokal, die abwechselnde Europa- und Weltmeisterschaft und ein Fun-Turnier mit lustigen Regeln und <i>etwas</i> Alkohol.</p>
-</div>
-<div *ngIf="(totalTournaments | async)" class="teasers">
-  <fc-home-teaser
-    iconName="documentation"
-    teaserTitle="Detaillierte Turnierberichte"
-    [description]="'Jedes unserer ' + (totalTournaments | async) + ' Turniere wurde genauestens dokumentiert. Wie ging das Topspiel aus? Wer schoss das schönste Tor? Was war DER Spruch des Abends?'"
-  ></fc-home-teaser>
-  <fc-home-teaser
-    iconName="members"
-    teaserTitle="Spielerprofile"
-    description="Vom Neuzugang bis zum Jahrhundertstürmer: Hier finden sich alle Mitglieder der FIFA-Champions, ihre Erfolge, Niederlagen und Geschichten!"
-  ></fc-home-teaser>
-  <fc-home-teaser
-    iconName="statistics"
-    teaserTitle="Auswertungen & Fakten"
-    [description]="'Harte Zahlen: ' + (totalMatches | async) + ' Spiele, ' + (totalGoals | async) + ' Tore und eine stets aktuelle Weltrangliste bieten genug Daten für die Analyse des nächsten Turniergegners!'"
-  ></fc-home-teaser>
-</div>
+<main>
+  <div class="welcome">
+    <h1>Die {{membersCount | async}} besten FIFA-Spieler der Welt in einer Gruppe!</h1>
+    <p>Fast jeden Monat spielen wir ein Turnier, in dem man zeigen kann, wer den Wanderpokal verdient hat. Einmal im Jahr spielen wir um den DFC-Pokal, die abwechselnde Europa- und Weltmeisterschaft und ein Fun-Turnier mit lustigen Regeln und <i>etwas</i> Alkohol.</p>
+  </div>
+  <div *ngIf="(totalTournaments | async)" class="teasers">
+    <fc-home-teaser
+      iconName="documentation"
+      teaserTitle="Detaillierte Turnierberichte"
+      [description]="'Jedes unserer ' + (totalTournaments | async) + ' Turniere wurde genauestens dokumentiert. Wie ging das Topspiel aus? Wer schoss das schönste Tor? Was war DER Spruch des Abends?'"
+    ></fc-home-teaser>
+    <fc-home-teaser
+      iconName="members"
+      teaserTitle="Spielerprofile"
+      description="Vom Neuzugang bis zum Jahrhundertstürmer: Hier finden sich alle Mitglieder der FIFA-Champions, ihre Erfolge, Niederlagen und Geschichten!"
+    ></fc-home-teaser>
+    <fc-home-teaser
+      iconName="statistics"
+      teaserTitle="Auswertungen & Fakten"
+      [description]="'Harte Zahlen: ' + (totalMatches | async) + ' Spiele, ' + (totalGoals | async) + ' Tore und eine stets aktuelle Weltrangliste bieten genug Daten für die Analyse des nächsten Turniergegners!'"
+    ></fc-home-teaser>
+  </div>
+</main>

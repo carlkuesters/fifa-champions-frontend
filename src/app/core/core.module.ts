@@ -11,11 +11,13 @@ import {AwardEffects} from '../store/effects/award.effects';
 import {GeneralEffects} from '../store/effects/general.effects';
 import {TournamentMetaOverviewEffects} from '../store/effects/tournament-meta-overview.effects';
 import {MemberEffects} from '../store/effects/member.effects';
+import {MemberDetailEffects} from '../store/effects/member-detail.effects';
 import {TournamentDetailEffects} from '../store/effects/tournament-detail.effects';
 import {TournamentOverviewEffects} from '../store/effects/tournament-overview.effects';
 import {awardReducer} from '../store/reducers/award.reducers';
 import {generalReducer} from '../store/reducers/general.reducers';
 import {memberReducer} from '../store/reducers/member.reducers';
+import {memberDetailReducer} from '../store/reducers/member-detail.reducers';
 import {tournamentDetailReducer} from '../store/reducers/tournament-detail.reducers';
 import {tournamentMetaOverviewReducer} from '../store/reducers/tournament-meta-overview.reducers';
 import {tournamentOverviewReducer} from '../store/reducers/tournament-overview.reducers';
@@ -27,6 +29,7 @@ import {AwardStoreFacadeService} from './services/award-store-facade/award-store
 import {GeneralHttpService} from './services/general-http/general-http.service';
 import {GeneralStoreFacadeService} from './services/general-store-facade/general-store-facade.service';
 import {TournamentMetaOverviewStoreFacadeService} from './services/tournament-meta-overview-store-facade/tournament-meta-overview-store-facade.service';
+import {MemberDetailStoreFacadeService} from './services/member-detail-store-facade/member-detail-store-facade.service';
 import {MemberHttpService} from './services/member-http/member-http.service';
 import {MemberStoreFacadeService} from './services/member-store-facade/member-store-facade.service';
 import {TournamentDetailStoreFacadeService} from './services/tournament-detail-store-facade/tournament-detail-store-facade.service';
@@ -42,11 +45,18 @@ import {TournamentOverviewStoreFacadeService} from './services/tournament-overvi
     StoreModule.forFeature('award', awardReducer),
     StoreModule.forFeature('general', generalReducer),
     StoreModule.forFeature('member', memberReducer),
+    StoreModule.forFeature('memberDetail', memberDetailReducer),
     StoreModule.forFeature('tournamentDetail', tournamentDetailReducer),
     StoreModule.forFeature('tournamentMetaOverview', tournamentMetaOverviewReducer),
     StoreModule.forFeature('tournamentOverview', tournamentOverviewReducer),
     EffectsModule.forRoot([
-      AwardEffects, GeneralEffects, MemberEffects, TournamentDetailEffects, TournamentMetaOverviewEffects, TournamentOverviewEffects
+      AwardEffects,
+      GeneralEffects,
+      MemberDetailEffects,
+      MemberEffects,
+      TournamentDetailEffects,
+      TournamentMetaOverviewEffects,
+      TournamentOverviewEffects
     ]),
     StoreDevtoolsModule.instrument({ maxAge: 10 }),
 
@@ -62,6 +72,7 @@ import {TournamentOverviewStoreFacadeService} from './services/tournament-overvi
     AwardStoreFacadeService,
     GeneralHttpService,
     GeneralStoreFacadeService,
+    MemberDetailStoreFacadeService,
     MemberHttpService,
     MemberStoreFacadeService,
     TournamentDetailStoreFacadeService,

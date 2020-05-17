@@ -3,6 +3,7 @@ import {Routes, RouterModule} from '@angular/router';
 
 import {AwardsComponent} from './pages/awards/awards.component';
 import {HomeComponent} from './pages/home/home.component';
+import {MemberComponent} from './pages/member/member.component';
 import {MembersComponent} from './pages/members/members.component';
 import {OtherComponent} from './pages/other/other.component';
 import {TournamentMetaOverviewComponent} from './pages/tournament-meta-overview/tournament-meta-overview.component';
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'members', component: MembersComponent },
+  { path: 'member/:memberSeoId', component: MemberComponent },
   { path: 'rankings', component: RankingsComponent },
   { path: 'tournaments', component: TournamentsComponent },
   { path: 'tournament/:tournamentSeoId', component: TournamentComponent },

@@ -1,0 +1,15 @@
+<main *ngIf="displayedMemberDetails | async as displayedMemberDetails">
+  <img [src]="displayedMemberDetails.image">
+  <div class="head">
+    <h1>{{displayedMemberDetails.name}}</h1>
+    <div>Blubb Test</div>
+  </div>
+  <div class="content">
+    <ul>
+      <li>A</li>
+      <li>B</li>
+      <li>C</li>
+      <li>D</li>
+    </ul>
+  </div>
+</main>

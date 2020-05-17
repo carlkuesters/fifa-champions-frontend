@@ -5,6 +5,7 @@ import {AwardComponent} from './awards/award/award.component';
 import {SharedModule} from '../shared/shared.module';
 import {HomeComponent} from './home/home.component';
 import {HomeTeaserComponent} from './home/home-teaser/home-teaser.component';
+import {MemberComponent} from './member/member.component';
 import {MembersComponent} from './members/members.component';
 import {MembersEntryComponent} from './members/member-entry/members-entry.component';
 import {OtherComponent} from './other/other.component';
@@ -30,6 +31,7 @@ import {TournamentsComponent} from './tournaments/tournaments.component';
     AwardsComponent,
     HomeComponent,
     HomeTeaserComponent,
+    MemberComponent,
     MembersComponent,
     MembersEntryComponent,
     OtherComponent,

@@ -1,0 +1,33 @@
+@import '../../../styles/breakpoints';
+@import '../../../styles/colors';
+@import '../../../styles/sizes';
+
+main {
+  position: relative;
+  padding: 0;
+}
+
+img {
+  position: absolute;
+  top: $baseline-2;
+  left: $baseline-2;
+  width: 160px;
+  height: 160px;
+  background: red;
+}
+
+.head {
+  background: #058;
+  height: 90px;
+  padding-top: 25px;
+  padding-left: 195px;
+  color: $color-white;
+}
+
+h1 {
+  margin-bottom: 0;
+}
+
+.content {
+  padding: 15px $baseline-2 $baseline-2 195px;
+}
