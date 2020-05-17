@@ -5,7 +5,15 @@ import {getMemberImage} from '../member/member.util';
 export function mapDisplayedMemberDetails(memberDetails: MemberDetails): DisplayedMemberDetails {
   return {
     name: memberDetails.name,
+    description: memberDetails.description,
+    joinDate: memberDetails.joinDate,
     image: getMemberImage(memberDetails.id),
-    description: memberDetails.description
+    tournaments: memberDetails.tournaments,
+    matches: memberDetails.matches,
+    wins: memberDetails.wins,
+    draws: memberDetails.draws,
+    losses: memberDetails.losses,
+    goalsShot: memberDetails.goalsShot,
+    goalsReceived: memberDetails.goalsReceived,
   };
 }

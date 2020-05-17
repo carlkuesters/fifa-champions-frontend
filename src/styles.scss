@@ -132,3 +132,19 @@ hr {
   border-style: solid;
   border-color: $color-light-grey;
 }
+
+dl {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+dt {
+  flex-basis: 60%;
+}
+
+dd {
+  margin: 0;
+  flex-basis: 40%;
+}

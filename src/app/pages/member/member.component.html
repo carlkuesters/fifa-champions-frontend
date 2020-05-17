@@ -1,15 +1,28 @@
 <main *ngIf="displayedMemberDetails | async as displayedMemberDetails">
-  <img [src]="displayedMemberDetails.image">
-  <div class="head">
+  <div class="title">
     <h1>{{displayedMemberDetails.name}}</h1>
-    <div>Blubb Test</div>
+    <div>Mitglied seit {{displayedMemberDetails.joinDate}}</div>
+  </div>
+  <div class="info">
+    <img [src]="displayedMemberDetails.image">
+    <dl>
+      <dt>Turniere</dt>
+      <dd>{{displayedMemberDetails.tournaments}}</dd>
+      <dt>Spiele</dt>
+      <dd>{{displayedMemberDetails.matches}}</dd>
+      <dt>Tore</dt>
+      <dd>{{displayedMemberDetails.goalsShot}}</dd>
+      <dt>Gegentore</dt>
+      <dd>{{displayedMemberDetails.goalsReceived}}</dd>
+      <dt>Siege</dt>
+      <dd>{{displayedMemberDetails.wins}}</dd>
+      <dt>Unentsch.</dt>
+      <dd>{{displayedMemberDetails.draws}}</dd>
+      <dt>Niederl.</dt>
+      <dd>{{displayedMemberDetails.losses}}</dd>
+    </dl>
   </div>
   <div class="content">
-    <ul>
-      <li>A</li>
-      <li>B</li>
-      <li>C</li>
-      <li>D</li>
-    </ul>
+    <p>{{displayedMemberDetails.description}}</p>
   </div>
 </main>
