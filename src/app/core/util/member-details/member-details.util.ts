@@ -1,11 +1,23 @@
 import {DisplayedMemberDetails} from '../../../model/displayed-member-details.model';
 import {MemberDetails} from '../../../model/member-details.model';
+import {MemberDetailsRanking} from '../../../model/member-details-ranking.model';
 import {getMemberImage} from '../member/member.util';
 
 export function mapDisplayedMemberDetails(memberDetails: MemberDetails): DisplayedMemberDetails {
+  let latestRanking = null;
+  let bestRanking = null;
+  memberDetails.rankings.forEach(ranking => {
+    if (!latestRanking || (ranking.date > latestRanking.date)) {
+      latestRanking = ranking;
+    }
+    if (!bestRanking || isBetterRanking(ranking, bestRanking)) {
+      bestRanking = ranking;
+    }
+  });
+  const awards = memberDetails.awards.sort((a, b) => b.year - a.year);
+
   return {
     name: memberDetails.name,
-    description: memberDetails.description,
     joinDate: memberDetails.joinDate,
     image: getMemberImage(memberDetails.id),
     tournaments: memberDetails.tournaments,
@@ -15,5 +27,13 @@ export function mapDisplayedMemberDetails(memberDetails: MemberDetails): Display
     losses: memberDetails.losses,
     goalsShot: memberDetails.goalsShot,
     goalsReceived: memberDetails.goalsReceived,
+    description: memberDetails.description,
+    latestRanking,
+    bestRanking,
+    awards,
   };
+}
+
+function isBetterRanking(ranking1: MemberDetailsRanking, ranking2: MemberDetailsRanking): boolean {
+  return ((ranking1.rank < ranking2.rank) || ((ranking1.rank === ranking2.rank) && (ranking1.date > ranking2.date)));
 }

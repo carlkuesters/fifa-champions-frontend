@@ -1,6 +1,8 @@
+import {MemberDetailsAward} from './member-details-award.model';
+import {MemberDetailsRanking} from './member-details-ranking.model';
+
 export class DisplayedMemberDetails {
   name: string;
-  description: string;
   joinDate: number;
   image: string;
   tournaments: number;
@@ -10,4 +12,8 @@ export class DisplayedMemberDetails {
   losses: number;
   goalsShot: number;
   goalsReceived: number;
+  description: string;
+  latestRanking: MemberDetailsRanking;
+  bestRanking: MemberDetailsRanking;
+  awards: MemberDetailsAward[];
 }

@@ -24,5 +24,25 @@
   </div>
   <div class="content">
     <p>{{displayedMemberDetails.description}}</p>
+    <dl class="rankings">
+      <dt>Weltrangliste:</dt>
+      <dd>{{displayedMemberDetails.latestRanking ? 'Platz ' + displayedMemberDetails.latestRanking.rank : '-'}}</dd>
+      <dt>Höhepunkt:</dt>
+      <dd>{{displayedMemberDetails.bestRanking ? 'Platz ' + displayedMemberDetails.bestRanking.rank + ' (' + displayedMemberDetails.bestRanking.date + ')' : '-'}}</dd>
+    </dl>
+      <div class="graph"></div>
+    <h2>FC Awards</h2>
+    <ul class="awards">
+      <li *ngFor="let award of displayedMemberDetails.awards">
+        <img src="assets/images/award_100.png">
+        <span>{{award.type + ' ' + award.year}}</span>
+      </li>
+    </ul>
+    <dl class="other">
+      <dt>Höchster Sieg</dt>
+      <dd>?</dd>
+      <dt>Höchste Niederlage</dt>
+      <dd>?</dd>
+    </dl>
   </div>
 </main>

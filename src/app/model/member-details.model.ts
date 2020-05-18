@@ -1,3 +1,6 @@
+import {MemberDetailsAward} from './member-details-award.model';
+import {MemberDetailsRanking} from './member-details-ranking.model';
+
 export class MemberDetails {
   id: number;
   name: string;
@@ -11,6 +14,6 @@ export class MemberDetails {
   losses: number;
   goalsShot: number;
   goalsReceived: number;
-  rankings: any;
-  awards: any;
+  rankings: MemberDetailsRanking[];
+  awards: MemberDetailsAward[];
 }
