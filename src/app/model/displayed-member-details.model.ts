@@ -13,6 +13,7 @@ export class DisplayedMemberDetails {
   goalsShot: number;
   goalsReceived: number;
   description: string;
+  allRankings: MemberDetailsRanking[];
   latestRanking: MemberDetailsRanking;
   bestRanking: MemberDetailsRanking;
   awards: MemberDetailsAward[];

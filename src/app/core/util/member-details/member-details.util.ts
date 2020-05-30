@@ -14,6 +14,7 @@ export function mapDisplayedMemberDetails(memberDetails: MemberDetails): Display
       bestRanking = ranking;
     }
   });
+  const allRankings = memberDetails.rankings.sort((a, b) => b.date - a.date);
   const awards = memberDetails.awards.sort((a, b) => b.year - a.year);
 
   return {
@@ -28,6 +29,7 @@ export function mapDisplayedMemberDetails(memberDetails: MemberDetails): Display
     goalsShot: memberDetails.goalsShot,
     goalsReceived: memberDetails.goalsReceived,
     description: memberDetails.description,
+    allRankings,
     latestRanking,
     bestRanking,
     awards,

@@ -30,7 +30,7 @@
       <dt>Höhepunkt:</dt>
       <dd>{{displayedMemberDetails.bestRanking ? 'Platz ' + displayedMemberDetails.bestRanking.rank + ' (' + displayedMemberDetails.bestRanking.date + ')' : '-'}}</dd>
     </dl>
-      <div class="graph"></div>
+    <fc-member-ranking-chart [rankings]="displayedMemberDetails.allRankings"></fc-member-ranking-chart>
     <h2>FC Awards</h2>
     <ul class="awards">
       <li *ngFor="let award of displayedMemberDetails.awards">

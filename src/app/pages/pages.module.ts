@@ -6,6 +6,7 @@ import {SharedModule} from '../shared/shared.module';
 import {HomeComponent} from './home/home.component';
 import {HomeTeaserComponent} from './home/home-teaser/home-teaser.component';
 import {MemberComponent} from './member/member.component';
+import {MemberRankingChartComponent} from './member/member-ranking-chart/member-ranking-chart.component';
 import {MembersComponent} from './members/members.component';
 import {MembersEntryComponent} from './members/member-entry/members-entry.component';
 import {OtherComponent} from './other/other.component';
@@ -32,6 +33,7 @@ import {TournamentsComponent} from './tournaments/tournaments.component';
     HomeComponent,
     HomeTeaserComponent,
     MemberComponent,
+    MemberRankingChartComponent,
     MembersComponent,
     MembersEntryComponent,
     OtherComponent,
