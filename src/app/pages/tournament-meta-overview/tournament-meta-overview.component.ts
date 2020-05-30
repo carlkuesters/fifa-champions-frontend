@@ -37,7 +37,7 @@ export class TournamentMetaOverviewComponent implements OnInit {
     this.tournamentMetaOverviewStoreFacadeService.displayNextRandomTournamentMeta(this.metaType);
   }
 
-  private get title(): string {
+  get title(): string {
     return TOURNAMENT_META_CONSTANTS[this.metaType].titlePlural;
   }
 
