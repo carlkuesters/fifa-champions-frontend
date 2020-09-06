@@ -12,7 +12,7 @@ import {MemberDetailsRanking} from '../../../model/member-details-ranking.model'
 })
 export class MemberRankingChartComponent implements AfterViewInit{
 
-  @ViewChild('chart', { static: false }) cartContainer: ElementRef;
+  @ViewChild('chart') cartContainer: ElementRef;
   chart: LineChart;
 
   @Input() rankings: MemberDetailsRanking[];

@@ -14,8 +14,8 @@ export function mapDisplayedMemberDetails(memberDetails: MemberDetails): Display
       bestRanking = ranking;
     }
   });
-  const allRankings = memberDetails.rankings.sort((a, b) => b.date - a.date);
-  const awards = memberDetails.awards.sort((a, b) => b.year - a.year);
+  const allRankings = memberDetails.rankings.slice().sort((a, b) => b.date - a.date);
+  const awards = memberDetails.awards.slice().sort((a, b) => b.year - a.year);
 
   return {
     name: memberDetails.name,
