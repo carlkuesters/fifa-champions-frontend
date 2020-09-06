@@ -20,7 +20,6 @@ node {
                 sh 'npm run build'
             }
         } finally {
-            step([$class: 'GitHubCommitStatusSetter'])
             cleanWs()
         }
     }
