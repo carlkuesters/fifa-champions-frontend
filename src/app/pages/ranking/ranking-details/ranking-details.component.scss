@@ -1,0 +1,16 @@
+@import '../../../../styles/breakpoints';
+@import '../../../../styles/sizes';
+
+li {
+  &:not(:last-child) {
+    margin-bottom: $baseline-2;
+  }
+
+  @include bp-md {
+    margin-bottom: $baseline;
+  }
+
+  &::before {
+    display: none;
+  }
+}

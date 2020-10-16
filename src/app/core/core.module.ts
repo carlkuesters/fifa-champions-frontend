@@ -12,12 +12,14 @@ import {GeneralEffects} from '../store/effects/general.effects';
 import {TournamentMetaOverviewEffects} from '../store/effects/tournament-meta-overview.effects';
 import {MemberEffects} from '../store/effects/member.effects';
 import {MemberDetailEffects} from '../store/effects/member-detail.effects';
+import {RankingEffects} from '../store/effects/ranking.effects';
 import {TournamentDetailEffects} from '../store/effects/tournament-detail.effects';
 import {TournamentOverviewEffects} from '../store/effects/tournament-overview.effects';
 import {awardReducer} from '../store/reducers/award.reducers';
 import {generalReducer} from '../store/reducers/general.reducers';
 import {memberReducer} from '../store/reducers/member.reducers';
 import {memberDetailReducer} from '../store/reducers/member-detail.reducers';
+import {rankingReducer} from '../store/reducers/ranking.reducers';
 import {tournamentDetailReducer} from '../store/reducers/tournament-detail.reducers';
 import {tournamentMetaOverviewReducer} from '../store/reducers/tournament-meta-overview.reducers';
 import {tournamentOverviewReducer} from '../store/reducers/tournament-overview.reducers';
@@ -35,6 +37,8 @@ import {MemberStoreFacadeService} from './services/member-store-facade/member-st
 import {TournamentDetailStoreFacadeService} from './services/tournament-detail-store-facade/tournament-detail-store-facade.service';
 import {TournamentHttpService} from './services/tournament-http/tournament-http.service';
 import {TournamentOverviewStoreFacadeService} from './services/tournament-overview-store-facade/tournament-overview-store-facade.service';
+import {RankingHttpService} from './services/ranking-http/ranking-http.service';
+import {RankingStoreFacadeService} from './services/ranking-store-facade/ranking-store-facade.service';
 // tslint:enable:max-line-length
 
 @NgModule({
@@ -46,6 +50,7 @@ import {TournamentOverviewStoreFacadeService} from './services/tournament-overvi
     StoreModule.forFeature('general', generalReducer),
     StoreModule.forFeature('member', memberReducer),
     StoreModule.forFeature('memberDetail', memberDetailReducer),
+    StoreModule.forFeature('ranking', rankingReducer),
     StoreModule.forFeature('tournamentDetail', tournamentDetailReducer),
     StoreModule.forFeature('tournamentMetaOverview', tournamentMetaOverviewReducer),
     StoreModule.forFeature('tournamentOverview', tournamentOverviewReducer),
@@ -54,6 +59,7 @@ import {TournamentOverviewStoreFacadeService} from './services/tournament-overvi
       GeneralEffects,
       MemberDetailEffects,
       MemberEffects,
+      RankingEffects,
       TournamentDetailEffects,
       TournamentMetaOverviewEffects,
       TournamentOverviewEffects
@@ -75,6 +81,8 @@ import {TournamentOverviewStoreFacadeService} from './services/tournament-overvi
     MemberDetailStoreFacadeService,
     MemberHttpService,
     MemberStoreFacadeService,
+    RankingHttpService,
+    RankingStoreFacadeService,
     TournamentDetailStoreFacadeService,
     TournamentHttpService,
     TournamentMetaOverviewStoreFacadeService,

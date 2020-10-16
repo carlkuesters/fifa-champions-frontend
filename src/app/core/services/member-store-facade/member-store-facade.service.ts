@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 
 import {DisplayedMember} from '../../../model/displayed-member.model';
 import * as MemberActions from '../../../store/actions/member.actions';
-import { getDisplayedMembers, getMembersCount } from '../../../store/selectors/member.selectors';
+import {getDisplayedMembers, getMembersCount} from '../../../store/selectors/member.selectors';
 import {MemberState} from '../../../store/state/member-state.model';
 
 @Injectable()

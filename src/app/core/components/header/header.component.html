@@ -1,10 +1,12 @@
 <header>
   <div class="banner"></div>
+  <input #mobileToggle id="mobile-toggle" type="checkbox">
+  <label for="mobile-toggle"><span></span></label>
   <nav>
-    <a routerLink="/home" routerLinkActive="active">Startseite</a>
-    <a routerLink="/members" routerLinkActive="active">Mitglieder</a>
-    <a routerLink="/tournaments" routerLinkActive="active">Turniere</a>
-    <a routerLink="/rankings" routerLinkActive="active">Weltrangliste</a>
-    <a routerLink="/other" routerLinkActive="active">Sonstiges</a>
+    <a routerLink="/home" routerLinkActive="active" (click)="closeMobileNavigation()">Startseite</a>
+    <a routerLink="/members" routerLinkActive="active" (click)="closeMobileNavigation()">Mitglieder</a>
+    <a routerLink="/tournaments" routerLinkActive="active" (click)="closeMobileNavigation()">Turniere</a>
+    <a routerLink="/rankings" routerLinkActive="active" (click)="closeMobileNavigation()">Weltrangliste</a>
+    <a routerLink="/other" routerLinkActive="active" (click)="closeMobileNavigation()">Sonstiges</a>
   </nav>
 </header>

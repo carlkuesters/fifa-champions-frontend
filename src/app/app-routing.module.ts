@@ -7,7 +7,8 @@ import {MemberComponent} from './pages/member/member.component';
 import {MembersComponent} from './pages/members/members.component';
 import {OtherComponent} from './pages/other/other.component';
 import {TournamentMetaOverviewComponent} from './pages/tournament-meta-overview/tournament-meta-overview.component';
-import {RankingsComponent} from './pages/ranking/rankings.component';
+import {RankingComponent} from './pages/ranking/ranking.component';
+import {RankingsComponent} from './pages/rankings/rankings.component';
 import {TournamentComponent} from './pages/tournament/tournament.component';
 import {TournamentsComponent} from './pages/tournaments/tournaments.component';
 
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'members', component: MembersComponent },
   { path: 'member/:memberSeoId', component: MemberComponent },
   { path: 'rankings', component: RankingsComponent },
+  { path: 'ranking/:rankingSeoId', component: RankingComponent },
   { path: 'tournaments', component: TournamentsComponent },
   { path: 'tournament/:tournamentSeoId', component: TournamentComponent },
   { path: 'other', component: OtherComponent },
@@ -31,7 +33,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

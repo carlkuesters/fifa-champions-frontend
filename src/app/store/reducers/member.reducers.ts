@@ -15,6 +15,6 @@ const reducer = createReducer(
 );
 
 // @ts-ignore
-export function memberReducer(state: MembersState | undefined, action: Action) {
+export function memberReducer(state: MemberState | undefined, action: Action) {
   return reducer(state, action);
 }

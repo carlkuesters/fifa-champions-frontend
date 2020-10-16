@@ -1,0 +1,28 @@
+@import '../../../../styles/breakpoints';
+@import '../../../../styles/sizes';
+
+:host {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  @include bp-lg {
+    flex: 0 0 140px;
+  }
+}
+
+.rank, img {
+  margin-right: $baseline;
+}
+
+@include bp-sm-max {
+  .rank {
+    display: none;
+  }
+}
+
+@include bp-md-max {
+  .name {
+    display: none;
+  }
+}

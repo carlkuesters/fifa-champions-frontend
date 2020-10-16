@@ -1,0 +1,40 @@
+@import '../../../../styles/breakpoints';
+@import '../../../../styles/sizes';
+
+:host {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+
+  @include bp-sm-max {
+    flex-wrap: wrap;
+  }
+}
+
+.rank {
+  flex: 0 0 $baseline-3;
+}
+
+img {
+  width: 32px;
+  height: 32px;
+}
+
+.name {
+  flex: 0 0 $baseline * 8;
+  margin-left: $baseline;
+}
+
+.rankChange {
+  flex: 0 0 $baseline * 5;
+}
+
+.text {
+  flex-grow: 1;
+
+  @include bp-sm-max {
+    flex-basis: 100%;
+    margin-top: 5px;
+  }
+}

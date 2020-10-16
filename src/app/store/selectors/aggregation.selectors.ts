@@ -2,11 +2,13 @@ import {createSelector} from '@ngrx/store';
 
 import {mapAwardYears} from '../../core/util/award/award.util';
 import {mapDisplayedMemberDetails} from '../../core/util/member-details/member-details.util';
+import {mapDisplayedListRanking, mapDisplayedDetailsRanking} from '../../core/util/ranking/ranking.util';
 import {mapDisplayedTournamentDetails} from '../../core/util/tournament-details/tournament-details.util';
 import {mapDisplayedIsolatedTournamentMeta} from '../../core/util/tournament-meta-overview/tournament-meta-overview.util';
 import {getAwards} from './award.selectors';
 import {getMembers} from './member.selectors';
 import {getMemberDetails} from './member-detail.selectors';
+import {getSortedRankingIndexBySeoId, getSortedRankings} from './ranking.selectors';
 import {getTournamentDetails} from './tournament-detail.selectors';
 import {getDisplayedTournamentMetaOverviewMeta} from './tournament-meta-overview.selectors';
 
@@ -18,7 +20,6 @@ export const getDisplayedMemberDetails = createSelector(
     return mapDisplayedMemberDetails(memberDetails);
   },
 );
-
 
 export const getDisplayedTournamentDetails = createSelector(
   getTournamentDetails, getMembers, (tournamentDetails, members) => {
@@ -44,5 +45,32 @@ export const getDisplayedIsolatedTournamentMeta = createSelector(
       return null;
     }
     return mapDisplayedIsolatedTournamentMeta(isolatedTournamentMeta, members);
+  },
+);
+
+export const getSortedDisplayedListRankings = createSelector(
+  getSortedRankings, getMembers, (sortedRankings, members) => {
+    if (!sortedRankings || !members) {
+      return null;
+    }
+    return sortedRankings.map(sortedRanking => mapDisplayedListRanking(sortedRanking, members));
+  },
+);
+
+export const getNewestDisplayedDetailsRanking = createSelector(
+  getSortedRankings, getMembers, (sortedRankings, members) => {
+    if (!sortedRankings || !members) {
+      return null;
+    }
+    return mapDisplayedDetailsRanking(sortedRankings, 0, members);
+  },
+);
+
+export const getDisplayedDetailsRankingBySeoId = createSelector(
+  getSortedRankings, getSortedRankingIndexBySeoId, getMembers, (sortedRankings, sortedRankingIndex, members) => {
+    if (!sortedRankings || !members) {
+      return null;
+    }
+    return mapDisplayedDetailsRanking(sortedRankings, sortedRankingIndex, members);
   },
 );

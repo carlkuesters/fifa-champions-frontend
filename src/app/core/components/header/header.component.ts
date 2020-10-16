@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'fc-header',
@@ -7,4 +7,10 @@ import {Component} from '@angular/core';
 })
 export class HeaderComponent {
 
+  @ViewChild('mobileToggle') private mobileToggleElement: ElementRef;
+
+  closeMobileNavigation(): void {
+    const mobileToggle = (this.mobileToggleElement.nativeElement as HTMLInputElement);
+    mobileToggle.checked = false;
+  }
 }

@@ -1,0 +1,3 @@
+<a class="date" [routerLink]="'/ranking/' + ranking.id">{{ranking.formattedDate}}</a>
+<fc-ranking-list-entry-player *ngFor="let rankingPlayer of ranking.players" [rankingPlayer]="rankingPlayer"></fc-ranking-list-entry-player>
+<div>...</div>

@@ -12,6 +12,7 @@ import {TOURNAMENT_CONSTANTS} from '../../../model/tournament.constants';
 import {TournamentGroupPlayer} from '../../../model/tournament-group-player.model';
 import {TournamentMeta} from '../../../model/tournament-meta.model';
 import {TournamentPlayer} from '../../../model/tournament-player.model';
+import {formatDate, MONTH_NAMES} from '../date/date.util';
 import {getMemberImage} from '../member/member.util';
 
 const GROUP_NAMES = ['A', 'B', 'C', 'D'];
@@ -28,13 +29,15 @@ export function mapDisplayedTournamentDetails(tournamentDetails: TournamentDetai
 
 function getTitle(tournamentDetails: TournamentDetails): string {
   const tournamentType = TOURNAMENT_CONSTANTS[tournamentDetails.type];
-  let title = tournamentType.title + ' (';
-  const date = new Date(tournamentDetails.date * 1000);
-  if (!tournamentType.isYearly) {
-    title += date.getMonth() + ' ';
-  }
-  title += date.getFullYear() + ')';
-  return title;
+  const formattedDate = formatDate(tournamentDetails.date, date => {
+    let text = '';
+    if (!tournamentType.isYearly) {
+      text += MONTH_NAMES[date.getMonth()] + ' ';
+    }
+    text += date.getFullYear();
+    return text;
+  });
+  return tournamentType.title + ' (' + formattedDate + ')';
 }
 
 function getDisplayedGroups(tournamentDetails: TournamentDetails, members: Member[]): DisplayedTournamentGroup[] {

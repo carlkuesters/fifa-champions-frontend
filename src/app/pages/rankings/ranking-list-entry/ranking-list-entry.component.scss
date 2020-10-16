@@ -1,0 +1,22 @@
+@import '../../../../styles/breakpoints';
+@import '../../../../styles/sizes';
+
+:host {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+
+  @include bp-sm-max {
+    flex-wrap: wrap;
+  }
+}
+
+.date {
+  flex: 0 0 $baseline * 13;
+
+  @include bp-sm-max {
+    flex-basis: 100%;
+    margin-bottom: 5px;
+  }
+}
