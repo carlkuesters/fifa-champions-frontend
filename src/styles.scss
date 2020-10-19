@@ -148,3 +148,9 @@ dd {
   margin: 0;
   flex-basis: 40%;
 }
+
+@include bp-md {
+  .sm-max {
+    display: none;
+  }
+}

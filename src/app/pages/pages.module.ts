@@ -16,6 +16,7 @@ import {RankingDetailsPlayerComponent} from './ranking/ranking-details-player/ra
 import {RankingListComponent} from './rankings/ranking-list/ranking-list.component';
 import {RankingListEntryComponent} from './rankings/ranking-list-entry/ranking-list-entry.component';
 import {RankingListEntryPlayerComponent} from './rankings/ranking-list-entry-player/ranking-list-entry-player.component';
+import {RankingsChartComponent} from './rankings/rankings-chart/rankings-chart.component';
 import {RankingsComponent} from './rankings/rankings.component';
 import {TournamentComponent} from './tournament/tournament.component';
 import {TournamentGroupComponent} from './tournament/tournament-group/tournament-group.component';
@@ -49,6 +50,7 @@ import {TournamentsComponent} from './tournaments/tournaments.component';
     RankingListComponent,
     RankingListEntryComponent,
     RankingListEntryPlayerComponent,
+    RankingsChartComponent,
     RankingsComponent,
     TournamentComponent,
     TournamentEntryComponent,

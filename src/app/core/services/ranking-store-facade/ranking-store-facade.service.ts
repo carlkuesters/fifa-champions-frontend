@@ -3,10 +3,12 @@ import {Injectable} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 
+import {DisplayedChartRanking} from '../../../model/displayed-chart-ranking.model';
 import {DisplayedDetailsRanking} from '../../../model/displayed-details-ranking.model';
 import {DisplayedListRanking} from '../../../model/displayed-list-ranking.model';
 import * as RankingActions from '../../../store/actions/ranking.actions';
 import {
+  getDisplayedChartRankings,
   getDisplayedDetailsRankingBySeoId,
   getNewestDisplayedDetailsRanking,
   getSortedDisplayedListRankings
@@ -19,12 +21,16 @@ export class RankingStoreFacadeService {
   constructor(private store: Store<RankingState>) {
   }
 
-  getSortedDisplayedListRankings(): Observable<DisplayedListRanking[]> {
-    return this.store.select(getSortedDisplayedListRankings);
-  }
-
   getNewestDisplayedDetailsRanking(): Observable<DisplayedDetailsRanking> {
     return this.store.select(getNewestDisplayedDetailsRanking);
+  }
+
+  getDisplayedChartRankings(): Observable<DisplayedChartRanking[]> {
+    return this.store.select(getDisplayedChartRankings);
+  }
+
+  getSortedDisplayedListRankings(): Observable<DisplayedListRanking[]> {
+    return this.store.select(getSortedDisplayedListRankings);
   }
 
   getDisplayedDetailsRanking(seoId: string): Observable<DisplayedDetailsRanking> {

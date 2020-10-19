@@ -3,18 +3,19 @@ import {AfterViewInit, Component, ElementRef, Input, ViewChild} from '@angular/c
 import LineChart = google.visualization.LineChart;
 import LineChartOptions = google.visualization.LineChartOptions;
 
-import {MemberDetailsRanking} from '../../../model/member-details-ranking.model';
+import {DisplayedChartRanking} from '../../../model/displayed-chart-ranking.model';
 
 @Component({
-  selector: 'fc-member-ranking-chart',
-  templateUrl: './member-ranking-chart.component.html'
+  selector: 'fc-rankings-chart',
+  templateUrl: './rankings-chart.component.html',
+  styleUrls: ['./rankings-chart.component.scss']
 })
-export class MemberRankingChartComponent implements AfterViewInit{
+export class RankingsChartComponent implements AfterViewInit{
 
   @ViewChild('chart') chartContainer: ElementRef;
   chart: LineChart;
 
-  @Input() rankings: MemberDetailsRanking[];
+  @Input() rankings: DisplayedChartRanking[];
 
   ngAfterViewInit(): void {
     google.charts.load('current', {packages: ['corechart']});
@@ -25,26 +26,24 @@ export class MemberRankingChartComponent implements AfterViewInit{
   }
 
   private drawChart(): void {
-    const dataArray: any[] = [
-      [{
-        type: 'date',
-        label: 'Datum'
-      }, {
-        type: 'number',
-        label: 'Platz'
-      }],
-    ];
-    this.rankings.forEach(ranking => {
-      dataArray.push([new Date(ranking.date * 1000), Number(ranking.rank)]);
+    const dataTable = new google.visualization.DataTable();
+    dataTable.addColumn('date','Datum');
+    this.rankings[0].players.forEach(rankingPlayer => {
+      dataTable.addColumn('number',rankingPlayer.name);
     });
-    const dataTable = google.visualization.arrayToDataTable(dataArray);
+    this.rankings.forEach(ranking => {
+      const row: any[] = [ ranking.date ];
+      ranking.players.forEach(rankingPlayer => {
+        row.push(Number(rankingPlayer.rank));
+      });
+      dataTable.addRow(row);
+    });
 
     const options: LineChartOptions = {
+      theme: 'maximized',
       legend: {
         position: 'none'
       },
-      theme: 'maximized',
-      colors: [ '#058' ],
       hAxis: {
         textPosition: 'none',
       },

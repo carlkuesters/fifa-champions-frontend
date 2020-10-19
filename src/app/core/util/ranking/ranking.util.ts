@@ -1,3 +1,4 @@
+import {DisplayedChartRanking} from '../../../model/displayed-chart-ranking.model';
 import {DisplayedDetailsRanking} from '../../../model/displayed-details-ranking.model';
 import {DisplayedListRanking} from '../../../model/displayed-list-ranking.model';
 import {Member} from '../../../model/member.model';
@@ -13,7 +14,7 @@ export function mapDisplayedDetailsRanking(
 ): DisplayedDetailsRanking {
   const ranking = sortedRankings[sortedRankingIndex];
   const previousRanking = sortedRankings[sortedRankingIndex + 1];
-  const title = 'FC-Weltrangliste (' + getFormattedDate_Details(ranking) + ')';
+  const title = 'FC-Weltrangliste <br class="sm-max">(' + getFormattedDate_Details(ranking) + ')';
   const players = ranking.players.map(rankingPlayer => {
     const member = members.find(m => m.id === rankingPlayer.playerId);
     return {
@@ -48,6 +49,20 @@ function getRankChange(rankingPlayer: RankingPlayer, previousRanking: Ranking): 
   return '';
 }
 
+export function mapDisplayedChartRankings(sortedRanking: Ranking[], members: Member[]): DisplayedChartRanking[] {
+  return sortedRanking.map(ranking => {
+    return {
+      date: new Date(ranking.date * 1000),
+      players: members.map(member => {
+        const rankingPlayer = ranking.players.find(rP => rP.playerId === member.id);
+        return {
+          name: member.name,
+          rank: (rankingPlayer ? rankingPlayer.rank : members.length)
+        };
+      })
+    };
+  });
+}
 
 export function mapDisplayedListRanking(sortedRanking: Ranking, members: Member[]): DisplayedListRanking {
   const formattedDate = getFormattedDate_List(sortedRanking);

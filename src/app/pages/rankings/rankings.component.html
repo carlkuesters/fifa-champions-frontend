@@ -1,4 +1,5 @@
 <main>
   <fc-ranking-details *ngIf="newestRanking | async as newestRanking" [ranking]="newestRanking"></fc-ranking-details>
+  <fc-rankings-chart *ngIf="chartRankings | async as chartRankings" [rankings]="chartRankings"></fc-rankings-chart>
   <fc-ranking-list *ngIf="allRankings | async as allRankings" [rankings]="allRankings"></fc-ranking-list>
 </main>
