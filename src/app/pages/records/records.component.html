@@ -1,0 +1,9 @@
+<main>
+  <h1>Rekorde</h1>
+  <div class="options">
+    <fc-dropdown name="recordType" placeholder="Rekord" [options]="RECORD_TYPES" (optionSelected)="selectType($event)"></fc-dropdown>
+    <button *ngIf="sortAscOrDesc | async" class="fa fa-sort-amount-asc" (click)="sort(false)"></button>
+    <button *ngIf="(sortAscOrDesc | async) === false" class="fa fa-sort-amount-desc" (click)="sort(true)"></button>
+  </div>
+  <fc-ordered-players *ngIf="records | async as records" [players]="records"></fc-ordered-players>
+</main>

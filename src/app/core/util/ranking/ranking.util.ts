@@ -22,7 +22,7 @@ export function mapDisplayedDetailsRanking(
       name: member.name,
       image: getMemberImage(member.id, 32),
       rank: rankingPlayer.rank,
-      rankChange: getRankChange(rankingPlayer, previousRanking),
+      rankHint: getRankChange(rankingPlayer, previousRanking),
       text: rankingPlayer.text
     }
   });

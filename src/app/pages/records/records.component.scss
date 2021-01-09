@@ -1,0 +1,14 @@
+@import '../../../styles/sizes';
+@import '../../../styles/fonts/font-awesome';
+
+.options {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: $baseline * 1.5;
+}
+
+button {
+  height: 38px;
+  margin-left: 2px;
+  border-radius: 2px;
+}

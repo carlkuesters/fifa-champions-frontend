@@ -13,6 +13,8 @@ import {TournamentMetaOverviewEffects} from '../store/effects/tournament-meta-ov
 import {MemberEffects} from '../store/effects/member.effects';
 import {MemberDetailEffects} from '../store/effects/member-detail.effects';
 import {RankingEffects} from '../store/effects/ranking.effects';
+import {RecordEffects} from '../store/effects/record.effects';
+import {RecordSettingEffects} from '../store/effects/record-setting.effects';
 import {TournamentDetailEffects} from '../store/effects/tournament-detail.effects';
 import {TournamentOverviewEffects} from '../store/effects/tournament-overview.effects';
 import {awardReducer} from '../store/reducers/award.reducers';
@@ -20,6 +22,8 @@ import {generalReducer} from '../store/reducers/general.reducers';
 import {memberReducer} from '../store/reducers/member.reducers';
 import {memberDetailReducer} from '../store/reducers/member-detail.reducers';
 import {rankingReducer} from '../store/reducers/ranking.reducers';
+import {recordReducer} from '../store/reducers/record.reducers';
+import {recordSettingReducer} from '../store/reducers/record-setting.reducers';
 import {tournamentDetailReducer} from '../store/reducers/tournament-detail.reducers';
 import {tournamentMetaOverviewReducer} from '../store/reducers/tournament-meta-overview.reducers';
 import {tournamentOverviewReducer} from '../store/reducers/tournament-overview.reducers';
@@ -39,6 +43,9 @@ import {TournamentHttpService} from './services/tournament-http/tournament-http.
 import {TournamentOverviewStoreFacadeService} from './services/tournament-overview-store-facade/tournament-overview-store-facade.service';
 import {RankingHttpService} from './services/ranking-http/ranking-http.service';
 import {RankingStoreFacadeService} from './services/ranking-store-facade/ranking-store-facade.service';
+import {RecordHttpService} from './services/record-http/record-http.service';
+import {RecordSettingStoreFacadeService} from './services/record-setting-store-facade/record-setting-store-facade.service';
+import {RecordStoreFacadeService} from './services/record-store-facade/record-store-facade.service';
 // tslint:enable:max-line-length
 
 @NgModule({
@@ -51,6 +58,8 @@ import {RankingStoreFacadeService} from './services/ranking-store-facade/ranking
     StoreModule.forFeature('member', memberReducer),
     StoreModule.forFeature('memberDetail', memberDetailReducer),
     StoreModule.forFeature('ranking', rankingReducer),
+    StoreModule.forFeature('record', recordReducer),
+    StoreModule.forFeature('recordSetting', recordSettingReducer),
     StoreModule.forFeature('tournamentDetail', tournamentDetailReducer),
     StoreModule.forFeature('tournamentMetaOverview', tournamentMetaOverviewReducer),
     StoreModule.forFeature('tournamentOverview', tournamentOverviewReducer),
@@ -60,6 +69,8 @@ import {RankingStoreFacadeService} from './services/ranking-store-facade/ranking
       MemberDetailEffects,
       MemberEffects,
       RankingEffects,
+      RecordEffects,
+      RecordSettingEffects,
       TournamentDetailEffects,
       TournamentMetaOverviewEffects,
       TournamentOverviewEffects
@@ -83,6 +94,9 @@ import {RankingStoreFacadeService} from './services/ranking-store-facade/ranking
     MemberStoreFacadeService,
     RankingHttpService,
     RankingStoreFacadeService,
+    RecordHttpService,
+    RecordSettingStoreFacadeService,
+    RecordStoreFacadeService,
     TournamentDetailStoreFacadeService,
     TournamentHttpService,
     TournamentMetaOverviewStoreFacadeService,

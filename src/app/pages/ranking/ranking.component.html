@@ -1,3 +1,4 @@
 <main *ngIf="ranking | async as ranking">
-  <fc-ranking-details [ranking]="ranking"></fc-ranking-details>
+  <h1 [innerHTML]="ranking.title"></h1>
+  <fc-ordered-players [players]="ranking.players"></fc-ordered-players>
 </main>

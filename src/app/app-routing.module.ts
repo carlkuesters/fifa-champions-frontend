@@ -9,6 +9,7 @@ import {OtherComponent} from './pages/other/other.component';
 import {TournamentMetaOverviewComponent} from './pages/tournament-meta-overview/tournament-meta-overview.component';
 import {RankingComponent} from './pages/ranking/ranking.component';
 import {RankingsComponent} from './pages/rankings/rankings.component';
+import {RecordsComponent} from './pages/records/records.component';
 import {TournamentComponent} from './pages/tournament/tournament.component';
 import {TournamentsComponent} from './pages/tournaments/tournaments.component';
 
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'tournaments', component: TournamentsComponent },
   { path: 'tournament/:tournamentSeoId', component: TournamentComponent },
   { path: 'other', component: OtherComponent },
+  { path: 'records', component: RecordsComponent },
   { path: 'awards', component: AwardsComponent },
   { path: 'overview/actions', component: TournamentMetaOverviewComponent, data: { metaType: 'action' } },
   { path: 'overview/goals', component: TournamentMetaOverviewComponent, data: { metaType: 'goal' } },

@@ -1,5 +1,8 @@
 <main>
-  <fc-ranking-details *ngIf="newestRanking | async as newestRanking" [ranking]="newestRanking"></fc-ranking-details>
+  <ng-container *ngIf="newestRanking | async as newestRanking">
+    <h1 [innerHTML]="newestRanking.title"></h1>
+    <fc-ordered-players  [players]="newestRanking.players"></fc-ordered-players>
+  </ng-container>
   <fc-rankings-chart *ngIf="chartRankings | async as chartRankings" [rankings]="chartRankings"></fc-rankings-chart>
   <fc-ranking-list *ngIf="allRankings | async as allRankings" [rankings]="allRankings"></fc-ranking-list>
 </main>

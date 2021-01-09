@@ -7,12 +7,15 @@ import {
   mapDisplayedChartRankings,
   mapDisplayedDetailsRanking
 } from '../../core/util/ranking/ranking.util';
+import {mapDisplayedRecords} from '../../core/util/record/record.util';
 import {mapDisplayedTournamentDetails} from '../../core/util/tournament-details/tournament-details.util';
 import {mapDisplayedIsolatedTournamentMeta} from '../../core/util/tournament-meta-overview/tournament-meta-overview.util';
 import {getAwards} from './award.selectors';
 import {getMembers} from './member.selectors';
 import {getMemberDetails} from './member-detail.selectors';
 import {getSortedRankingIndexBySeoId, getSortedRankings} from './ranking.selectors';
+import {getRecordEntities} from './record.selectors';
+import {getSelectedRecordType, isRecordSortAscOrDesc} from './record-setting.selectors';
 import {getTournamentDetails} from './tournament-detail.selectors';
 import {getDisplayedTournamentMetaOverviewMeta} from './tournament-meta-overview.selectors';
 
@@ -85,5 +88,15 @@ export const getDisplayedDetailsRankingBySeoId = createSelector(
       return null;
     }
     return mapDisplayedDetailsRanking(sortedRankings, sortedRankingIndex, members);
+  },
+);
+
+export const getDisplayedRecords = createSelector(
+  getRecordEntities, getSelectedRecordType, isRecordSortAscOrDesc, getMembers,
+  (recordEntities, selectedRecordType, sortAscOrDesc, members) => {
+    if (!recordEntities[selectedRecordType] || !members) {
+      return null;
+    }
+    return mapDisplayedRecords(recordEntities[selectedRecordType].records, sortAscOrDesc, members);
   },
 );

@@ -114,14 +114,15 @@ textarea {
 button {
   padding-left: $baseline * 1.5;
   padding-right: $baseline * 1.5;
-  background: #F5F5F5;
-  border-color: #AAA;
+  background: #FBFBFB;
+  border: 2px solid #3AD;
+  color: #3AD;
   cursor: pointer;
 
   &:hover {
-    background: #FBFBFB;
-    border-color: $color-link;
-    color: $color-link;
+    background: #FCFCFC;
+    border-color: $color-dark-grey;
+    color: $color-dark-grey;
   }
 }
 

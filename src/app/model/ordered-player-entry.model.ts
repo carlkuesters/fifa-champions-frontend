@@ -1,8 +1,8 @@
-export class DisplayedDetailsRankingPlayer {
+export class OrderedPlayerEntry {
   id: number;
   name: string;
   image: string;
   rank: number;
-  rankChange: string;
+  rankHint: string;
   text: string;
 }

@@ -1,6 +1,6 @@
-import {DisplayedDetailsRankingPlayer} from './displayed-details-ranking-player.model';
+import {OrderedPlayerEntry} from './ordered-player-entry.model';
 
 export class DisplayedDetailsRanking {
   title: string;
-  players: DisplayedDetailsRankingPlayer[];
+  players: OrderedPlayerEntry[];
 }

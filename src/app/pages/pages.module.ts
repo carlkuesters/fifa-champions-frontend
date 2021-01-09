@@ -11,13 +11,12 @@ import {MembersComponent} from './members/members.component';
 import {MembersEntryComponent} from './members/member-entry/members-entry.component';
 import {OtherComponent} from './other/other.component';
 import {RankingComponent} from './ranking/ranking.component';
-import {RankingDetailsComponent} from './ranking/ranking-details/ranking-details.component';
-import {RankingDetailsPlayerComponent} from './ranking/ranking-details-player/ranking-details-player.component';
 import {RankingListComponent} from './rankings/ranking-list/ranking-list.component';
 import {RankingListEntryComponent} from './rankings/ranking-list-entry/ranking-list-entry.component';
 import {RankingListEntryPlayerComponent} from './rankings/ranking-list-entry-player/ranking-list-entry-player.component';
 import {RankingsChartComponent} from './rankings/rankings-chart/rankings-chart.component';
 import {RankingsComponent} from './rankings/rankings.component';
+import {RecordsComponent} from './records/records.component';
 import {TournamentComponent} from './tournament/tournament.component';
 import {TournamentGroupComponent} from './tournament/tournament-group/tournament-group.component';
 import {TournamentGroupPlayerComponent} from './tournament/tournament-group-player/tournament-group-player.component';
@@ -45,13 +44,12 @@ import {TournamentsComponent} from './tournaments/tournaments.component';
     MembersEntryComponent,
     OtherComponent,
     RankingComponent,
-    RankingDetailsComponent,
-    RankingDetailsPlayerComponent,
     RankingListComponent,
     RankingListEntryComponent,
     RankingListEntryPlayerComponent,
     RankingsChartComponent,
     RankingsComponent,
+    RecordsComponent,
     TournamentComponent,
     TournamentEntryComponent,
     TournamentGroupComponent,

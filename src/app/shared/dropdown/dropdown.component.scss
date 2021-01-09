@@ -1,0 +1,136 @@
+@import '../../../styles/breakpoints';
+@import '../../../styles/colors';
+@import '../../../styles/sizes';
+
+$height: 34px;
+$border-width: 2px;
+
+li {
+  position: relative;
+  display: list-item;
+  margin: 0;
+  padding: 0;
+
+  &:before {
+    display: none;
+  }
+}
+
+.select {
+  position: relative;
+  width: 225px;
+  height: $height;
+  background-color: $color-white;
+  box-shadow: 0 2px 0 $color-white;
+  border-radius: 2px;
+
+  &_expand {
+    width: 0;
+    height: $height;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    &::after {
+      font-family: 'Open Sans', Tahoma, sans-serif;
+      content: '\003E';
+      position: absolute;
+      top: 16px;
+      right: 0;
+      transform: translate(-50%, -50%) rotate(90deg) scaleY(1.75);
+      color: $color-dark-grey;
+      font-size: 20px;
+      pointer-events: none;
+      z-index: 2;
+      transition: all 250ms cubic-bezier(.4,.25,.3,1);
+      opacity: 0.6;
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+
+    &:checked::after {
+      transform: translate(-50%, -50%) rotate(90deg) scaleX(-1) scaleY(1.75);
+    }
+  }
+
+  &_expandLabel {
+    display: block;
+    width: 100%;
+    height: $height;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+  }
+
+  &_close {display: none}
+
+  &_closeLabel {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+  }
+
+  &_items {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: $border-width solid #3AD;
+    border-radius: 2px;
+    padding-top: $height;
+  }
+
+  &_input {
+    display: none;
+  }
+
+  &_label {
+    transition: all 250ms cubic-bezier(.4,.25,.3,1);
+    display: block;
+    height: 0;
+    font-size: 16px;
+    line-height: $height;
+    overflow: hidden;
+    color: #3e3e3e;
+    background-color: #fff;
+    cursor: pointer;
+    padding-left: 12px;
+
+    &-placeholder {
+      height: $height;
+      vertical-align: middle;
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin-top: $border-width;
+      opacity: .6;
+      background-color: transparent;
+    }
+  }
+
+  &_expand:checked {
+    + .select_closeLabel {
+      display: block;
+
+      + .select_options {
+        .select_label {
+          height: $height;
+          &:hover {background-color: #f7f7f7}
+        }
+
+        + .select_expandLabel {display: none}
+      }
+    }
+  }
+
+  &_input:checked + .select_label {
+    height: $height;
+    margin-top: -1 * $height;
+  }
+}
