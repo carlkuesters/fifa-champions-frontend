@@ -2,6 +2,7 @@ import {DisplayedIsolatedTournamentMeta} from '../../../model/displayed-isolated
 import {IsolatedTournamentMeta} from '../../../model/isolated-tournament-meta.model';
 import {Member} from '../../../model/member.model';
 import {TournamentMetaOverview} from '../../../model/tournament-meta-overview.model';
+import {formatDate, MONTH_NAMES} from '../date/date.util';
 import {getMemberImage} from '../member/member.util';
 
 export function createTournamentMetaOverview(type: string, isolatedTournamentMetas: IsolatedTournamentMeta[]): TournamentMetaOverview {
@@ -42,7 +43,11 @@ export function mapDisplayedIsolatedTournamentMeta(
     text: isolatedTournamentMeta.text,
     youtubeVideoId: isolatedTournamentMeta.youtubeVideoId,
     tournamentType: isolatedTournamentMeta.tournamentType,
-    tournamentDate: isolatedTournamentMeta.tournamentDate,
+    tournamentDate: getFormattedDate_TournamentMetaDate(isolatedTournamentMeta.tournamentDate),
     locationName: isolatedTournamentMeta.locationName,
   };
+}
+
+function getFormattedDate_TournamentMetaDate(timestamp: number): string {
+  return formatDate(timestamp, date => date.getDate() + '. ' + MONTH_NAMES[date.getMonth()] + ' ' + date.getFullYear());
 }

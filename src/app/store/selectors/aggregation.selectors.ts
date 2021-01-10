@@ -1,6 +1,7 @@
 import {createSelector} from '@ngrx/store';
 
 import {mapAwardYears} from '../../core/util/award/award.util';
+import {mapDisplayedFact} from '../../core/util/fact/fact.util';
 import {mapDisplayedMemberDetails} from '../../core/util/member-details/member-details.util';
 import {
   mapDisplayedListRanking,
@@ -11,6 +12,7 @@ import {mapDisplayedRecords} from '../../core/util/record/record.util';
 import {mapDisplayedTournamentDetails} from '../../core/util/tournament-details/tournament-details.util';
 import {mapDisplayedIsolatedTournamentMeta} from '../../core/util/tournament-meta-overview/tournament-meta-overview.util';
 import {getAwards} from './award.selectors';
+import {getFact} from './fact.selectors';
 import {getMembers} from './member.selectors';
 import {getMemberDetails} from './member-detail.selectors';
 import {getSortedRankingIndexBySeoId, getSortedRankings} from './ranking.selectors';
@@ -98,5 +100,15 @@ export const getDisplayedRecords = createSelector(
       return null;
     }
     return mapDisplayedRecords(recordEntities[selectedRecordType].records, selectedRecordType, sortAscOrDesc, members);
+  },
+);
+
+export const getDisplayedFact = createSelector(
+  getFact, getMembers,
+  (fact, members) => {
+    if (!fact || !members) {
+      return null;
+    }
+    return mapDisplayedFact(fact, members);
   },
 );

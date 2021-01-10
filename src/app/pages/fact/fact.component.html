@@ -1,0 +1,10 @@
+<main>
+  <h1>Interessanter Fakt</h1>
+  <fc-random-member-info *ngIf="displayedFact | async as displayedFact"
+                         [memberId]="displayedFact.memberId"
+                         [memberName]="displayedFact.memberName"
+                         [memberImage]="displayedFact.memberImage"
+                         [text]="displayedFact.text"
+                         (displayNewRandomInfo)="loadRandomFact()">
+  </fc-random-member-info>
+</main>

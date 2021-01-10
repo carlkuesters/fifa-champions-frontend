@@ -1,0 +1,46 @@
+@import '../../../styles/breakpoints';
+@import '../../../styles/sizes';
+
+.title {
+  margin-bottom: $baseline;
+
+  &, h2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  h2 {
+    flex-grow: 1;
+    margin-bottom: 0;
+
+    :not(:first-child) {
+      margin-left: 5px;
+    }
+
+    img {
+      height: 28px;
+    }
+  }
+}
+
+a {
+  cursor: pointer;
+}
+
+p {
+  font-size: 18px;
+}
+
+fc-youtube-video {
+  width: 100%;
+  margin-top: $baseline;
+
+  @include bp-lg {
+    width: 800px;
+  }
+}
+
+.context {
+  font-size: 12px;
+}

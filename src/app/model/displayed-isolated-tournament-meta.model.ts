@@ -5,6 +5,6 @@ export class DisplayedIsolatedTournamentMeta {
   text: string;
   youtubeVideoId: string;
   tournamentType: string;
-  tournamentDate: number;
+  tournamentDate: string;
   locationName: string;
 }

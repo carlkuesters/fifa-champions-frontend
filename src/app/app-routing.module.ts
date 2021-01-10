@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
 import {AwardsComponent} from './pages/awards/awards.component';
+import {FactComponent} from './pages/fact/fact.component';
 import {HomeComponent} from './pages/home/home.component';
 import {MemberComponent} from './pages/member/member.component';
 import {MembersComponent} from './pages/members/members.component';
@@ -23,8 +24,8 @@ const routes: Routes = [
   { path: 'tournaments', component: TournamentsComponent },
   { path: 'tournament/:tournamentSeoId', component: TournamentComponent },
   { path: 'other', component: OtherComponent },
-  { path: 'records', component: RecordsComponent },
   { path: 'awards', component: AwardsComponent },
+  { path: 'records', component: RecordsComponent },
   { path: 'overview/actions', component: TournamentMetaOverviewComponent, data: { metaType: 'action' } },
   { path: 'overview/goals', component: TournamentMetaOverviewComponent, data: { metaType: 'goal' } },
   { path: 'overview/matches', component: TournamentMetaOverviewComponent, data: { metaType: 'match' } },
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'overview/scandals', component: TournamentMetaOverviewComponent, data: { metaType: 'scandal' } },
   { path: 'overview/scorers', component: TournamentMetaOverviewComponent, data: { metaType: 'scorer' } },
   { path: 'overview/quotes', component: TournamentMetaOverviewComponent, data: { metaType: 'quote' } },
+  { path: 'fact', component: FactComponent },
 ];
 
 @NgModule({
