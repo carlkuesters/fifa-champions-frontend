@@ -97,6 +97,6 @@ export const getDisplayedRecords = createSelector(
     if (!recordEntities[selectedRecordType] || !members) {
       return null;
     }
-    return mapDisplayedRecords(recordEntities[selectedRecordType].records, sortAscOrDesc, members);
+    return mapDisplayedRecords(recordEntities[selectedRecordType].records, selectedRecordType, sortAscOrDesc, members);
   },
 );
