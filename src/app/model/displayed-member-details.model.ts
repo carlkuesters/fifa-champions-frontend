@@ -1,4 +1,4 @@
-import {MemberDetailsAward} from './member-details-award.model';
+import {DisplayedMemberDetailsAward} from './displayed-member-details-award.model';
 import {MemberDetailsRanking} from './member-details-ranking.model';
 
 export class DisplayedMemberDetails {
@@ -16,5 +16,5 @@ export class DisplayedMemberDetails {
   allRankings: MemberDetailsRanking[];
   latestRanking: MemberDetailsRanking;
   bestRanking: MemberDetailsRanking;
-  awards: MemberDetailsAward[];
+  awards: DisplayedMemberDetailsAward[];
 }

@@ -1,6 +1,7 @@
 import {DisplayedMemberDetails} from '../../../model/displayed-member-details.model';
 import {MemberDetails} from '../../../model/member-details.model';
 import {MemberDetailsRanking} from '../../../model/member-details-ranking.model';
+import {AWARD_TITLES} from '../award/award.util';
 import {getMemberImage} from '../member/member.util';
 
 export function mapDisplayedMemberDetails(memberDetails: MemberDetails): DisplayedMemberDetails {
@@ -15,7 +16,14 @@ export function mapDisplayedMemberDetails(memberDetails: MemberDetails): Display
     }
   });
   const allRankings = memberDetails.rankings.slice().sort((a, b) => b.date - a.date);
-  const awards = memberDetails.awards.slice().sort((a, b) => b.year - a.year);
+  const awards = memberDetails.awards.slice()
+    .sort((a, b) => b.year - a.year)
+    .map(award => {
+      return {
+        title: AWARD_TITLES[award.type],
+        year: award.year
+      };
+    });
 
   return {
     name: memberDetails.name,

@@ -1,5 +1,5 @@
 export interface DisplayedAward {
-  type: string;
+  title: string;
   memberId: number;
   memberName: string;
   memberImage: string;
