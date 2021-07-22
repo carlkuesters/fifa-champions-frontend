@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
 import {AwardsComponent} from './pages/awards/awards.component';
+import {DuelComponent} from './pages/duel/duel.component';
 import {FactComponent} from './pages/fact/fact.component';
 import {HomeComponent} from './pages/home/home.component';
 import {MemberComponent} from './pages/member/member.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'members', component: MembersComponent },
   { path: 'member/:memberSeoId', component: MemberComponent },
+  { path: 'duel/:duelSeoId', component: DuelComponent },
   { path: 'rankings', component: RankingsComponent },
   { path: 'ranking/:rankingSeoId', component: RankingComponent },
   { path: 'tournaments', component: TournamentsComponent },

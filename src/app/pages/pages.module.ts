@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {SharedModule} from '../shared/shared.module';
 import {AwardsComponent} from './awards/awards.component';
 import {AwardComponent} from './awards/award/award.component';
+import {DuelComponent} from './duel/duel.component';
 import {FactComponent} from './fact/fact.component';
 import {HomeComponent} from './home/home.component';
 import {HomeTeaserComponent} from './home/home-teaser/home-teaser.component';
@@ -37,6 +38,7 @@ import {TournamentsComponent} from './tournaments/tournaments.component';
   declarations: [
     AwardComponent,
     AwardsComponent,
+    DuelComponent,
     FactComponent,
     HomeComponent,
     HomeTeaserComponent,

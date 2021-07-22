@@ -8,6 +8,7 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 // tslint:disable:max-line-length
 import {SharedModule} from '../shared/shared.module';
 import {AwardEffects} from '../store/effects/award.effects';
+import {DuelEffects} from '../store/effects/duel.effects';
 import {FactEffects} from '../store/effects/fact.effects';
 import {GeneralEffects} from '../store/effects/general.effects';
 import {TournamentMetaOverviewEffects} from '../store/effects/tournament-meta-overview.effects';
@@ -19,6 +20,7 @@ import {RecordSettingEffects} from '../store/effects/record-setting.effects';
 import {TournamentDetailEffects} from '../store/effects/tournament-detail.effects';
 import {TournamentOverviewEffects} from '../store/effects/tournament-overview.effects';
 import {awardReducer} from '../store/reducers/award.reducers';
+import {duelReducer} from '../store/reducers/duel.reducers';
 import {factReducer} from '../store/reducers/fact.reducers';
 import {generalReducer} from '../store/reducers/general.reducers';
 import {memberReducer} from '../store/reducers/member.reducers';
@@ -34,6 +36,8 @@ import {HeaderComponent} from './components/header/header.component';
 import {PageWrapperComponent} from './components/pageWrapper/pageWrapper.component';
 import {AwardHttpService} from './services/award-http/award-http.service';
 import {AwardStoreFacadeService} from './services/award-store-facade/award-store-facade.service';
+import {DuelHttpService} from './services/duel-http/duel-http.service';
+import {DuelStoreFacadeService} from './services/duel-store-facade/duel-store-facade.service';
 import {FactHttpService} from './services/fact-http/fact-http.service';
 import {FactStoreFacadeService} from './services/fact-store-facade/fact-store-facade.service';
 import {GeneralHttpService} from './services/general-http/general-http.service';
@@ -58,6 +62,7 @@ import {RecordStoreFacadeService} from './services/record-store-facade/record-st
 
     StoreModule.forRoot({}),
     StoreModule.forFeature('award', awardReducer),
+    StoreModule.forFeature('duel', duelReducer),
     StoreModule.forFeature('fact', factReducer),
     StoreModule.forFeature('general', generalReducer),
     StoreModule.forFeature('member', memberReducer),
@@ -70,6 +75,7 @@ import {RecordStoreFacadeService} from './services/record-store-facade/record-st
     StoreModule.forFeature('tournamentOverview', tournamentOverviewReducer),
     EffectsModule.forRoot([
       AwardEffects,
+      DuelEffects,
       FactEffects,
       GeneralEffects,
       MemberDetailEffects,
@@ -93,6 +99,8 @@ import {RecordStoreFacadeService} from './services/record-store-facade/record-st
   providers: [
     AwardHttpService,
     AwardStoreFacadeService,
+    DuelHttpService,
+    DuelStoreFacadeService,
     FactHttpService,
     FactStoreFacadeService,
     GeneralHttpService,

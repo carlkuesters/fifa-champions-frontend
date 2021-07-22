@@ -1,8 +1,14 @@
+import {SeoData} from '../../../model/seo-data.model';
+
 const SLUG_MAX_LENGTH = 50;
 const SLUG_SEPARATOR = '-';
 
-export function generateSeoId(id: number, title: string): string {
-  return sluggify(title) + SLUG_SEPARATOR + id;
+export function generateCombinedSeoId(datas: SeoData[], separator: string): string {
+  return datas.map(data => generateSeoId(data)).join(separator);
+}
+
+export function generateSeoId(data: SeoData): string {
+  return sluggify(data.title) + SLUG_SEPARATOR + data.id;
 }
 
 function sluggify(text: string): string {
@@ -16,6 +22,10 @@ function sluggify(text: string): string {
     .replace(/[^a-z0-9]+/g, SLUG_SEPARATOR)
     // Remove eventual trailing and leading dash
     .replace(new RegExp('/^' + SLUG_SEPARATOR + '|' + SLUG_SEPARATOR + '$/g'), '');
+}
+
+export function parseCombinedSeoId(text: string, separator: string): number[] {
+  return text.split(separator).map(seoId => parseSeoId(seoId));
 }
 
 export function parseSeoId(seoId: string): number {

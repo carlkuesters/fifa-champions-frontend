@@ -1,6 +1,7 @@
 import {createSelector} from '@ngrx/store';
 
 import {mapAwardYears} from '../../core/util/award/award.util';
+import {mapDisplayedDuel} from '../../core/util/duel/duel.util';
 import {mapDisplayedFact} from '../../core/util/fact/fact.util';
 import {mapDisplayedMemberDetails} from '../../core/util/member-details/member-details.util';
 import {
@@ -12,6 +13,7 @@ import {mapDisplayedRecords} from '../../core/util/record/record.util';
 import {mapDisplayedTournamentDetails} from '../../core/util/tournament-details/tournament-details.util';
 import {mapDisplayedIsolatedTournamentMeta} from '../../core/util/tournament-meta-overview/tournament-meta-overview.util';
 import {getAwards} from './award.selectors';
+import {getDuelBySeoId} from './duel.selectors';
 import {getFact} from './fact.selectors';
 import {getMembers} from './member.selectors';
 import {getMemberDetails} from './member-detail.selectors';
@@ -27,6 +29,15 @@ export const getDisplayedMemberDetails = createSelector(
       return null;
     }
     return mapDisplayedMemberDetails(memberDetails);
+  },
+);
+
+export const getDisplayedDuel = createSelector(
+  getDuelBySeoId, getMembers, (duel, members) => {
+    if (!duel || !members) {
+      return null;
+    }
+    return mapDisplayedDuel(duel, members);
   },
 );
 
