@@ -12,8 +12,10 @@ import {
 import {mapDisplayedRecords} from '../../core/util/record/record.util';
 import {mapDisplayedTournamentDetails} from '../../core/util/tournament-details/tournament-details.util';
 import {mapDisplayedIsolatedTournamentMeta} from '../../core/util/tournament-meta-overview/tournament-meta-overview.util';
+import {getDuelId} from '../reducers/duel.reducers';
 import {getAwards} from './award.selectors';
-import {getDuelBySeoId} from './duel.selectors';
+import {getDuelEntities} from './duel.selectors';
+import {getDuelMemberId1, getDuelMemberId2} from './duel-setting.selectors';
 import {getFact} from './fact.selectors';
 import {getMembers} from './member.selectors';
 import {getMemberDetails} from './member-detail.selectors';
@@ -32,8 +34,17 @@ export const getDisplayedMemberDetails = createSelector(
   },
 );
 
+export const getSelectedDuel = createSelector(
+  getDuelEntities, getDuelMemberId1, getDuelMemberId2, (duelEntities, memberId1, memberId2) => {
+    if (!duelEntities || !memberId1 || !memberId2) {
+      return null;
+    }
+    return duelEntities[getDuelId(memberId1, memberId2)];
+  },
+);
+
 export const getDisplayedDuel = createSelector(
-  getDuelBySeoId, getMembers, (duel, members) => {
+  getSelectedDuel, getMembers, (duel, members) => {
     if (!duel || !members) {
       return null;
     }

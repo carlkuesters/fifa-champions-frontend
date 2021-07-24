@@ -6,7 +6,6 @@ import {EMPTY} from 'rxjs';
 import {map, catchError, switchMap, filter} from 'rxjs/operators';
 
 import {DuelHttpService} from '../../core/services/duel-http/duel-http.service';
-import {parseDuelSeoId} from '../../core/util/duel/duel.util';
 import * as DuelActions from '../actions/duel.actions';
 import {getDuelByMemberIds} from '../selectors/duel.selectors';
 import {DuelState} from '../state/duel-state.model';
@@ -20,12 +19,11 @@ export class DuelEffects {
     private duelHttpService: DuelHttpService,
   ) {}
 
-  loadDuel = createEffect(() => this.actions.pipe(
+  loadDuelIfNotExisting = createEffect(() => this.actions.pipe(
     ofType(DuelActions.loadDuel),
-    map(({ duelSeoId }) => parseDuelSeoId(duelSeoId)),
-    switchMap(memberIds => this.duelStore.select(getDuelByMemberIds, { memberId1: memberIds[0], memberId2: memberIds[1] }).pipe(
+    switchMap(({ memberId1, memberId2 }) => this.duelStore.select(getDuelByMemberIds, { memberId1, memberId2 }).pipe(
         filter(duel => !duel),
-        switchMap(() => this.duelHttpService.getDuel(memberIds[0], memberIds[1]).pipe(
+        switchMap(() => this.duelHttpService.getDuel(memberId1, memberId2).pipe(
           map(duel => DuelActions.duelLoaded({ duel })),
           catchError(() => EMPTY)
         ))
