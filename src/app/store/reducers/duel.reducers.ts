@@ -10,7 +10,16 @@ export const duelAdapter = createEntityAdapter<Duel>({
 });
 
 export function getDuelId(memberId1: number, memberId2: number): string {
-  return memberId1 + '_' + memberId2;
+  let smallMemberId;
+  let bigMemberId;
+  if (memberId1 < memberId2) {
+    smallMemberId = memberId1;
+    bigMemberId = memberId2;
+  } else {
+    smallMemberId = memberId2;
+    bigMemberId = memberId1;
+  }
+  return smallMemberId + '_' + bigMemberId;
 }
 
 const initialState = duelAdapter.getInitialState();

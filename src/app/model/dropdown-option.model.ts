@@ -1,4 +1,4 @@
 export class DropdownOption {
-  value: string;
+  value: string | number;
   title: string;
 }

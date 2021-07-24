@@ -9,7 +9,7 @@
       <label class="select_closeLabel" [for]="name + '-close'"></label>
       <ul class="select_options">
         <li *ngFor="let option of options" class="select_option">
-          <input class="select_input" type="radio" [name]="name" [id]="name + '-' + option.value" (change)="onSelect(option.value)">
+          <input class="select_input" type="radio" [name]="name" [id]="name + '-' + option.value" (change)="onSelect(option.value)" [checked]="option.value == value">
           <label class="select_label" [for]="name + '-' + option.value">{{option.title}}</label>
         </li>
       </ul>

@@ -25,7 +25,9 @@ export function mapDisplayedDuel(duel: Duel, members: Member[]): DisplayedDuel {
   const member1 = members.find(m => m.id === duel.memberId1);
   const member2 = members.find(m => m.id === duel.memberId2);
   return {
+    memberId1: member1.id,
     memberName1: member1.name,
+    memberId2: member2.id,
     memberName2: member2.name,
     matches: duel.matches,
     wins1: duel.wins1,

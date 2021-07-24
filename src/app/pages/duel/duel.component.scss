@@ -1,5 +1,13 @@
-@import '../../../styles/breakpoints';
-@import '../../../styles/colors';
 @import '../../../styles/sizes';
 
-// TODO
+.members {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: $baseline * 1.5;
+}
+
+.vs {
+  margin-left: $baseline;
+  margin-right: $baseline;
+}

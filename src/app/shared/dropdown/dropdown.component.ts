@@ -12,9 +12,10 @@ export class DropdownComponent {
   @Input() name: string;
   @Input() placeholder: string;
   @Input() options: DropdownOption[];
-  @Output() optionSelected = new EventEmitter<string>();
+  @Input() value: string | number;
+  @Output() optionSelected = new EventEmitter<string | number>();
 
-  onSelect(value: string): void {
+  onSelect(value: string | number): void {
     this.optionSelected.emit(value);
   }
 }

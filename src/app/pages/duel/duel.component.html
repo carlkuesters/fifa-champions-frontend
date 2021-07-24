@@ -1,3 +1,16 @@
 <main *ngIf="displayedDuel | async as displayedDuel">
-  {{ displayedDuel.memberName1 + ' vs ' + displayedDuel.memberName2 }}
+  <h1>Duell-Bilanz</h1>
+  <div *ngIf="memberDropdownOptions | async as memberDropdownOptions" class="members">
+    <fc-dropdown name="memberId1" placeholder="Spieler 1" [options]="memberDropdownOptions" [value]="displayedDuel.memberId1" (optionSelected)="selectMember1($event)"></fc-dropdown>
+    <span class="vs">vs</span>
+    <fc-dropdown name="memberId2" placeholder="Spieler 2" [options]="memberDropdownOptions" [value]="displayedDuel.memberId2" (optionSelected)="selectMember2($event)"></fc-dropdown>
+  </div>
+  <ul>
+    <li>Siege {{displayedDuel.memberName1}}: {{displayedDuel.wins1}}</li>
+    <li>Unentschieden: {{displayedDuel.draws}}</li>
+    <li>Siege {{displayedDuel.memberName2}}: {{displayedDuel.wins2}}</li>
+    <li>{{displayedDuel.memberName1}} schoss bisher: {{displayedDuel.goals1}} Tore</li>
+    <li>{{displayedDuel.memberName2}} schoss bisher: {{displayedDuel.goals2}} Tore</li>
+    <li *ngIf="displayedDuel.newestMatch">Letztes Ergebnis: {{displayedDuel.newestMatch.goals1}} : {{displayedDuel.newestMatch.goals2}} ({{displayedDuel.newestMatch.formattedDate}})</li>
+  </ul>
 </main>
