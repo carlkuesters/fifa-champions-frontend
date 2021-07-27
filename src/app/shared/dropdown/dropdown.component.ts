@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 
 import {DropdownOption} from '../../model/dropdown-option.model';
 
@@ -9,13 +9,16 @@ import {DropdownOption} from '../../model/dropdown-option.model';
 })
 export class DropdownComponent {
 
+  @ViewChild('select') select: ElementRef;
+
   @Input() name: string;
   @Input() placeholder: string;
   @Input() options: DropdownOption[];
   @Input() value: string | number;
   @Output() optionSelected = new EventEmitter<string | number>();
 
-  onSelect(value: string | number): void {
+  onSelect(index: string): void {
+    const value = ((index !== '') ? this.options[Number(index)].value : null);
     this.optionSelected.emit(value);
   }
 }

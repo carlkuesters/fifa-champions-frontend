@@ -15,7 +15,7 @@ body {
   background-color: #F5F5F5;
 }
 
-body, input[type=text], textarea, button {
+body, input[type=text], textarea, button, select {
   font-family: 'Open Sans', Tahoma, sans-serif;
   font-size: 16px;
   color: $color-dark-grey;
@@ -124,6 +124,15 @@ button {
     border-color: $color-dark-grey;
     color: $color-dark-grey;
   }
+}
+
+select {
+  width: 225px;
+  padding: 6px $baseline;
+  border: 2px solid #3AD;
+  border-radius: 2px;
+  appearance: none;
+  outline: none;
 }
 
 hr {

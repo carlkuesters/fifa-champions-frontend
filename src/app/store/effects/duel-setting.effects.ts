@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {Store} from '@ngrx/store';
-import {map, withLatestFrom} from 'rxjs/operators';
+import {filter, map, withLatestFrom} from 'rxjs/operators';
 
 import {parseDuelSeoId} from '../../core/util/duel/duel.util';
 import * as DuelActions from '../actions/duel.actions';
@@ -40,6 +40,7 @@ export class DuelSettingEffects {
 
   loadDuelOnMembersSelected = createEffect(() => this.actions.pipe(
     ofType(DuelSettingActions.selectMembers),
+    filter(({ memberId1, memberId2 }) => Boolean(memberId1 && memberId2)),
     map(({ memberId1, memberId2 }) => DuelActions.loadDuel({ memberId1, memberId2 })),
   ));
 }

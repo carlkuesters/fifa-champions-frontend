@@ -1,19 +1,4 @@
-<form>
-  <ul class="select">
-    <li>
-      <input class="select_close" type="radio" [name]="name" [id]="name + '-close'" value="" (change)="onSelect(null)">
-      <span class="select_label select_label-placeholder">{{placeholder}}</span>
-    </li>
-    <li class="select_items">
-      <input class="select_expand" type="radio" [name]="name" [id]="name + '-opener'">
-      <label class="select_closeLabel" [for]="name + '-close'"></label>
-      <ul class="select_options">
-        <li *ngFor="let option of options" class="select_option">
-          <input class="select_input" type="radio" [name]="name" [id]="name + '-' + option.value" (change)="onSelect(option.value)" [checked]="option.value == value">
-          <label class="select_label" [for]="name + '-' + option.value">{{option.title}}</label>
-        </li>
-      </ul>
-      <label class="select_expandLabel" [for]="name + '-opener'"></label>
-    </li>
-  </ul>
-</form>
+<select #select [ngClass]="{ placeholder: select.value === '' }" (change)="onSelect(select.value)">
+  <option *ngIf="placeholder" value="" class="placeholder">{{placeholder}}</option>
+  <option *ngFor="let option of options; let i = index" [value]="i" [selected]="option.value == value">{{option.title}}</option>
+</select>
