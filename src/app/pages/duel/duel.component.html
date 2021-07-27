@@ -1,11 +1,11 @@
-<main *ngIf="displayedDuel | async as displayedDuel">
+<main>
   <h1>Duell-Bilanz</h1>
   <div *ngIf="memberDropdownOptions | async as memberDropdownOptions" class="members">
-    <fc-dropdown name="memberId1" placeholder="Spieler 1" [options]="memberDropdownOptions" [value]="displayedDuel.memberId1" (optionSelected)="selectMember1($event)"></fc-dropdown>
+    <fc-dropdown name="memberId1" placeholder="Spieler 1" [options]="memberDropdownOptions" [value]="duelMemberId1 | async" (optionSelected)="selectMember1($event)"></fc-dropdown>
     <span class="vs">vs</span>
-    <fc-dropdown name="memberId2" placeholder="Spieler 2" [options]="memberDropdownOptions" [value]="displayedDuel.memberId2" (optionSelected)="selectMember2($event)"></fc-dropdown>
+    <fc-dropdown name="memberId2" placeholder="Spieler 2" [options]="memberDropdownOptions" [value]="duelMemberId2 | async" (optionSelected)="selectMember2($event)"></fc-dropdown>
   </div>
-  <ul>
+  <ul *ngIf="displayedDuel | async as displayedDuel">
     <li>Siege {{displayedDuel.memberName1}}: {{displayedDuel.wins1}}</li>
     <li>Unentschieden: {{displayedDuel.draws}}</li>
     <li>Siege {{displayedDuel.memberName2}}: {{displayedDuel.wins2}}</li>

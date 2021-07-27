@@ -16,6 +16,8 @@ import {DropdownOption} from '../../model/dropdown-option.model';
 })
 export class DuelComponent implements OnInit {
 
+  duelMemberId1: Observable<number>;
+  duelMemberId2: Observable<number>;
   displayedDuel: Observable<DisplayedDuel>;
   memberDropdownOptions: Observable<DropdownOption[]>;
 
@@ -26,6 +28,8 @@ export class DuelComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.duelMemberId1 = this.duelSettingStoreFacadeService.getDuelMemberId1();
+    this.duelMemberId2 = this.duelSettingStoreFacadeService.getDuelMemberId2();
     this.displayedDuel = this.duelStoreFacadeService.getDisplayedDuel();
     this.memberDropdownOptions = this.memberStoreFacadeService.getMembersDropdownOptions();
 

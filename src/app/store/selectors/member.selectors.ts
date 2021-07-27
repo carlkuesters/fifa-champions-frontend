@@ -8,7 +8,7 @@ import {MemberState} from '../state/member-state.model';
 const getMemberState = createFeatureSelector<MemberState>('member');
 
 export const getMembers = createSelector(
-  getMemberState, state => state.members
+  getMemberState, state => state.members,
 );
 
 export const getMembersCount = createSelector(
@@ -20,5 +20,5 @@ export const getDisplayedMembers = createSelector(
 );
 
 export const getMembersDropdownOptions = createSelector<MemberState, Member[], DropdownOption[]>(
-  getMembers, members => members.map(member => ({ value: member.id, title: member.name }))
+  getMembers, members => members ? members.map(member => ({ value: member.id, title: member.name })) : null,
 );
