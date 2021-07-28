@@ -127,13 +127,18 @@ button {
 }
 
 select {
-  width: 225px;
+  width: 100%;
+  height: 38px; // For some reason, it otherwise sometimes randomly resets to 35px
   padding: 6px $baseline;
   background: $color-white; // Grey on Android Chrome otherwise
   border: 2px solid #3AD;
   border-radius: 2px;
   appearance: none;
   outline: none;
+
+  @include bp-md {
+    width: 225px;
+  }
 }
 
 hr {

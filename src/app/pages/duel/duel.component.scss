@@ -1,13 +1,27 @@
+@import '../../../styles/breakpoints';
 @import '../../../styles/sizes';
 
 .members {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  align-items: stretch;
   margin-bottom: $baseline * 1.5;
+
+  @include bp-md {
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 .vs {
-  margin-left: $baseline;
-  margin-right: $baseline;
+  @include bp-sm-max {
+    margin-top: $baseline;
+    margin-bottom: $baseline;
+    text-align: center;
+  }
+
+  @include bp-md {
+    margin-left: $baseline;
+    margin-right: $baseline;
+  }
 }
