@@ -1,4 +1,4 @@
-<select #select [ngClass]="{ placeholder: select.value === '' }" (change)="onSelect(select.value)">
+<select #select [ngClass]="{ placeholder: value === null }" (change)="onSelect(select.value)">
   <option *ngIf="placeholder" value="" class="placeholder">{{placeholder}}</option>
   <option *ngFor="let option of options; let i = index" [value]="i" [selected]="option.value == value">{{option.title}}</option>
 </select>

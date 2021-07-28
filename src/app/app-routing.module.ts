@@ -20,6 +20,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'members', component: MembersComponent },
   { path: 'member/:memberSeoId', component: MemberComponent },
+  { path: 'duel', component: DuelComponent },
   { path: 'duel/:duelSeoId', component: DuelComponent },
   { path: 'rankings', component: RankingsComponent },
   { path: 'ranking/:rankingSeoId', component: RankingComponent },

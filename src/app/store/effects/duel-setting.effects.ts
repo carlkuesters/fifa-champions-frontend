@@ -1,14 +1,18 @@
 import {Injectable} from '@angular/core';
+import {Router} from '@angular/router';
 
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {Store} from '@ngrx/store';
-import {filter, map, withLatestFrom} from 'rxjs/operators';
+import {map, switchMap, withLatestFrom} from 'rxjs/operators';
 
-import {parseDuelSeoId} from '../../core/util/duel/duel.util';
+import {generateDuelSeoId, parseDuelSeoId} from '../../core/util/duel/duel.util';
 import * as DuelActions from '../actions/duel.actions';
 import * as DuelSettingActions from '../actions/duel-setting.actions';
+import * as MemberActions from '../actions/member.actions';
 import {getDuelMemberId1, getDuelMemberId2} from '../selectors/duel-setting.selectors';
+import {getMembers} from '../selectors/member.selectors';
 import {DuelSettingState} from '../state/duel-setting-state.model';
+import {MemberState} from '../state/member-state.model';
 
 @Injectable()
 export class DuelSettingEffects {
@@ -16,6 +20,8 @@ export class DuelSettingEffects {
   constructor(
     private actions: Actions,
     private duelSettingStore: Store<DuelSettingState>,
+    private memberStore: Store<MemberState>,
+    private router: Router,
   ) {}
 
   selectMembersBySeoId = createEffect(() => this.actions.pipe(
@@ -38,9 +44,27 @@ export class DuelSettingEffects {
     map((([{ memberId }, memberId1]) => DuelSettingActions.selectMembers({ memberId1, memberId2: memberId })),
   )));
 
-  loadDuelOnMembersSelected = createEffect(() => this.actions.pipe(
-    ofType(DuelSettingActions.selectMembers),
-    filter(({ memberId1, memberId2 }) => Boolean(memberId1 && memberId2)),
-    map(({ memberId1, memberId2 }) => DuelActions.loadDuel({ memberId1, memberId2 })),
+  loadDuelAndSetRouteOnMembersSelected = createEffect(() => this.actions.pipe(
+    ofType(
+      MemberActions.membersLoaded,
+      DuelSettingActions.selectMembers
+    ),
+    withLatestFrom(
+      this.duelSettingStore.select(getDuelMemberId1),
+      this.duelSettingStore.select(getDuelMemberId2),
+      this.memberStore.select(getMembers),
+    ),
+    switchMap(([_, memberId1, memberId2, members]) => {
+      if (members) {
+        if (memberId1 && memberId2) {
+          const duelSeoId = generateDuelSeoId(memberId1, memberId2, members);
+          this.router.navigate(['duel/' + duelSeoId]);
+          return [DuelActions.loadDuel({ memberId1, memberId2 })];
+        } else {
+          this.router.navigate(['duel']);
+        }
+      }
+      return [];
+    }),
   ));
 }
