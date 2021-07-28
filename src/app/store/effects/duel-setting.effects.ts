@@ -60,7 +60,7 @@ export class DuelSettingEffects {
           const duelSeoId = generateDuelSeoId(memberId1, memberId2, members);
           this.router.navigate(['duel/' + duelSeoId]);
           return [DuelActions.loadDuel({ memberId1, memberId2 })];
-        } else {
+        } else if (this.router.url.startsWith('/duel/')) {
           this.router.navigate(['duel']);
         }
       }

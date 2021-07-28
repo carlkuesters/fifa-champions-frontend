@@ -129,7 +129,7 @@ button {
 select {
   width: 225px;
   padding: 6px $baseline;
-  background: $color-white; // Grey on Android otherwise
+  background: $color-white; // Grey on Android Chrome otherwise
   border: 2px solid #3AD;
   border-radius: 2px;
   appearance: none;
