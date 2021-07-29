@@ -36,9 +36,7 @@ export class DuelComponent implements OnInit {
     this.memberStoreFacadeService.loadMembers();
 
     const duelSeoId = this.activatedRoute.snapshot.paramMap.get('duelSeoId');
-    if (duelSeoId) {
-      this.duelSettingStoreFacadeService.selectMembersBySeoId(duelSeoId);
-    }
+    this.duelSettingStoreFacadeService.selectMembersBySeoId(duelSeoId);
   }
 
   selectMember1(memberId: number): void {

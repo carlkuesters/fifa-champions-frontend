@@ -17,4 +17,5 @@ export class DisplayedMemberDetails {
   latestRanking: MemberDetailsRanking;
   bestRanking: MemberDetailsRanking;
   awards: DisplayedMemberDetailsAward[];
+  routeDuel: string;
 }

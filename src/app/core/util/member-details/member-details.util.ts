@@ -3,6 +3,7 @@ import {MemberDetails} from '../../../model/member-details.model';
 import {MemberDetailsRanking} from '../../../model/member-details-ranking.model';
 import {AWARD_TITLES} from '../award/award.util';
 import {getMemberImage} from '../member/member.util';
+import {generateSeoId} from '../seo/seo.util';
 
 export function mapDisplayedMemberDetails(memberDetails: MemberDetails): DisplayedMemberDetails {
   let latestRanking = null;
@@ -41,6 +42,7 @@ export function mapDisplayedMemberDetails(memberDetails: MemberDetails): Display
     latestRanking,
     bestRanking,
     awards,
+    routeDuel: '/duel/' + generateSeoId({ id: memberDetails.id, title: memberDetails.name }),
   };
 }
 

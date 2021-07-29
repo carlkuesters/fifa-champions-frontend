@@ -8,17 +8,19 @@ import {generateCombinedSeoId, parseCombinedSeoId} from '../seo/seo.util';
 
 const DUEL_SEO_ID_SEPARATOR = '-vs-';
 
-export function generateDuelSeoId(memberId1: number, memberId2: number, members: Member[]): string {
-  const member1 = members.find(m => m.id === memberId1);
-  const member2 = members.find(m => m.id === memberId2);
-  return generateCombinedSeoId([
-    { id: member1.id, title: member1.name },
-    { id: member2.id, title: member2.name },
-  ], DUEL_SEO_ID_SEPARATOR);
+export function generateDuelSeoId(memberIds: number[], members: Member[]): string {
+  return generateCombinedSeoId(memberIds.map(memberId => {
+    const member = members.find(m => m.id === memberId);
+    return { id: member.id, title: member.name };
+  }), DUEL_SEO_ID_SEPARATOR);
 }
 
 export function parseDuelSeoId(text: string): number[] {
-  return parseCombinedSeoId(text, DUEL_SEO_ID_SEPARATOR);
+  if (text) {
+    const memberIds = parseCombinedSeoId(text, DUEL_SEO_ID_SEPARATOR);
+    return ((memberIds.length === 1) ? [memberIds[0], null] : memberIds);
+  }
+  return [null, null];
 }
 
 export function mapDisplayedDuel(duel: Duel, members: Member[]): DisplayedDuel {

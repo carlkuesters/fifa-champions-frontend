@@ -44,7 +44,7 @@ export class DuelSettingEffects {
     map((([{ memberId }, memberId1]) => DuelSettingActions.selectMembers({ memberId1, memberId2: memberId })),
   )));
 
-  loadDuelAndSetRouteOnMembersSelected = createEffect(() => this.actions.pipe(
+  loadDuelAndSetRouteOnMembersSelectedAndReady = createEffect(() => this.actions.pipe(
     ofType(
       MemberActions.membersLoaded,
       DuelSettingActions.selectMembers
@@ -56,12 +56,10 @@ export class DuelSettingEffects {
     ),
     switchMap(([_, memberId1, memberId2, members]) => {
       if (members) {
+        const duelSeoId = generateDuelSeoId([memberId1, memberId2], members);
+        this.router.navigate(['duel/' + duelSeoId]);
         if (memberId1 && memberId2) {
-          const duelSeoId = generateDuelSeoId(memberId1, memberId2, members);
-          this.router.navigate(['duel/' + duelSeoId]);
-          return [DuelActions.loadDuel({ memberId1, memberId2 })];
-        } else if (this.router.url.startsWith('/duel/')) {
-          this.router.navigate(['duel']);
+          return [DuelActions.loadDuel({memberId1, memberId2})];
         }
       }
       return [];
