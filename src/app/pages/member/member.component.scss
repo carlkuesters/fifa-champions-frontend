@@ -93,27 +93,39 @@ h1 {
 }
 
 fc-member-ranking-chart {
+  display: block;
   margin-top: $baseline;
   margin-bottom: $baseline-2;
 }
 
 .awards {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-bottom: $baseline-2;
+  flex-direction: column;
+  margin-bottom: $baseline;
+
+  @include bp-md {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 
   li {
     display: flex;
     flex-direction: row;
     align-items: center;
-
-    &:not(:last-child) {
-      margin-right: $baseline-2;
-    }
+    margin-bottom: $baseline;
+    padding: 5px 10px;
+    background: #058;
+    color: $color-white;
+    border-radius: 2px;
 
     &:before {
       display: none;
+    }
+
+    @include bp-md {
+      &:not(:last-child) {
+        margin-right: $baseline;
+      }
     }
   }
 
