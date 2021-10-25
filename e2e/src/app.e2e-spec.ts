@@ -11,7 +11,7 @@ describe('FifaChampionsApp', () => {
 
   it('should display title', () => {
     appPage.navigateTo();
-    expect(appPage.getCopyrightText()).toEqual('Copyright © 2020 FIFA-Champions');
+    expect(appPage.getCopyrightText()).toEqual('Copyright © 2021 FIFA-Champions');
   });
 
   afterEach(async () => {
