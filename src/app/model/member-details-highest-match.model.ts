@@ -1,7 +1,7 @@
 export class MemberDetailsHighestMatch {
   id: number;
   tournamentId: number;
-  playerIdOpponent: number;
+  opponentId: number;
   goalsOwn: number;
   goalsOpponent: number;
 }

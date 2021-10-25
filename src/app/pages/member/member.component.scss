@@ -184,13 +184,13 @@ fc-member-ranking-chart {
   img {
     height: 32px;
   }
-
-  .location {
-    font-size: 14px;
-    color: $color-grey;
-  }
 }
 
-.other {
-  max-width: 300px;
+.other dt {
+  width: 200px;
+}
+
+.hint, li a.hint {
+  font-size: 14px;
+  color: $color-grey;
 }

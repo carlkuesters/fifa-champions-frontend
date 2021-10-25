@@ -28,12 +28,12 @@ import {getDisplayedTournamentMetaOverviewMeta} from './tournament-meta-overview
 import {getTournamentOverviews} from './tournament-overview.selectors';
 
 export const getDisplayedMemberDetails = createSelector(
-  getMemberDetails, getTournamentOverviews, isSortTournamentResultsDateOrPlace,
-  (memberDetails, tournamentOverviews, sortTournamentResultsDateOrPlace) => {
-    if ((!memberDetails) || (!tournamentOverviews)) {
+  getMemberDetails, getTournamentOverviews, isSortTournamentResultsDateOrPlace, getMembers,
+  (memberDetails, tournamentOverviews, sortTournamentResultsDateOrPlace, members) => {
+    if ((!memberDetails) || (!tournamentOverviews) || (!members)) {
       return null;
     }
-    return mapDisplayedMemberDetails(memberDetails, tournamentOverviews, sortTournamentResultsDateOrPlace);
+    return mapDisplayedMemberDetails(memberDetails, tournamentOverviews, sortTournamentResultsDateOrPlace, members);
   },
 );
 

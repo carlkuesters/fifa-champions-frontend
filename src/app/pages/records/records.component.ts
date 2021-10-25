@@ -10,6 +10,7 @@ import {OrderedPlayerEntry} from '../../model/ordered-player-entry.model';
 
 const RECORD_TYPES: DropdownOption[] = [
   { value: 'winrate', title: 'Siegesrate' },
+  { value: 'tournament_place', title: 'Platzierung / Turnier' },
   { value: 'tournament_participations', title: 'Turnierteilnahmen' },
   { value: 'matches', title: 'Spiele' },
   { value: 'wins', title: 'Siege' },

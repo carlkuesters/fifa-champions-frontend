@@ -52,16 +52,29 @@
           </div>
           <span>
             {{tournamentResult.title}}
-            <span class="location">{{tournamentResult.location}}</span>
+            <span class="hint">{{tournamentResult.location}}</span>
           </span>
         </a>
       </li>
     </ul>
-    <dl class="other">
-      <dt>Höchster Sieg</dt>
-      <dd>?</dd>
-      <dt>Höchste Niederlage</dt>
-      <dd>?</dd>
-    </dl>
+    <h2>Anderes</h2>
+    <ul class="other">
+      <ng-container *ngIf="displayedMemberDetails.highestWin as highestWin">
+        <li>
+          <span>
+            Höchster Sieg: {{highestWin.goalsOwn}}:{{highestWin.goalsOpponent}}, gegen <a [routerLink]="highestWin.routeOpponent">{{highestWin.opponentName}}</a>&nbsp;
+            <a [routerLink]="highestWin.routeTournament" class="hint">({{highestWin.tournamentTitle}})</a>
+          </span>
+        </li>
+      </ng-container>
+      <ng-container *ngIf="displayedMemberDetails.highestLoss as highestLoss">
+        <li>
+          <span>
+            Höchste Niederlage: {{highestLoss.goalsOwn}}:{{highestLoss.goalsOpponent}}, gegen <a [routerLink]="highestLoss.routeOpponent">{{highestLoss.opponentName}}</a>&nbsp;
+            <a [routerLink]="highestLoss.routeTournament" class="hint">({{highestLoss.tournamentTitle}})</a>
+          </span>
+        </li>
+      </ng-container>
+    </ul>
   </div>
 </main>

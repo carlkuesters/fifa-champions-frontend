@@ -1,6 +1,9 @@
 import {DisplayedMemberDetails} from '../../../model/displayed-member-details.model';
+import {DisplayedMemberDetailsHighestMatch} from '../../../model/displayed-member-details-highest-match.model';
 import {DisplayedMemberDetailsTournamentResult} from '../../../model/displayed-member-details-tournament-result.model';
+import {Member} from '../../../model/member.model';
 import {MemberDetails} from '../../../model/member-details.model';
+import {MemberDetailsHighestMatch} from '../../../model/member-details-highest-match.model';
 import {MemberDetailsTournamentResult} from '../../../model/member-details-tournament-result.model';
 import {MemberDetailsRanking} from '../../../model/member-details-ranking.model';
 import {TournamentOverview} from '../../../model/tournament-overview.model';
@@ -13,6 +16,7 @@ export function mapDisplayedMemberDetails(
   memberDetails: MemberDetails,
   tournamentOverviews: TournamentOverview[],
   sortTournamentResultsDateOrPlace: boolean,
+  members: Member[],
 ): DisplayedMemberDetails {
   let latestRanking = null;
   let bestRanking = null;
@@ -52,10 +56,14 @@ export function mapDisplayedMemberDetails(
     awards,
     tournamentResults:
       mapDisplayedTournamentResults(memberDetails.tournamentResults, tournamentOverviews, sortTournamentResultsDateOrPlace),
-    highestWin: null,
-    highestLoss: null,
+    highestWin: mapDisplayedHighestMatch(memberDetails.highestWin, tournamentOverviews, members),
+    highestLoss: mapDisplayedHighestMatch(memberDetails.highestLoss, tournamentOverviews, members),
     routeDuel: '/duel/' + generateSeoId({ id: memberDetails.id, title: memberDetails.name }),
   };
+}
+
+function isBetterRanking(ranking1: MemberDetailsRanking, ranking2: MemberDetailsRanking): boolean {
+  return ((ranking1.rank < ranking2.rank) || ((ranking1.rank === ranking2.rank) && (ranking1.date > ranking2.date)));
 }
 
 export function mapDisplayedTournamentResults(
@@ -84,6 +92,19 @@ export function mapDisplayedTournamentResults(
     });
 }
 
-function isBetterRanking(ranking1: MemberDetailsRanking, ranking2: MemberDetailsRanking): boolean {
-  return ((ranking1.rank < ranking2.rank) || ((ranking1.rank === ranking2.rank) && (ranking1.date > ranking2.date)));
+export function mapDisplayedHighestMatch(
+  highestMatch: MemberDetailsHighestMatch,
+  tournamentOverviews: TournamentOverview[],
+  members: Member[],
+): DisplayedMemberDetailsHighestMatch {
+  const opponent = members.find(m => m.id === highestMatch.opponentId);
+  const tournamentOverview = tournamentOverviews.find(to => to.id === highestMatch.tournamentId);
+  return {
+    opponentName: opponent.name,
+    goalsOwn: highestMatch.goalsOwn,
+    goalsOpponent: highestMatch.goalsOpponent,
+    tournamentTitle: getTournamentTitle(tournamentOverview.type, tournamentOverview.date) + ', ' + tournamentOverview.location,
+    routeOpponent: '/member/' + opponent.id,
+    routeTournament: '/tournament/' + tournamentOverview.id,
+  };
 }
