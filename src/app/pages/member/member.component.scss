@@ -1,6 +1,7 @@
 @import '../../../styles/breakpoints';
 @import '../../../styles/colors';
 @import '../../../styles/sizes';
+@import '../../../styles/fonts/font-awesome';
 
 main {
   display: flex;
@@ -132,6 +133,61 @@ fc-member-ranking-chart {
   img {
     height: 28px;
     margin-right: $baseline;
+  }
+}
+
+.button-row {
+  margin-bottom: $baseline;
+
+  @include bp-sm-max {
+    display: flex;
+    flex-direction: row;
+  }
+
+  button {
+    margin-right: $baseline / 2;
+
+    @include bp-sm-max {
+      flex-grow: 1;
+    }
+  }
+}
+
+.tournament-results {
+  margin-bottom: $baseline-2;
+
+  li:before {
+    margin-right: 0px;
+    align-self: center;
+  }
+
+  a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    @include bp-md-max {
+      & > span {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+
+  .image-wrapper {
+    text-align: center;
+    width: 32px;
+    margin-right: $baseline;
+    margin-left: $baseline;
+  }
+
+  img {
+    height: 32px;
+  }
+
+  .location {
+    font-size: 14px;
+    color: $color-grey;
   }
 }
 

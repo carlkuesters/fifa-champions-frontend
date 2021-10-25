@@ -55,7 +55,7 @@ export class DuelSettingEffects {
       this.memberStore.select(getMembers),
     ),
     switchMap(([_, memberId1, memberId2, members]) => {
-      if (members) {
+      if (members && (this.router.url.startsWith('/duel'))) {
         const duelMemberIds = [];
         if (memberId1) {
           duelMemberIds.push(memberId1);

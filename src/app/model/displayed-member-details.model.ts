@@ -1,4 +1,6 @@
 import {DisplayedMemberDetailsAward} from './displayed-member-details-award.model';
+import {DisplayedMemberDetailsHighestMatch} from './displayed-member-details-highest-match.model';
+import {DisplayedMemberDetailsTournamentResult} from './displayed-member-details-tournament-result.model';
 import {MemberDetailsRanking} from './member-details-ranking.model';
 
 export class DisplayedMemberDetails {
@@ -17,5 +19,8 @@ export class DisplayedMemberDetails {
   latestRanking: MemberDetailsRanking;
   bestRanking: MemberDetailsRanking;
   awards: DisplayedMemberDetailsAward[];
+  tournamentResults: DisplayedMemberDetailsTournamentResult[];
+  highestWin: DisplayedMemberDetailsHighestMatch;
+  highestLoss: DisplayedMemberDetailsHighestMatch;
   routeDuel: string;
 }

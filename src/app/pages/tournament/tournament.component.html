@@ -15,6 +15,7 @@
   </div>
   <div class="matches">
     <fc-tournament-match-list *ngIf="displayedTournamentDetails.matches[MatchType.GROUP] && displayedTournamentDetails.matches[MatchType.GROUP].length > 0" [type]="MatchType.GROUP" [matches]="displayedTournamentDetails.matches[MatchType.GROUP]"></fc-tournament-match-list>
+    <fc-tournament-match-list *ngIf="displayedTournamentDetails.matches[MatchType.EIGHTHFINAL] && displayedTournamentDetails.matches[MatchType.EIGHTHFINAL].length > 0" [type]="MatchType.EIGHTHFINAL" [matches]="displayedTournamentDetails.matches[MatchType.EIGHTHFINAL]"></fc-tournament-match-list>
     <fc-tournament-match-list *ngIf="displayedTournamentDetails.matches[MatchType.QUARTERFINAL] && displayedTournamentDetails.matches[MatchType.QUARTERFINAL].length > 0" [type]="MatchType.QUARTERFINAL" [matches]="displayedTournamentDetails.matches[MatchType.QUARTERFINAL]"></fc-tournament-match-list>
     <fc-tournament-match-list *ngIf="displayedTournamentDetails.matches[MatchType.SEMIFINAL] && displayedTournamentDetails.matches[MatchType.SEMIFINAL].length > 0" [type]="MatchType.SEMIFINAL" [matches]="displayedTournamentDetails.matches[MatchType.SEMIFINAL]"></fc-tournament-match-list>
     <fc-tournament-match-list *ngIf="displayedTournamentDetails.matches[MatchType.FINAL] && displayedTournamentDetails.matches[MatchType.FINAL].length > 0" [type]="MatchType.FINAL" [matches]="displayedTournamentDetails.matches[MatchType.FINAL]"></fc-tournament-match-list>

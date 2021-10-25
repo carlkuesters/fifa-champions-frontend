@@ -5,7 +5,7 @@ import {TournamentOverviewState} from '../state/tournament-overview-state.model'
 
 const getTournamentOverviewsState = createFeatureSelector<TournamentOverviewState>('tournamentOverview');
 
-const getTournamentOverviews = createSelector(
+export const getTournamentOverviews = createSelector(
   getTournamentOverviewsState, state => state.tournamentOverviews
 );
 

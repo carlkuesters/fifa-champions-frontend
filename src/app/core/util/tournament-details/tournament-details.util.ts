@@ -19,7 +19,7 @@ const GROUP_NAMES = ['A', 'B', 'C', 'D'];
 
 export function mapDisplayedTournamentDetails(tournamentDetails: TournamentDetails, members: Member[]): DisplayedTournamentDetails {
   return {
-    title: getTitle(tournamentDetails),
+    title: getTournamentTitle(tournamentDetails.type, tournamentDetails.date),
     location: tournamentDetails.location,
     groups: getDisplayedGroups(tournamentDetails, members),
     matches: getDisplayedMatches(tournamentDetails.results.matches, members),
@@ -27,14 +27,14 @@ export function mapDisplayedTournamentDetails(tournamentDetails: TournamentDetai
   };
 }
 
-function getTitle(tournamentDetails: TournamentDetails): string {
-  const tournamentType = TOURNAMENT_CONSTANTS[tournamentDetails.type];
-  const formattedDate = formatDate(tournamentDetails.date, date => {
+export function getTournamentTitle(type: string, date: number): string {
+  const tournamentType = TOURNAMENT_CONSTANTS[type];
+  const formattedDate = formatDate(date, convertedDate => {
     let text = '';
     if (!tournamentType.isYearly) {
-      text += MONTH_NAMES[date.getMonth()] + ' ';
+      text += MONTH_NAMES[convertedDate.getMonth()] + ' ';
     }
-    text += date.getFullYear();
+    text += convertedDate.getFullYear();
     return text;
   });
   return tournamentType.title + ' (' + formattedDate + ')';

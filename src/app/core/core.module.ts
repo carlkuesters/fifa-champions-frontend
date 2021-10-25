@@ -27,6 +27,7 @@ import {factReducer} from '../store/reducers/fact.reducers';
 import {generalReducer} from '../store/reducers/general.reducers';
 import {memberReducer} from '../store/reducers/member.reducers';
 import {memberDetailReducer} from '../store/reducers/member-detail.reducers';
+import {memberDetailSettingReducer} from '../store/reducers/member-detail-setting.reducers';
 import {rankingReducer} from '../store/reducers/ranking.reducers';
 import {recordReducer} from '../store/reducers/record.reducers';
 import {recordSettingReducer} from '../store/reducers/record-setting.reducers';
@@ -46,6 +47,7 @@ import {FactStoreFacadeService} from './services/fact-store-facade/fact-store-fa
 import {GeneralHttpService} from './services/general-http/general-http.service';
 import {GeneralStoreFacadeService} from './services/general-store-facade/general-store-facade.service';
 import {TournamentMetaOverviewStoreFacadeService} from './services/tournament-meta-overview-store-facade/tournament-meta-overview-store-facade.service';
+import {MemberDetailSettingStoreFacadeService} from './services/member-detail-setting-store-facade/member-detail-setting-store-facade.service';
 import {MemberDetailStoreFacadeService} from './services/member-detail-store-facade/member-detail-store-facade.service';
 import {MemberHttpService} from './services/member-http/member-http.service';
 import {MemberStoreFacadeService} from './services/member-store-facade/member-store-facade.service';
@@ -71,6 +73,7 @@ import {RecordStoreFacadeService} from './services/record-store-facade/record-st
     StoreModule.forFeature('general', generalReducer),
     StoreModule.forFeature('member', memberReducer),
     StoreModule.forFeature('memberDetail', memberDetailReducer),
+    StoreModule.forFeature('memberDetailSetting', memberDetailSettingReducer),
     StoreModule.forFeature('ranking', rankingReducer),
     StoreModule.forFeature('record', recordReducer),
     StoreModule.forFeature('recordSetting', recordSettingReducer),
@@ -111,6 +114,7 @@ import {RecordStoreFacadeService} from './services/record-store-facade/record-st
     FactStoreFacadeService,
     GeneralHttpService,
     GeneralStoreFacadeService,
+    MemberDetailSettingStoreFacadeService,
     MemberDetailStoreFacadeService,
     MemberHttpService,
     MemberStoreFacadeService,

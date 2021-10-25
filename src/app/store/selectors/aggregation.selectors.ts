@@ -19,18 +19,21 @@ import {getDuelMemberId1, getDuelMemberId2} from './duel-setting.selectors';
 import {getFact} from './fact.selectors';
 import {getMembers} from './member.selectors';
 import {getMemberDetails} from './member-detail.selectors';
+import {isSortTournamentResultsDateOrPlace} from './member-detail-setting.selectors';
 import {getSortedRankingIndexBySeoId, getSortedRankings} from './ranking.selectors';
 import {getRecordEntities} from './record.selectors';
 import {getSelectedRecordType, isRecordSortAscOrDesc} from './record-setting.selectors';
 import {getTournamentDetails} from './tournament-detail.selectors';
 import {getDisplayedTournamentMetaOverviewMeta} from './tournament-meta-overview.selectors';
+import {getTournamentOverviews} from './tournament-overview.selectors';
 
 export const getDisplayedMemberDetails = createSelector(
-  getMemberDetails, memberDetails => {
-    if (!memberDetails) {
+  getMemberDetails, getTournamentOverviews, isSortTournamentResultsDateOrPlace,
+  (memberDetails, tournamentOverviews, sortTournamentResultsDateOrPlace) => {
+    if ((!memberDetails) || (!tournamentOverviews)) {
       return null;
     }
-    return mapDisplayedMemberDetails(memberDetails);
+    return mapDisplayedMemberDetails(memberDetails, tournamentOverviews, sortTournamentResultsDateOrPlace);
   },
 );
 

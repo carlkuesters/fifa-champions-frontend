@@ -1,5 +1,7 @@
 import {MemberDetailsAward} from './member-details-award.model';
+import {MemberDetailsHighestMatch} from './member-details-highest-match.model';
 import {MemberDetailsRanking} from './member-details-ranking.model';
+import {MemberDetailsTournamentResult} from './member-details-tournament-result.model';
 
 export class MemberDetails {
   id: number;
@@ -16,4 +18,7 @@ export class MemberDetails {
   goalsReceived: number;
   rankings: MemberDetailsRanking[];
   awards: MemberDetailsAward[];
+  tournamentResults: MemberDetailsTournamentResult[];
+  highestWin: MemberDetailsHighestMatch;
+  highestLoss: MemberDetailsHighestMatch;
 }

@@ -39,6 +39,24 @@
         <span>{{award.title + ' ' + award.year}}</span>
       </li>
     </ul>
+    <h2>Turniere</h2>
+    <div class="button-row">
+      <button class="fa fa-trophy" (click)="sortTournamentResults(false)"></button>
+      <button class="fa fa-calendar" (click)="sortTournamentResults(true)"></button>
+    </div>
+    <ul class="tournament-results">
+      <li *ngFor="let tournamentResult of displayedMemberDetails.tournamentResults">
+        <a [routerLink]="tournamentResult.routeTournament">
+          <div class="image-wrapper">
+            <img [src]="'assets/images/tournaments/' + tournamentResult.tournamentType + '_300.png'">
+          </div>
+          <span>
+            {{tournamentResult.title}}
+            <span class="location">{{tournamentResult.location}}</span>
+          </span>
+        </a>
+      </li>
+    </ul>
     <dl class="other">
       <dt>Höchster Sieg</dt>
       <dd>?</dd>
