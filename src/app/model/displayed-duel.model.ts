@@ -9,7 +9,16 @@ export class DisplayedDuel {
   wins1: number;
   draws: number;
   wins2: number;
-  goals1: number;
-  goals2: number;
-  newestMatch: DisplayedDuelMatch;
+  totalGoals: number;
+  totalGoals1: number;
+  totalGoals2: number;
+  averageGoals1: number | null;
+  averageGoals2: number | null;
+  newestMatch: DisplayedDuelMatch | null;
+  highestWin1: DisplayedDuelMatch | null;
+  highestWin2: DisplayedDuelMatch | null;
+  favourite: string;
+  favouritePercentageWin: number;
+  favouritePercentageDraw: number;
+  favouritePercentageLoss: number;
 }

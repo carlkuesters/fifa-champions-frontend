@@ -10,7 +10,8 @@ export const duelAdapter = createEntityAdapter<Duel>({
 });
 
 export function getDuelId(memberId1: number, memberId2: number): string {
-  let smallMemberId;
+  // TODO: Duels can be reused for mirror requests, but the GUI has to clearly display who is player1 and player2
+  /*let smallMemberId;
   let bigMemberId;
   if (memberId1 < memberId2) {
     smallMemberId = memberId1;
@@ -19,7 +20,8 @@ export function getDuelId(memberId1: number, memberId2: number): string {
     smallMemberId = memberId2;
     bigMemberId = memberId1;
   }
-  return smallMemberId + '_' + bigMemberId;
+  return smallMemberId + '_' + bigMemberId;*/
+  return memberId1 + '_' + memberId2;
 }
 
 const initialState = duelAdapter.getInitialState();

@@ -65,7 +65,7 @@ export class DuelSettingEffects {
         }
         const duelSeoId = generateDuelSeoId(duelMemberIds, members);
         this.router.navigate(['duel/' + duelSeoId]);
-        if (memberId1 && memberId2) {
+        if (memberId1 && memberId2 && (memberId1 !== memberId2)) {
           return [DuelActions.loadDuel({ memberId1, memberId2 })];
         }
       }

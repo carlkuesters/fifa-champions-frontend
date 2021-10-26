@@ -8,4 +8,4 @@
 </div>
 <p>{{text}}</p>
 <fc-youtube-video *ngIf="youtubeVideoId" [youtubeVideoId]="youtubeVideoId"></fc-youtube-video>
-<div *ngIf="tournamentType && tournamentDate && locationName" class="context">(Beim {{tournamentType}} am {{tournamentDate}}, {{locationName}})</div>
+<div *ngIf="tournamentType && tournamentDate && locationName" class="context">(Beim {{TOURNAMENT_CONSTANTS[tournamentType].title}} am {{tournamentDate}}, {{locationName}})</div>

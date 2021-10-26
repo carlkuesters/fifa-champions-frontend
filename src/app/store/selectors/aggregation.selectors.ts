@@ -47,11 +47,11 @@ export const getSelectedDuel = createSelector(
 );
 
 export const getDisplayedDuel = createSelector(
-  getSelectedDuel, getMembers, (duel, members) => {
-    if (!duel || !members) {
+  getSelectedDuel, getMembers, getTournamentOverviews, (duel, members, tournamentOverviews) => {
+    if (!duel || !members || !tournamentOverviews) {
       return null;
     }
-    return mapDisplayedDuel(duel, members);
+    return mapDisplayedDuel(duel, members, tournamentOverviews);
   },
 );
 

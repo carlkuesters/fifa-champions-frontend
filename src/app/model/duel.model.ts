@@ -10,4 +10,6 @@ export class Duel {
   goals1: number;
   goals2: number;
   newestMatch: DuelMatch;
+  highestWin1: DuelMatch;
+  highestWin2: DuelMatch;
 }
