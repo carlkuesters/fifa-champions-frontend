@@ -30,9 +30,9 @@ export function mapDisplayedDuel(duel: Duel, members: Member[], tournamentOvervi
   const member2 = members.find(m => m.id === duel.memberId2);
 
   let favourite;
-  let favouritePercentageWin = getPercentage(duel.wins1, duel.matches);
-  const favouritePercentageDraw = getPercentage(duel.draws, duel.matches);
-  let favouritePercentageLoss = getPercentage(duel.wins2, duel.matches);
+  let favouritePercentageWin = getPercentage(duel.wins1, duel.matches.length);
+  const favouritePercentageDraw = getPercentage(duel.draws, duel.matches.length);
+  let favouritePercentageLoss = getPercentage(duel.wins2, duel.matches.length);
   if (duel.wins1 > duel.wins2) {
     favourite = member1.name;
   } else {
@@ -44,9 +44,9 @@ export function mapDisplayedDuel(duel: Duel, members: Member[], tournamentOvervi
 
   let averageGoals1 = null;
   let averageGoals2 = null;
-  if (duel.matches > 0) {
-    averageGoals1 = Math.round(duel.goals1 / duel.matches);
-    averageGoals2 = Math.round(duel.goals2 / duel.matches);
+  if (duel.matches.length > 0) {
+    averageGoals1 = Math.round(duel.goals1 / duel.matches.length);
+    averageGoals2 = Math.round(duel.goals2 / duel.matches.length);
   }
 
   return {
@@ -54,7 +54,6 @@ export function mapDisplayedDuel(duel: Duel, members: Member[], tournamentOvervi
     memberName1: member1.name,
     memberId2: member2.id,
     memberName2: member2.name,
-    matches: duel.matches,
     wins1: duel.wins1,
     draws: duel.draws,
     wins2: duel.wins2,
@@ -63,17 +62,17 @@ export function mapDisplayedDuel(duel: Duel, members: Member[], tournamentOvervi
     totalGoals2: duel.goals2,
     averageGoals1,
     averageGoals2,
-    newestMatch: (duel.newestMatch ? mapDisplayedDuelMatch(duel.newestMatch, tournamentOverviews) : null),
     highestWin1: (duel.highestWin1 ? mapDisplayedDuelMatch(duel.highestWin1, tournamentOverviews) : null),
     highestWin2: (duel.highestWin2 ? mapDisplayedDuelMatch(duel.highestWin2, tournamentOverviews) : null),
     favourite,
     favouritePercentageWin,
     favouritePercentageDraw,
     favouritePercentageLoss,
+    matches: duel.matches.map(match => mapDisplayedDuelMatch(match, tournamentOverviews)),
   };
 }
 
-function getPercentage(part, total): number {
+function getPercentage(part: number, total: number): number {
   if (total === 0) {
     return 0;
   }

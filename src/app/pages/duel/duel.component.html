@@ -5,21 +5,29 @@
     <span class="vs">vs</span>
     <fc-dropdown name="memberId2" placeholder="Spieler auswählen" [options]="memberDropdownOptions" [value]="duelMemberId2 | async" (optionSelected)="selectMember2($event)"></fc-dropdown>
   </div>
-  <ul *ngIf="displayedDuel | async as displayedDuel">
-    <li>Gesamt: {{displayedDuel.matches}} Spiele, {{displayedDuel.totalGoals}} Tore</li>
-    <li>Siege {{displayedDuel.memberName1}}: {{displayedDuel.wins1}}</li>
-    <li>Unentschieden: {{displayedDuel.draws}}</li>
-    <li>Siege {{displayedDuel.memberName2}}: {{displayedDuel.wins2}}</li>
-    <li>{{displayedDuel.memberName1}} schoss bisher: {{displayedDuel.totalGoals1}} Tore</li>
-    <li>{{displayedDuel.memberName2}} schoss bisher: {{displayedDuel.totalGoals2}} Tore</li>
-    <li>
-      Durchschn. Ergebnis:
-      <ng-container *ngIf="displayedDuel.averageGoals1">{{displayedDuel.averageGoals1}} : {{displayedDuel.averageGoals2}}</ng-container>
-      <ng-container *ngIf="!displayedDuel.averageGoals1">-</ng-container>
-    </li>
-    <li><span>Letztes Ergebnis: <fc-duel-match [match]="displayedDuel.newestMatch"></fc-duel-match></span></li>
-    <li><span>Höchster Sieg {{displayedDuel.memberName1}}: <fc-duel-match [match]="displayedDuel.highestWin1"></fc-duel-match></span></li>
-    <li><span>Höchster Sieg {{displayedDuel.memberName2}}: <fc-duel-match [match]="displayedDuel.highestWin2"></fc-duel-match></span></li>
-    <li>Favorit: {{displayedDuel.favourite}}, mit einer Bilanz von {{displayedDuel.favouritePercentageWin}}% Siegen, {{displayedDuel.favouritePercentageDraw}}% Unentschieden und {{displayedDuel.favouritePercentageLoss}}% Niederlagen</li>
-  </ul>
+  <ng-container *ngIf="displayedDuel | async as displayedDuel">
+    <h2>Statistik</h2>
+    <ul>
+      <li>Gesamt: {{displayedDuel.matches.length}} Spiele, {{displayedDuel.totalGoals}} Tore</li>
+      <li>Siege {{displayedDuel.memberName1}}: {{displayedDuel.wins1}}</li>
+      <li>Unentschieden: {{displayedDuel.draws}}</li>
+      <li>Siege {{displayedDuel.memberName2}}: {{displayedDuel.wins2}}</li>
+      <li>{{displayedDuel.memberName1}} schoss bisher: {{displayedDuel.totalGoals1}} Tore</li>
+      <li>{{displayedDuel.memberName2}} schoss bisher: {{displayedDuel.totalGoals2}} Tore</li>
+      <li>
+        Durchschn. Ergebnis:
+        <ng-container *ngIf="displayedDuel.averageGoals1">{{displayedDuel.averageGoals1}} : {{displayedDuel.averageGoals2}}</ng-container>
+        <ng-container *ngIf="!displayedDuel.averageGoals1">-</ng-container>
+      </li>
+      <li><span>Höchster Sieg {{displayedDuel.memberName1}}: <fc-duel-match [match]="displayedDuel.highestWin1"></fc-duel-match></span></li>
+      <li><span>Höchster Sieg {{displayedDuel.memberName2}}: <fc-duel-match [match]="displayedDuel.highestWin2"></fc-duel-match></span></li>
+      <li>Favorit: {{displayedDuel.favourite}}, mit einer Bilanz von {{displayedDuel.favouritePercentageWin}}% Siegen, {{displayedDuel.favouritePercentageDraw}}% Unentschieden und {{displayedDuel.favouritePercentageLoss}}% Niederlagen</li>
+    </ul>
+    <ng-container *ngIf="displayedDuel.matches.length > 0">
+      <h2>Spiele</h2>
+      <ul>
+        <li *ngFor="let match of displayedDuel.matches"><fc-duel-match [match]="match"></fc-duel-match></li>
+      </ul>
+    </ng-container>
+  </ng-container>
 </main>

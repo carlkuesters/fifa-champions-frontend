@@ -25,3 +25,7 @@
     margin-right: $baseline;
   }
 }
+
+ul + h2 {
+  margin-top: $baseline-2;
+}
