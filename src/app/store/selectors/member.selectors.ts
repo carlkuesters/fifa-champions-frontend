@@ -15,13 +15,16 @@ export const getMembersCount = createSelector(
   getMembers, members => members ? members.length : null,
 );
 
+const getSortedMembers = createSelector(
+  getMembers, members => members
+    ? members.slice().sort((member1, member2) => member1.name.localeCompare(member2.name))
+    : [],
+);
+
 export const getDisplayedMembers = createSelector(
-  getMembers, members => members ? members
-    .slice()
-    .sort((member1, member2) => member1.name.localeCompare(member2.name))
-    .map(member => mapDisplayedMember(member)) : null,
+  getSortedMembers, members => members.map(member => mapDisplayedMember(member)),
 );
 
 export const getMembersDropdownOptions = createSelector<MemberState, Member[], DropdownOption[]>(
-  getMembers, members => members ? members.map(member => ({ value: member.id, title: member.name })) : null,
+  getSortedMembers, members => members.map(member => ({ value: member.id, title: member.name })),
 );
