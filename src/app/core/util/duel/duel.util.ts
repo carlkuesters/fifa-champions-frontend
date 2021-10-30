@@ -1,12 +1,12 @@
 import {Duel} from '../../../model/duel.model';
 import {DisplayedDuel} from '../../../model/displayed-duel.model';
-import {DisplayedDuelMatch} from '../../../model/displayed-duel-match.model';
+import {DisplayedTournamentReference} from '../../../model/displayed-tournament-reference.model';
 import {DuelMatch} from '../../../model/duel-match.model';
 import {MATCH_CONSTANTS} from '../../../model/match.constants';
 import {Member} from '../../../model/member.model';
 import {TournamentOverview} from '../../../model/tournament-overview.model';
 import {generateCombinedSeoId, parseCombinedSeoId} from '../seo/seo.util';
-import {getTournamentTitle} from '../tournament-details/tournament-details.util';
+import {getFormattedTournamentDate} from '../tournament-details/tournament-details.util';
 
 const DUEL_SEO_ID_SEPARATOR = '-vs-';
 
@@ -79,13 +79,16 @@ function getPercentage(part: number, total: number): number {
   return Math.round((part / total) * 10000) / 100;
 }
 
-function mapDisplayedDuelMatch(duelMatch: DuelMatch, tournamentOverviews: TournamentOverview[]): DisplayedDuelMatch {
+function mapDisplayedDuelMatch(duelMatch: DuelMatch, tournamentOverviews: TournamentOverview[]): DisplayedTournamentReference {
   const tournamentOverview = tournamentOverviews.find(to => to.id === duelMatch.tournamentId);
   return {
-    goals1: duelMatch.goals1,
-    goals2: duelMatch.goals2,
-    tournamentTitle: getTournamentTitle(tournamentOverview.type, tournamentOverview.date),
-    typeTitle: MATCH_CONSTANTS[duelMatch.type].title,
+    tournamentType: tournamentOverview.type,
+    title: duelMatch.goals1 + ' : ' + duelMatch.goals2,
+    hintRight:
+      MATCH_CONSTANTS[duelMatch.type].title
+      + ' ' + getFormattedTournamentDate(tournamentOverview.type, tournamentOverview.date)
+      + (tournamentOverview.location ? ', ' + tournamentOverview.location : ''),
+    hintBottom: null,
     routeTournament: '/tournament/' + tournamentOverview.id,
   };
 }

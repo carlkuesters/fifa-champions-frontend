@@ -8,6 +8,7 @@ import {DropdownComponent} from './dropdown/dropdown.component';
 import {OrderedPlayersComponent} from './ordered-players/ordered-players.component';
 import {OrderedPlayersEntryComponent} from './ordered-players-entry/ordered-players-entry.component';
 import {RandomMemberInfoComponent} from './random-member-info/random-member-info.component';
+import {TournamentReferencesComponent} from './match-list/tournament-references.component';
 import {YoutubeVideoComponent} from './youtube-video/youtube-video.component';
 
 @NgModule({
@@ -23,6 +24,7 @@ import {YoutubeVideoComponent} from './youtube-video/youtube-video.component';
     OrderedPlayersComponent,
     OrderedPlayersEntryComponent,
     RandomMemberInfoComponent,
+    TournamentReferencesComponent,
     YoutubeVideoComponent
   ],
   providers: [],
@@ -35,6 +37,7 @@ import {YoutubeVideoComponent} from './youtube-video/youtube-video.component';
     DropdownComponent,
     OrderedPlayersComponent,
     RandomMemberInfoComponent,
+    TournamentReferencesComponent,
     YoutubeVideoComponent
   ],
 })

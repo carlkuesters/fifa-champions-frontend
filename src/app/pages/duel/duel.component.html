@@ -19,15 +19,19 @@
         <ng-container *ngIf="displayedDuel.averageGoals1">{{displayedDuel.averageGoals1}} : {{displayedDuel.averageGoals2}}</ng-container>
         <ng-container *ngIf="!displayedDuel.averageGoals1">-</ng-container>
       </li>
-      <li><span>Höchster Sieg {{displayedDuel.memberName1}}: <fc-duel-match [match]="displayedDuel.highestWin1"></fc-duel-match></span></li>
-      <li><span>Höchster Sieg {{displayedDuel.memberName2}}: <fc-duel-match [match]="displayedDuel.highestWin2"></fc-duel-match></span></li>
       <li>Favorit: {{displayedDuel.favourite}}, mit einer Bilanz von {{displayedDuel.favouritePercentageWin}}% Siegen, {{displayedDuel.favouritePercentageDraw}}% Unentschieden und {{displayedDuel.favouritePercentageLoss}}% Niederlagen</li>
     </ul>
+    <ng-container *ngIf="displayedDuel.highestWin1">
+      <h2>Höchster Sieg {{displayedDuel.memberName1}}</h2>
+      <fc-tournament-references [tournamentReferences]="[displayedDuel.highestWin1]"></fc-tournament-references>
+    </ng-container>
+    <ng-container *ngIf="displayedDuel.highestWin2">
+      <h2>Höchster Sieg {{displayedDuel.memberName2}}</h2>
+      <fc-tournament-references [tournamentReferences]="[displayedDuel.highestWin2]"></fc-tournament-references>
+    </ng-container>
     <ng-container *ngIf="displayedDuel.matches.length > 0">
       <h2>Spiele</h2>
-      <ul>
-        <li *ngFor="let match of displayedDuel.matches"><fc-duel-match [match]="match"></fc-duel-match></li>
-      </ul>
+      <fc-tournament-references [tournamentReferences]="displayedDuel.matches"></fc-tournament-references>
     </ng-container>
   </ng-container>
 </main>

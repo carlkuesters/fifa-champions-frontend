@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {SharedModule} from '../shared/shared.module';
 import {AwardsComponent} from './awards/awards.component';
 import {AwardComponent} from './awards/award/award.component';
-import {DuelMatchComponent} from './duel/duel-match/duel-match.component';
 import {DuelComponent} from './duel/duel.component';
 import {FactComponent} from './fact/fact.component';
 import {HomeComponent} from './home/home.component';
@@ -40,7 +39,6 @@ import {TournamentsComponent} from './tournaments/tournaments.component';
     AwardComponent,
     AwardsComponent,
     DuelComponent,
-    DuelMatchComponent,
     FactComponent,
     HomeComponent,
     HomeTeaserComponent,

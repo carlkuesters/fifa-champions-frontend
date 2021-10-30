@@ -153,44 +153,15 @@ fc-member-ranking-chart {
   }
 }
 
-.tournament-results {
-  margin-bottom: $baseline-2;
-
-  li:before {
-    margin-right: 0px;
-    align-self: center;
-  }
-
-  a {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    @include bp-md-max {
-      & > span {
-        display: flex;
-        flex-direction: column;
-      }
-    }
-  }
-
-  .image-wrapper {
-    text-align: center;
-    width: 32px;
-    margin-right: $baseline;
-    margin-left: $baseline;
-  }
-
-  img {
-    height: 32px;
-  }
+fc-tournament-references + h2 {
+  margin-top: $baseline-2;
 }
 
 .other dt {
   width: 200px;
 }
 
-.hint, li a.hint {
+li a.hint {
   font-size: 14px;
   color: $color-grey;
 }

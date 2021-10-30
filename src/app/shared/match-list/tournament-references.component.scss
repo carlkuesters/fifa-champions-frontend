@@ -1,0 +1,40 @@
+@import '../../../styles/breakpoints';
+@import '../../../styles/colors';
+@import '../../../styles/sizes';
+
+ul {
+  li:before {
+    margin-right: 0px;
+    align-self: center;
+  }
+
+  a {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    @include bp-md-max {
+      & > span {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+
+  .image-wrapper {
+    flex: 0 0 32px;
+    text-align: center;
+    margin-right: $baseline;
+    margin-left: $baseline;
+  }
+
+  img {
+    height: 32px;
+  }
+}
+
+.hint {
+  font-size: 14px;
+  color: $color-grey;
+}

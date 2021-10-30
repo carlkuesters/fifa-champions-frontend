@@ -1,4 +1,4 @@
-import {DisplayedDuelMatch} from './displayed-duel-match.model';
+import {DisplayedTournamentReference} from './displayed-tournament-reference.model';
 
 export class DisplayedDuel {
   memberId1: number;
@@ -13,11 +13,11 @@ export class DisplayedDuel {
   totalGoals2: number;
   averageGoals1: number | null;
   averageGoals2: number | null;
-  highestWin1: DisplayedDuelMatch | null;
-  highestWin2: DisplayedDuelMatch | null;
+  highestWin1: DisplayedTournamentReference | null;
+  highestWin2: DisplayedTournamentReference | null;
   favourite: string;
   favouritePercentageWin: number;
   favouritePercentageDraw: number;
   favouritePercentageLoss: number;
-  matches: DisplayedDuelMatch[];
+  matches: DisplayedTournamentReference[];
 }

@@ -1,0 +1,16 @@
+<ul>
+  <li *ngFor="let tournamentReference of tournamentReferences">
+    <a [routerLink]="tournamentReference.routeTournament">
+      <div class="image-wrapper">
+        <img [src]="'assets/images/tournaments/' + tournamentReference.tournamentType + '_300.png'">
+      </div>
+      <span>
+        <span>
+          {{tournamentReference.title}}
+          <span *ngIf="tournamentReference.hintRight" class="hint">{{tournamentReference.hintRight}}</span>
+        </span>
+        <span *ngIf="tournamentReference.hintBottom" class="hint">{{tournamentReference.hintBottom}}</span>
+      </span>
+    </a>
+  </li>
+</ul>

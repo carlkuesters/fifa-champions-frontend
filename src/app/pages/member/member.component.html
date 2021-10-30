@@ -44,37 +44,14 @@
       <button class="fa fa-trophy" (click)="sortTournamentResults(false)"></button>
       <button class="fa fa-calendar" (click)="sortTournamentResults(true)"></button>
     </div>
-    <ul class="tournament-results">
-      <li *ngFor="let tournamentResult of displayedMemberDetails.tournamentResults">
-        <a [routerLink]="tournamentResult.routeTournament">
-          <div class="image-wrapper">
-            <img [src]="'assets/images/tournaments/' + tournamentResult.tournamentType + '_300.png'">
-          </div>
-          <span>
-            {{tournamentResult.title}}
-            <span class="hint">{{tournamentResult.location}}</span>
-          </span>
-        </a>
-      </li>
-    </ul>
-    <h2>Anderes</h2>
-    <ul class="other">
-      <ng-container *ngIf="displayedMemberDetails.highestWin as highestWin">
-        <li>
-          <span>
-            Höchster Sieg: {{highestWin.goalsOwn}}:{{highestWin.goalsOpponent}}, gegen <a [routerLink]="highestWin.routeOpponent">{{highestWin.opponentName}}</a>&nbsp;
-            <a [routerLink]="highestWin.routeTournament" class="hint">({{highestWin.tournamentTitle}})</a>
-          </span>
-        </li>
-      </ng-container>
-      <ng-container *ngIf="displayedMemberDetails.highestLoss as highestLoss">
-        <li>
-          <span>
-            Höchste Niederlage: {{highestLoss.goalsOwn}}:{{highestLoss.goalsOpponent}}, gegen <a [routerLink]="highestLoss.routeOpponent">{{highestLoss.opponentName}}</a>&nbsp;
-            <a [routerLink]="highestLoss.routeTournament" class="hint">({{highestLoss.tournamentTitle}})</a>
-          </span>
-        </li>
-      </ng-container>
-    </ul>
+    <fc-tournament-references [tournamentReferences]="displayedMemberDetails.tournamentResults"></fc-tournament-references>
+    <ng-container *ngIf="displayedMemberDetails.highestWin">
+      <h2>Höchster Sieg</h2>
+      <fc-tournament-references [tournamentReferences]="[displayedMemberDetails.highestWin]"></fc-tournament-references>
+    </ng-container>
+    <ng-container *ngIf="displayedMemberDetails.highestLoss">
+      <h2>Höchste Niederlage</h2>
+      <fc-tournament-references [tournamentReferences]="[displayedMemberDetails.highestLoss]"></fc-tournament-references>
+    </ng-container>
   </div>
 </main>

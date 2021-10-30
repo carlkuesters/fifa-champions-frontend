@@ -1,6 +1,5 @@
 import {DisplayedMemberDetails} from '../../../model/displayed-member-details.model';
-import {DisplayedMemberDetailsHighestMatch} from '../../../model/displayed-member-details-highest-match.model';
-import {DisplayedMemberDetailsTournamentResult} from '../../../model/displayed-member-details-tournament-result.model';
+import {DisplayedTournamentReference} from '../../../model/displayed-tournament-reference.model';
 import {Member} from '../../../model/member.model';
 import {MemberDetails} from '../../../model/member-details.model';
 import {MemberDetailsHighestMatch} from '../../../model/member-details-highest-match.model';
@@ -70,7 +69,7 @@ export function mapDisplayedTournamentResults(
   tournamentResults: MemberDetailsTournamentResult[],
   tournamentOverviews: TournamentOverview[],
   sortDateOrPlace: boolean
-): DisplayedMemberDetailsTournamentResult[] {
+): DisplayedTournamentReference[] {
   return tournamentResults
     .slice()
     .sort((tournamentResult1, tournamentResult2) => {
@@ -86,7 +85,8 @@ export function mapDisplayedTournamentResults(
       return {
         tournamentType: tournamentOverview.type,
         title: tournamentResult.place + '. Platz ' + getTournamentTitle(tournamentOverview.type, tournamentOverview.date),
-        location: tournamentOverview.location,
+        hintRight: null,
+        hintBottom: tournamentOverview.location,
         routeTournament: '/tournament/' + tournamentOverview.id,
       };
     });
@@ -96,15 +96,14 @@ export function mapDisplayedHighestMatch(
   highestMatch: MemberDetailsHighestMatch,
   tournamentOverviews: TournamentOverview[],
   members: Member[],
-): DisplayedMemberDetailsHighestMatch {
-  const opponent = members.find(m => m.id === highestMatch.opponentId);
+): DisplayedTournamentReference {
   const tournamentOverview = tournamentOverviews.find(to => to.id === highestMatch.tournamentId);
+  const opponent = members.find(m => m.id === highestMatch.opponentId);
   return {
-    opponentName: opponent.name,
-    goalsOwn: highestMatch.goalsOwn,
-    goalsOpponent: highestMatch.goalsOpponent,
-    tournamentTitle: getTournamentTitle(tournamentOverview.type, tournamentOverview.date) + ', ' + tournamentOverview.location,
-    routeOpponent: '/member/' + opponent.id,
+    tournamentType: tournamentOverview.type,
+    title: highestMatch.goalsOwn + ' : ' + highestMatch.goalsOpponent + ' gegen ' + opponent.name,
+    hintRight: getTournamentTitle(tournamentOverview.type, tournamentOverview.date) + ', ' + tournamentOverview.location,
+    hintBottom: null,
     routeTournament: '/tournament/' + tournamentOverview.id,
   };
 }

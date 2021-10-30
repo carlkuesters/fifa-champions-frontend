@@ -28,8 +28,12 @@ export function mapDisplayedTournamentDetails(tournamentDetails: TournamentDetai
 }
 
 export function getTournamentTitle(type: string, date: number): string {
+  return TOURNAMENT_CONSTANTS[type].title + ' (' + getFormattedTournamentDate(type, date) + ')';
+}
+
+export function getFormattedTournamentDate(type: string, date: number): string {
   const tournamentType = TOURNAMENT_CONSTANTS[type];
-  const formattedDate = formatDate(date, convertedDate => {
+  return formatDate(date, convertedDate => {
     let text = '';
     if (!tournamentType.isYearly) {
       text += MONTH_NAMES[convertedDate.getMonth()] + ' ';
@@ -37,7 +41,6 @@ export function getTournamentTitle(type: string, date: number): string {
     text += convertedDate.getFullYear();
     return text;
   });
-  return tournamentType.title + ' (' + formattedDate + ')';
 }
 
 function getDisplayedGroups(tournamentDetails: TournamentDetails, members: Member[]): DisplayedTournamentGroup[] {
