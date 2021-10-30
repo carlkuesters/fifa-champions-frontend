@@ -1,5 +1,6 @@
 @import '../../../../styles/breakpoints';
 @import '../../../../styles/sizes';
+@import '../tournament.constants';
 
 :host {
   display: block;
@@ -9,6 +10,10 @@
   display: flex;
   flex-direction: column;
 
+  @media (max-width: ($breakpoint-tournament-group-2 - 1)) {
+    font-size: 12px;
+  }
+
   .head {
     display: flex;
     flex-direction: row;
@@ -16,14 +21,26 @@
     justify-content: flex-end;
     margin-bottom: $baseline;
 
+    @include bp-md-max {
+      margin-right: -15px;
+    }
+
     h2 {
       flex-grow: 1;
       margin-bottom: 0;
     }
 
     div {
-      flex-basis: $baseline-3;
+      flex: 0 0 18px;
       text-align: center;
+
+      @media (min-width: $breakpoint-tournament-group-1) {
+        flex-basis: 24px;
+      }
+
+      @media (min-width: $breakpoint-tournament-group-2) {
+        flex-basis: $baseline-3;
+      }
     }
 
     .section-start {

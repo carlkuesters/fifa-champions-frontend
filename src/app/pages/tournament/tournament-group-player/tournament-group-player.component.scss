@@ -1,26 +1,47 @@
 @import '../../../../styles/breakpoints';
 @import '../../../../styles/sizes';
+@import '../tournament.constants';
 
 :host {
   flex-grow: 1;
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  @include bp-md-max {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
 }
 
 div {
-  flex-basis: 30px;
+  flex: 0 0 18px;
   text-align: center;
+
+  @media (min-width: $breakpoint-tournament-group-1) {
+    flex-basis: 24px;
+  }
+
+  @media (min-width: $breakpoint-tournament-group-2) {
+    flex-basis: $baseline-3;
+  }
 }
 
 img {
-  flex-basis: 28px;
-  height: 28px;
-  margin-left: $baseline;
-  margin-right: 15px;
+  flex: 0 0 24px;
+  height: 24px;
+  margin-left: ($baseline / 2);
+  margin-right: ($baseline / 2);
+
+  @media (min-width: $breakpoint-tournament-group-2) {
+    flex-basis: 28px;
+    height: 28px;
+    margin-left: ($baseline / 2);
+    margin-right: 15px;
+  }
 }
 
-.grow {
+.name {
   flex-grow: 1;
   text-align: left;
 }
