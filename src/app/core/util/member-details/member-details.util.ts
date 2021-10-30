@@ -107,7 +107,9 @@ export function mapDisplayedHighestMatch(
   return {
     tournamentType: tournamentOverview.type,
     title: highestMatch.goalsOwn + ' : ' + highestMatch.goalsOpponent + ' gegen ' + opponent.name,
-    hintRight: getTournamentTitle(tournamentOverview.type, tournamentOverview.date) + ', ' + tournamentOverview.location,
+    hintRight:
+      getTournamentTitle(tournamentOverview.type, tournamentOverview.date)
+      + (tournamentOverview.location ? ', ' + tournamentOverview.location : ''),
     hintBottom: null,
     routeTournament: '/tournament/' + tournamentOverview.id,
   };
