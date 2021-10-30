@@ -16,7 +16,10 @@ export const getMembersCount = createSelector(
 );
 
 export const getDisplayedMembers = createSelector(
-  getMembers, members => members ? members.map(member => mapDisplayedMember(member)) : null,
+  getMembers, members => members ? members
+    .slice()
+    .sort((member1, member2) => member1.name.localeCompare(member2.name))
+    .map(member => mapDisplayedMember(member)) : null,
 );
 
 export const getMembersDropdownOptions = createSelector<MemberState, Member[], DropdownOption[]>(

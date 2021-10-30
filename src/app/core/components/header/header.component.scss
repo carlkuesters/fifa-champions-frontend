@@ -3,6 +3,10 @@
 
 .banner {
   background: #058;
+
+  @include bp-lg {
+    background: url('../../../../assets/images/banner.png');
+  }
 }
 
 #mobile-toggle {
