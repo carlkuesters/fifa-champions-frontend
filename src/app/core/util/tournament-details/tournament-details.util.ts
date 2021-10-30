@@ -28,10 +28,10 @@ export function mapDisplayedTournamentDetails(tournamentDetails: TournamentDetai
 }
 
 export function getTournamentTitle(type: string, date: number): string {
-  return TOURNAMENT_CONSTANTS[type].title + ' (' + getFormattedTournamentDate(type, date) + ')';
+  return TOURNAMENT_CONSTANTS[type].title + ' (' + getFormattedDate_Tournament(type, date) + ')';
 }
 
-export function getFormattedTournamentDate(type: string, date: number): string {
+export function getFormattedDate_Tournament(type: string, date: number): string {
   const tournamentType = TOURNAMENT_CONSTANTS[type];
   return formatDate(date, convertedDate => {
     let text = '';

@@ -1,5 +1,5 @@
 <img [src]="member.image" (click)="goToMemberDetailPage()">
 <div class="memberInfo">
   <h2 (click)="goToMemberDetailPage()">{{member.name}}</h2>
-  <p>{{member.description}}</p>
+  <fc-member-description [description]="member.description"></fc-member-description>
 </div>

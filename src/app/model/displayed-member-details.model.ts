@@ -1,10 +1,11 @@
 import {DisplayedMemberDetailsAward} from './displayed-member-details-award.model';
 import {DisplayedTournamentReference} from './displayed-tournament-reference.model';
+import {MemberDescription} from './member-description.model';
 import {MemberDetailsRanking} from './member-details-ranking.model';
 
 export class DisplayedMemberDetails {
   name: string;
-  joinDate: number;
+  formattedJoinDate: string;
   image: string;
   tournaments: number;
   matches: number;
@@ -13,7 +14,7 @@ export class DisplayedMemberDetails {
   losses: number;
   goalsShot: number;
   goalsReceived: number;
-  description: string;
+  description: MemberDescription;
   allRankings: MemberDetailsRanking[];
   latestRanking: MemberDetailsRanking;
   bestRanking: MemberDetailsRanking;

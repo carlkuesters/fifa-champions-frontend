@@ -7,6 +7,7 @@ import {MemberDetailsTournamentResult} from '../../../model/member-details-tourn
 import {MemberDetailsRanking} from '../../../model/member-details-ranking.model';
 import {TournamentOverview} from '../../../model/tournament-overview.model';
 import {AWARD_TITLES} from '../award/award.util';
+import {formatDate} from '../date/date.util';
 import {getMemberImage} from '../member/member.util';
 import {generateSeoId} from '../seo/seo.util';
 import {getTournamentTitle} from '../tournament-details/tournament-details.util';
@@ -39,7 +40,7 @@ export function mapDisplayedMemberDetails(
 
   return {
     name: memberDetails.name,
-    joinDate: memberDetails.joinDate,
+    formattedJoinDate: getFormattedDate_JoinDate(memberDetails.joinDate),
     image: getMemberImage(memberDetails.id),
     tournaments: memberDetails.tournaments,
     matches: memberDetails.matches,
@@ -63,6 +64,10 @@ export function mapDisplayedMemberDetails(
 
 function isBetterRanking(ranking1: MemberDetailsRanking, ranking2: MemberDetailsRanking): boolean {
   return ((ranking1.rank < ranking2.rank) || ((ranking1.rank === ranking2.rank) && (ranking1.date > ranking2.date)));
+}
+
+export function getFormattedDate_JoinDate(timestamp: number): string {
+  return formatDate(timestamp, date => date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear());
 }
 
 export function mapDisplayedTournamentResults(

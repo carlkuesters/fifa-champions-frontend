@@ -1,7 +1,7 @@
 <main *ngIf="displayedMemberDetails | async as displayedMemberDetails">
   <div class="title">
     <h1>{{displayedMemberDetails.name}}</h1>
-    <div>Mitglied seit {{displayedMemberDetails.joinDate}}</div>
+    <div>Mitglied seit {{displayedMemberDetails.formattedJoinDate}}</div>
   </div>
   <div class="info">
     <img [src]="displayedMemberDetails.image">
@@ -24,7 +24,7 @@
     <a [routerLink]="displayedMemberDetails.routeDuel">Duell-Bilanz</a>
   </div>
   <div class="content">
-    <p>{{displayedMemberDetails.description}}</p>
+    <fc-member-description [description]="displayedMemberDetails.description"></fc-member-description>
     <dl class="rankings">
       <dt>Weltrangliste:</dt>
       <dd>{{displayedMemberDetails.latestRanking ? 'Platz ' + displayedMemberDetails.latestRanking.rank : '-'}}</dd>

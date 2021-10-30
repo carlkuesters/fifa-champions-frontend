@@ -6,7 +6,7 @@ import {MATCH_CONSTANTS} from '../../../model/match.constants';
 import {Member} from '../../../model/member.model';
 import {TournamentOverview} from '../../../model/tournament-overview.model';
 import {generateCombinedSeoId, parseCombinedSeoId} from '../seo/seo.util';
-import {getFormattedTournamentDate} from '../tournament-details/tournament-details.util';
+import {getFormattedDate_Tournament} from '../tournament-details/tournament-details.util';
 
 const DUEL_SEO_ID_SEPARATOR = '-vs-';
 
@@ -86,7 +86,7 @@ function mapDisplayedDuelMatch(duelMatch: DuelMatch, tournamentOverviews: Tourna
     title: duelMatch.goals1 + ' : ' + duelMatch.goals2,
     hintRight:
       MATCH_CONSTANTS[duelMatch.type].title
-      + ' ' + getFormattedTournamentDate(tournamentOverview.type, tournamentOverview.date)
+      + ' ' + getFormattedDate_Tournament(tournamentOverview.type, tournamentOverview.date)
       + (tournamentOverview.location ? ', ' + tournamentOverview.location : ''),
     hintBottom: null,
     routeTournament: '/tournament/' + tournamentOverview.id,

@@ -5,6 +5,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 
 import {DropdownComponent} from './dropdown/dropdown.component';
+import {MemberDescriptionComponent} from './member-description/member-description.component';
 import {OrderedPlayersComponent} from './ordered-players/ordered-players.component';
 import {OrderedPlayersEntryComponent} from './ordered-players-entry/ordered-players-entry.component';
 import {RandomMemberInfoComponent} from './random-member-info/random-member-info.component';
@@ -21,6 +22,7 @@ import {YoutubeVideoComponent} from './youtube-video/youtube-video.component';
   ],
   declarations: [
     DropdownComponent,
+    MemberDescriptionComponent,
     OrderedPlayersComponent,
     OrderedPlayersEntryComponent,
     RandomMemberInfoComponent,
@@ -35,6 +37,7 @@ import {YoutubeVideoComponent} from './youtube-video/youtube-video.component';
     RouterModule,
 
     DropdownComponent,
+    MemberDescriptionComponent,
     OrderedPlayersComponent,
     RandomMemberInfoComponent,
     TournamentReferencesComponent,
