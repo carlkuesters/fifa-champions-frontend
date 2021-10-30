@@ -12,7 +12,14 @@ export function mapDisplayedMember(member: Member): DisplayedMember {
   };
 }
 
-export function getMemberImage(memberId: number, size?: number): string {
-  const imageName = (MEMBER_IDS_WITHOUT_OWN_IMAGE.includes(memberId) ? 'icon1' : memberId);
+export function getMemberImage(memberId: number | null, size?: number): string {
+  let imageName;
+  if (memberId === null) {
+    imageName = 'unknown';
+  } else if (MEMBER_IDS_WITHOUT_OWN_IMAGE.includes(memberId)) {
+    imageName = 'default';
+  } else {
+    imageName = memberId;
+  }
   return 'assets/images/members/' + imageName + (size ? '_' + size : '') + '.png';
 }

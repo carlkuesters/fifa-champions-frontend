@@ -91,18 +91,17 @@ function getDisplayedMatches(tournamentMatches: TournamentMatch[], members: Memb
       typeMatches = [];
       displayedTournamentMatches[tournamentMatch.type] = typeMatches;
     }
-    typeMatches.push(tournamentMatch.players.map(tmp => getDisplayedMatchPlayer(tmp, members)));
+    typeMatches.push(tournamentMatch.players.map(p => getDisplayedMatchPlayer(p, members)));
   });
   return displayedTournamentMatches;
 }
 
 function getDisplayedMatchPlayer(tournamentMatchPlayer: TournamentMatchPlayer, members: Member[]): DisplayedTournamentMatchPlayer {
   const member = members.find(m => m.id === tournamentMatchPlayer.id);
+  // TODO: Get name from member and display it
   return {
-    id: member.id,
-    name: member.name,
-    image: getMemberImage(member.id, 32),
-    goals: tournamentMatchPlayer.goals
+    image: getMemberImage(tournamentMatchPlayer.id, 32),
+    goals: ((tournamentMatchPlayer.goals !== null) ? tournamentMatchPlayer.goals.toString() : '?'),
   };
 }
 
