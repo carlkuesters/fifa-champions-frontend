@@ -66,16 +66,6 @@ h1 {
 .rankings {
   margin-top: $baseline-2;
 
-  @include bp-md-max {
-    dt {
-      flex-basis: 40%;
-    }
-
-    dd {
-      flex-basis: 60%;
-    }
-  }
-
   @include bp-lg {
     display: block;
 

@@ -27,9 +27,9 @@
     <fc-member-description [description]="displayedMemberDetails.description"></fc-member-description>
     <dl class="rankings">
       <dt>Weltrangliste:</dt>
-      <dd>{{displayedMemberDetails.latestRanking ? 'Platz ' + displayedMemberDetails.latestRanking.rank : '-'}}</dd>
+      <dd>{{displayedMemberDetails.currentRanking ? 'Platz ' + displayedMemberDetails.currentRanking : '-'}}</dd>
       <dt>Höhepunkt:</dt>
-      <dd>{{displayedMemberDetails.bestRanking ? 'Platz ' + displayedMemberDetails.bestRanking.rank + ' (' + displayedMemberDetails.bestRanking.date + ')' : '-'}}</dd>
+      <dd>{{displayedMemberDetails.bestRanking ? 'Platz ' + displayedMemberDetails.bestRanking.rank + ' (' + displayedMemberDetails.bestRanking.formattedDate + ')' : '-'}}</dd>
     </dl>
     <fc-member-ranking-chart [rankings]="displayedMemberDetails.allRankings"></fc-member-ranking-chart>
     <h2>FC Awards</h2>

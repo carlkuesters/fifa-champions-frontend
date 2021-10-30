@@ -1,4 +1,5 @@
 import {DisplayedMemberDetails} from '../../../model/displayed-member-details.model';
+import {DisplayedMemberDetailsRanking} from '../../../model/displayed-member-details-ranking.model';
 import {DisplayedTournamentReference} from '../../../model/displayed-tournament-reference.model';
 import {Member} from '../../../model/member.model';
 import {MemberDetails} from '../../../model/member-details.model';
@@ -18,11 +19,11 @@ export function mapDisplayedMemberDetails(
   sortTournamentResultsDateOrPlace: boolean,
   members: Member[],
 ): DisplayedMemberDetails {
-  let latestRanking = null;
+  let currentRanking = null;
   let bestRanking = null;
   memberDetails.rankings.forEach(ranking => {
-    if (!latestRanking || (ranking.date > latestRanking.date)) {
-      latestRanking = ranking;
+    if (!currentRanking || (ranking.date > currentRanking.date)) {
+      currentRanking = ranking;
     }
     if (!bestRanking || isBetterRanking(ranking, bestRanking)) {
       bestRanking = ranking;
@@ -50,9 +51,9 @@ export function mapDisplayedMemberDetails(
     goalsShot: memberDetails.goalsShot,
     goalsReceived: memberDetails.goalsReceived,
     description: memberDetails.description,
+    currentRanking: (currentRanking ? currentRanking.rank : null),
+    bestRanking: (bestRanking ? mapDisplayedMemberDetailsRanking(bestRanking) : null),
     allRankings,
-    latestRanking,
-    bestRanking,
     awards,
     tournamentResults:
       mapDisplayedTournamentResults(memberDetails.tournamentResults, tournamentOverviews, sortTournamentResultsDateOrPlace),
@@ -67,6 +68,17 @@ function isBetterRanking(ranking1: MemberDetailsRanking, ranking2: MemberDetails
 }
 
 export function getFormattedDate_JoinDate(timestamp: number): string {
+  return formatDate(timestamp, date => date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear());
+}
+
+function mapDisplayedMemberDetailsRanking(ranking: MemberDetailsRanking): DisplayedMemberDetailsRanking {
+  return {
+    formattedDate: getFormattedDate_Ranking(ranking.date),
+    rank: ranking.rank,
+  };
+}
+
+function getFormattedDate_Ranking(timestamp: number): string {
   return formatDate(timestamp, date => date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear());
 }
 
