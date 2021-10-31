@@ -19,5 +19,6 @@ export class RandomMemberInfoComponent {
   @Input() tournamentType: string;
   @Input() tournamentDate: string;
   @Input() locationName: string;
+  @Input() routeTournament: string;
   @Output() displayNewRandomInfo = new EventEmitter<void>();
 }

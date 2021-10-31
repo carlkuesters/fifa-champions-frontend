@@ -7,4 +7,5 @@ export class DisplayedIsolatedTournamentMeta {
   tournamentType: string;
   tournamentDate: string;
   locationName: string;
+  routeTournament: string;
 }

@@ -1,5 +1,6 @@
 @import '../../../styles/breakpoints';
 @import '../../../styles/sizes';
+@import '../../../styles/fonts/font-awesome';
 
 .title {
   margin-bottom: $baseline;
@@ -14,12 +15,13 @@
     flex-grow: 1;
     margin-bottom: 0;
 
-    :not(:first-child) {
-      margin-left: 5px;
-    }
-
     img {
       height: 28px;
+      margin-right: $baseline / 2;
+    }
+
+    span {
+      flex-grow: 1;
     }
   }
 }
@@ -42,5 +44,5 @@ fc-youtube-video {
 }
 
 .context {
-  font-size: 12px;
+  margin-top: $baseline;
 }

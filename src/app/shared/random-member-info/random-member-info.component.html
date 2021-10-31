@@ -1,11 +1,10 @@
 <div class="title">
   <h2>
-    <span>Zufällig: </span>
     <img *ngIf="memberImage" [src]="memberImage">
-    <span *ngIf="memberName">{{memberName}}</span>
+    <span>{{memberName ? memberName : 'Unbekannt'}}</span>
+    <button class="fa fa-refresh" (click)="displayNewRandomInfo.emit()"></button>
   </h2>
-  <a (click)="displayNewRandomInfo.emit()">Neu laden</a>
 </div>
 <p>{{text}}</p>
 <fc-youtube-video *ngIf="youtubeVideoId" [youtubeVideoId]="youtubeVideoId"></fc-youtube-video>
-<div *ngIf="tournamentType && tournamentDate && locationName" class="context">(Beim {{TOURNAMENT_CONSTANTS[tournamentType].title}} am {{tournamentDate}}, {{locationName}})</div>
+<div *ngIf="routeTournament" class="context">(<a [routerLink]="routeTournament">{{TOURNAMENT_CONSTANTS[tournamentType].title}} am {{tournamentDate}}, {{locationName}}</a>)</div>

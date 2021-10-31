@@ -45,6 +45,7 @@ export function mapDisplayedIsolatedTournamentMeta(
     tournamentType: isolatedTournamentMeta.tournamentType,
     tournamentDate: getFormattedDate_TournamentMetaDate(isolatedTournamentMeta.tournamentDate),
     locationName: isolatedTournamentMeta.locationName,
+    routeTournament: '/tournament/' + isolatedTournamentMeta.tournamentId,
   };
 }
 
