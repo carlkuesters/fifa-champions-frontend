@@ -18,11 +18,11 @@ div {
   flex: 0 0 18px;
   text-align: center;
 
-  @media (min-width: $breakpoint-tournament-group-1) {
+  @media (min-width: $breakpoint-tournament-1) {
     flex-basis: 24px;
   }
 
-  @media (min-width: $breakpoint-tournament-group-2) {
+  @media (min-width: $breakpoint-tournament-2) {
     flex-basis: $baseline-3;
   }
 }
@@ -33,7 +33,7 @@ img {
   margin-left: ($baseline / 2);
   margin-right: ($baseline / 2);
 
-  @media (min-width: $breakpoint-tournament-group-2) {
+  @media (min-width: $breakpoint-tournament-2) {
     flex-basis: 28px;
     height: 28px;
     margin-left: ($baseline / 2);

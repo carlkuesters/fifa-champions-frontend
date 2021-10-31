@@ -98,9 +98,9 @@ function getDisplayedMatches(tournamentMatches: TournamentMatch[], members: Memb
 
 function getDisplayedMatchPlayer(tournamentMatchPlayer: TournamentMatchPlayer, members: Member[]): DisplayedTournamentMatchPlayer {
   const member = members.find(m => m.id === tournamentMatchPlayer.id);
-  // TODO: Get name from member and display it
   return {
     image: getMemberImage(tournamentMatchPlayer.id, 32),
+    name: (member ? member.name : '?'),
     goals: ((tournamentMatchPlayer.goals !== null) ? tournamentMatchPlayer.goals.toString() : '?'),
   };
 }

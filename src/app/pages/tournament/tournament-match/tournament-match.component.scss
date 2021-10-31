@@ -1,11 +1,17 @@
 @import '../../../../styles/breakpoints';
 @import '../../../../styles/sizes';
+@import '../tournament.constants';
 
 :host {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: ($breakpoint-tournament-1 - 1)) {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
 
   @include bp-lg {
     justify-content: flex-end;
@@ -15,9 +21,39 @@
 img {
   flex-basis: 28px;
   height: 28px;
+
+  &:first-child {
+    margin-right: $baseline / 2;
+
+    @media (min-width: $breakpoint-tournament-1) {
+      margin-right: $baseline;
+    }
+  }
+
+  &:last-child {
+    margin-left: $baseline / 2;
+
+    @media (min-width: $breakpoint-tournament-1) {
+      margin-left: $baseline;
+    }
+  }
 }
 
 div {
-  width: $baseline * 6;
+  @include bp-md-max {
+    flex-grow: 1;
+  }
+}
+
+.player-name {
+  flex-basis: $baseline * 8;
+}
+
+.goals {
+  flex-basis: $baseline * 4;
   text-align: center;
+
+  & + .player-name {
+    text-align: right;
+  }
 }

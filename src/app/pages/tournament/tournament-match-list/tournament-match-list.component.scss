@@ -14,7 +14,10 @@ h2 {
 
 li {
   display: block;
-  margin-bottom: 5px;
+
+  &:not(:last-child) {
+    margin-bottom: 5px;
+  }
 
   &:before {
     display: none;

@@ -1,4 +1,5 @@
 export class DisplayedTournamentMatchPlayer {
-  image: string | null;
+  image: string;
+  name: string;
   goals: string;
 }

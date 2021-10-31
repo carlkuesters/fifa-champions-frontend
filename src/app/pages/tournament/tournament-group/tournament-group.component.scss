@@ -10,7 +10,7 @@
   display: flex;
   flex-direction: column;
 
-  @media (max-width: ($breakpoint-tournament-group-2 - 1)) {
+  @media (max-width: ($breakpoint-tournament-2 - 1)) {
     font-size: 12px;
   }
 
@@ -34,11 +34,11 @@
       flex: 0 0 18px;
       text-align: center;
 
-      @media (min-width: $breakpoint-tournament-group-1) {
+      @media (min-width: $breakpoint-tournament-1) {
         flex-basis: 24px;
       }
 
-      @media (min-width: $breakpoint-tournament-group-2) {
+      @media (min-width: $breakpoint-tournament-2) {
         flex-basis: $baseline-3;
       }
     }

@@ -1,9 +1,9 @@
 <main *ngIf="displayedTournamentDetails | async as displayedTournamentDetails">
   <div class="info">
     <h1>{{displayedTournamentDetails.title}}</h1>
-    <div class="location">{{displayedTournamentDetails.location}}</div>
+    <div *ngIf="displayedTournamentDetails.location" class="location">{{displayedTournamentDetails.location}}</div>
     <fc-tournament-meta-list *ngIf="displayedTournamentDetails.meta[TournamentMetaType.NEWS].length > 0" [type]="TournamentMetaType.NEWS" [metas]="displayedTournamentDetails.meta[TournamentMetaType.NEWS]"></fc-tournament-meta-list>
-    <div class="groups">
+    <div *ngIf="displayedTournamentDetails.groups.length > 0" class="groups">
       <fc-tournament-group *ngFor="let group of displayedTournamentDetails.groups" [group]="group"></fc-tournament-group>
     </div>
     <fc-tournament-meta-list *ngIf="displayedTournamentDetails.meta[TournamentMetaType.MATCH].length > 0" [type]="TournamentMetaType.MATCH" [metas]="displayedTournamentDetails.meta[TournamentMetaType.MATCH]"></fc-tournament-meta-list>
