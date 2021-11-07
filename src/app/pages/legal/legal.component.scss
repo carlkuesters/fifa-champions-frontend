@@ -1,0 +1,9 @@
+@import '../../../styles/colors';
+@import '../../../styles/sizes';
+
+h2 {
+  margin-top: $baseline-2;
+  margin-bottom: $baseline;
+  padding-bottom: $baseline;
+  border-bottom: 1px solid $color-light-grey;
+}

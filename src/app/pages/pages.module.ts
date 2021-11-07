@@ -7,6 +7,7 @@ import {DuelComponent} from './duel/duel.component';
 import {FactComponent} from './fact/fact.component';
 import {HomeComponent} from './home/home.component';
 import {HomeTeaserComponent} from './home/home-teaser/home-teaser.component';
+import {LegalComponent} from './legal/legal.component';
 import {MemberComponent} from './member/member.component';
 import {MemberRankingChartComponent} from './member/member-ranking-chart/member-ranking-chart.component';
 import {MembersComponent} from './members/members.component';
@@ -42,6 +43,7 @@ import {TournamentsComponent} from './tournaments/tournaments.component';
     FactComponent,
     HomeComponent,
     HomeTeaserComponent,
+    LegalComponent,
     MemberComponent,
     MemberRankingChartComponent,
     MembersComponent,
