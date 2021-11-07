@@ -1,8 +1,9 @@
 <main>
+  <fc-loading-spinner *ngIf="!(newestRanking | async)"></fc-loading-spinner>
   <ng-container *ngIf="newestRanking | async as newestRanking">
     <h1 [innerHTML]="newestRanking.title"></h1>
-    <fc-ordered-players  [players]="newestRanking.players"></fc-ordered-players>
+    <fc-ordered-players [players]="newestRanking.players"></fc-ordered-players>
+    <fc-rankings-chart *ngIf="chartRankings | async as chartRankings" [rankings]="chartRankings"></fc-rankings-chart>
+    <fc-ranking-list *ngIf="allRankings | async as allRankings" [rankings]="allRankings"></fc-ranking-list>
   </ng-container>
-  <fc-rankings-chart *ngIf="chartRankings | async as chartRankings" [rankings]="chartRankings"></fc-rankings-chart>
-  <fc-ranking-list *ngIf="allRankings | async as allRankings" [rankings]="allRankings"></fc-ranking-list>
 </main>

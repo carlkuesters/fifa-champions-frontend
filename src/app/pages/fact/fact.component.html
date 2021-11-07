@@ -1,5 +1,6 @@
 <main>
   <h1>Interessanter Fakt</h1>
+  <fc-loading-spinner *ngIf="!(displayedFact | async)"></fc-loading-spinner>
   <fc-random-member-info *ngIf="displayedFact | async as displayedFact"
                          [memberId]="displayedFact.memberId"
                          [memberName]="displayedFact.memberName"

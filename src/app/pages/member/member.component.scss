@@ -8,7 +8,11 @@ main {
   flex-direction: column;
   position: relative;
   padding: 0;
-  min-height: 360px;
+}
+
+fc-loading-spinner {
+  margin-top: $baseline-2;
+  margin-bottom: $baseline-2;
 }
 
 .title {

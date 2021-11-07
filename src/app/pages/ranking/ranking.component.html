@@ -1,4 +1,7 @@
-<main *ngIf="ranking | async as ranking">
-  <h1 [innerHTML]="ranking.title"></h1>
-  <fc-ordered-players [players]="ranking.players"></fc-ordered-players>
+<main>
+  <fc-loading-spinner *ngIf="!(ranking | async)"></fc-loading-spinner>
+  <ng-container *ngIf="ranking | async as ranking">
+    <h1 [innerHTML]="ranking.title"></h1>
+    <fc-ordered-players [players]="ranking.players"></fc-ordered-players>
+  </ng-container>
 </main>

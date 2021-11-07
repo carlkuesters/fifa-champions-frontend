@@ -5,6 +5,7 @@
     <span class="vs">vs</span>
     <fc-dropdown name="memberId2" placeholder="Spieler auswählen" [options]="memberDropdownOptions" [value]="duelMemberId2 | async" (optionSelected)="selectMember2($event)"></fc-dropdown>
   </div>
+  <fc-loading-spinner *ngIf="(duelMemberId1 | async) && (duelMemberId2 | async) && ((duelMemberId1 | async) !== (duelMemberId2 | async)) && !(displayedDuel | async)"></fc-loading-spinner>
   <ng-container *ngIf="displayedDuel | async as displayedDuel">
     <h2>Statistik</h2>
     <ul>

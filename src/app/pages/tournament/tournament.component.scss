@@ -15,6 +15,10 @@ main {
   }
 }
 
+fc-loading-spinner {
+  flex-grow: 1;
+}
+
 .location {
   margin-bottom: $baseline-2;
 }

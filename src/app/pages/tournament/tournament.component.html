@@ -1,23 +1,26 @@
-<main *ngIf="displayedTournamentDetails | async as displayedTournamentDetails">
-  <div class="info">
-    <h1>{{displayedTournamentDetails.title}}</h1>
-    <div *ngIf="displayedTournamentDetails.location" class="location">{{displayedTournamentDetails.location}}</div>
-    <fc-tournament-meta-list *ngIf="displayedTournamentDetails.meta[TournamentMetaType.NEWS].length > 0" [type]="TournamentMetaType.NEWS" [metas]="displayedTournamentDetails.meta[TournamentMetaType.NEWS]"></fc-tournament-meta-list>
-    <div *ngIf="displayedTournamentDetails.groups.length > 0" class="groups">
-      <fc-tournament-group *ngFor="let group of displayedTournamentDetails.groups" [group]="group"></fc-tournament-group>
+<main>
+  <fc-loading-spinner *ngIf="!(displayedTournamentDetails | async)"></fc-loading-spinner>
+  <ng-container *ngIf="displayedTournamentDetails | async as displayedTournamentDetails">
+    <div class="info">
+      <h1>{{displayedTournamentDetails.title}}</h1>
+      <div *ngIf="displayedTournamentDetails.location" class="location">{{displayedTournamentDetails.location}}</div>
+      <fc-tournament-meta-list *ngIf="displayedTournamentDetails.meta[TournamentMetaType.NEWS].length > 0" [type]="TournamentMetaType.NEWS" [metas]="displayedTournamentDetails.meta[TournamentMetaType.NEWS]"></fc-tournament-meta-list>
+      <div *ngIf="displayedTournamentDetails.groups.length > 0" class="groups">
+        <fc-tournament-group *ngFor="let group of displayedTournamentDetails.groups" [group]="group"></fc-tournament-group>
+      </div>
+      <fc-tournament-meta-list *ngIf="displayedTournamentDetails.meta[TournamentMetaType.MATCH].length > 0" [type]="TournamentMetaType.MATCH" [metas]="displayedTournamentDetails.meta[TournamentMetaType.MATCH]"></fc-tournament-meta-list>
+      <fc-tournament-meta-list *ngIf="displayedTournamentDetails.meta[TournamentMetaType.GOAL].length > 0" [type]="TournamentMetaType.GOAL" [metas]="displayedTournamentDetails.meta[TournamentMetaType.GOAL]"></fc-tournament-meta-list>
+      <fc-tournament-meta-list *ngIf="displayedTournamentDetails.meta[TournamentMetaType.SCORER].length > 0" [type]="TournamentMetaType.SCORER" [metas]="displayedTournamentDetails.meta[TournamentMetaType.SCORER]"></fc-tournament-meta-list>
+      <fc-tournament-meta-list *ngIf="displayedTournamentDetails.meta[TournamentMetaType.ACTION].length > 0" [type]="TournamentMetaType.ACTION" [metas]="displayedTournamentDetails.meta[TournamentMetaType.ACTION]"></fc-tournament-meta-list>
+      <fc-tournament-meta-list *ngIf="displayedTournamentDetails.meta[TournamentMetaType.SCANDAL].length > 0" [type]="TournamentMetaType.SCANDAL" [metas]="displayedTournamentDetails.meta[TournamentMetaType.SCANDAL]"></fc-tournament-meta-list>
+      <fc-tournament-meta-list *ngIf="displayedTournamentDetails.meta[TournamentMetaType.QUOTE].length > 0" [type]="TournamentMetaType.QUOTE" [metas]="displayedTournamentDetails.meta[TournamentMetaType.QUOTE]"></fc-tournament-meta-list>
     </div>
-    <fc-tournament-meta-list *ngIf="displayedTournamentDetails.meta[TournamentMetaType.MATCH].length > 0" [type]="TournamentMetaType.MATCH" [metas]="displayedTournamentDetails.meta[TournamentMetaType.MATCH]"></fc-tournament-meta-list>
-    <fc-tournament-meta-list *ngIf="displayedTournamentDetails.meta[TournamentMetaType.GOAL].length > 0" [type]="TournamentMetaType.GOAL" [metas]="displayedTournamentDetails.meta[TournamentMetaType.GOAL]"></fc-tournament-meta-list>
-    <fc-tournament-meta-list *ngIf="displayedTournamentDetails.meta[TournamentMetaType.SCORER].length > 0" [type]="TournamentMetaType.SCORER" [metas]="displayedTournamentDetails.meta[TournamentMetaType.SCORER]"></fc-tournament-meta-list>
-    <fc-tournament-meta-list *ngIf="displayedTournamentDetails.meta[TournamentMetaType.ACTION].length > 0" [type]="TournamentMetaType.ACTION" [metas]="displayedTournamentDetails.meta[TournamentMetaType.ACTION]"></fc-tournament-meta-list>
-    <fc-tournament-meta-list *ngIf="displayedTournamentDetails.meta[TournamentMetaType.SCANDAL].length > 0" [type]="TournamentMetaType.SCANDAL" [metas]="displayedTournamentDetails.meta[TournamentMetaType.SCANDAL]"></fc-tournament-meta-list>
-    <fc-tournament-meta-list *ngIf="displayedTournamentDetails.meta[TournamentMetaType.QUOTE].length > 0" [type]="TournamentMetaType.QUOTE" [metas]="displayedTournamentDetails.meta[TournamentMetaType.QUOTE]"></fc-tournament-meta-list>
-  </div>
-  <div class="matches">
-    <fc-tournament-match-list *ngIf="displayedTournamentDetails.matches[MatchType.GROUP] && displayedTournamentDetails.matches[MatchType.GROUP].length > 0" [type]="MatchType.GROUP" [matches]="displayedTournamentDetails.matches[MatchType.GROUP]"></fc-tournament-match-list>
-    <fc-tournament-match-list *ngIf="displayedTournamentDetails.matches[MatchType.EIGHTHFINAL] && displayedTournamentDetails.matches[MatchType.EIGHTHFINAL].length > 0" [type]="MatchType.EIGHTHFINAL" [matches]="displayedTournamentDetails.matches[MatchType.EIGHTHFINAL]"></fc-tournament-match-list>
-    <fc-tournament-match-list *ngIf="displayedTournamentDetails.matches[MatchType.QUARTERFINAL] && displayedTournamentDetails.matches[MatchType.QUARTERFINAL].length > 0" [type]="MatchType.QUARTERFINAL" [matches]="displayedTournamentDetails.matches[MatchType.QUARTERFINAL]"></fc-tournament-match-list>
-    <fc-tournament-match-list *ngIf="displayedTournamentDetails.matches[MatchType.SEMIFINAL] && displayedTournamentDetails.matches[MatchType.SEMIFINAL].length > 0" [type]="MatchType.SEMIFINAL" [matches]="displayedTournamentDetails.matches[MatchType.SEMIFINAL]"></fc-tournament-match-list>
-    <fc-tournament-match-list *ngIf="displayedTournamentDetails.matches[MatchType.FINAL] && displayedTournamentDetails.matches[MatchType.FINAL].length > 0" [type]="MatchType.FINAL" [matches]="displayedTournamentDetails.matches[MatchType.FINAL]"></fc-tournament-match-list>
-  </div>
+    <div class="matches">
+      <fc-tournament-match-list *ngIf="displayedTournamentDetails.matches[MatchType.GROUP] && displayedTournamentDetails.matches[MatchType.GROUP].length > 0" [type]="MatchType.GROUP" [matches]="displayedTournamentDetails.matches[MatchType.GROUP]"></fc-tournament-match-list>
+      <fc-tournament-match-list *ngIf="displayedTournamentDetails.matches[MatchType.EIGHTHFINAL] && displayedTournamentDetails.matches[MatchType.EIGHTHFINAL].length > 0" [type]="MatchType.EIGHTHFINAL" [matches]="displayedTournamentDetails.matches[MatchType.EIGHTHFINAL]"></fc-tournament-match-list>
+      <fc-tournament-match-list *ngIf="displayedTournamentDetails.matches[MatchType.QUARTERFINAL] && displayedTournamentDetails.matches[MatchType.QUARTERFINAL].length > 0" [type]="MatchType.QUARTERFINAL" [matches]="displayedTournamentDetails.matches[MatchType.QUARTERFINAL]"></fc-tournament-match-list>
+      <fc-tournament-match-list *ngIf="displayedTournamentDetails.matches[MatchType.SEMIFINAL] && displayedTournamentDetails.matches[MatchType.SEMIFINAL].length > 0" [type]="MatchType.SEMIFINAL" [matches]="displayedTournamentDetails.matches[MatchType.SEMIFINAL]"></fc-tournament-match-list>
+      <fc-tournament-match-list *ngIf="displayedTournamentDetails.matches[MatchType.FINAL] && displayedTournamentDetails.matches[MatchType.FINAL].length > 0" [type]="MatchType.FINAL" [matches]="displayedTournamentDetails.matches[MatchType.FINAL]"></fc-tournament-match-list>
+    </div>
+  </ng-container>
 </main>

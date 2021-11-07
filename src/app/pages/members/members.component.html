@@ -1,6 +1,9 @@
 <main *ngIf="displayedMembers | async as displayedMembers">
-  <h1>Mitglieder ({{displayedMembers.length}})</h1>
-  <div class="members">
-    <fc-members-entry *ngFor="let member of displayedMembers" [member]="member"></fc-members-entry>
-  </div>
+  <fc-loading-spinner *ngIf="displayedMembers.length === 0"></fc-loading-spinner>
+  <ng-container *ngIf="displayedMembers.length > 0">
+    <h1>Mitglieder ({{displayedMembers.length}})</h1>
+    <div class="members">
+      <fc-members-entry *ngFor="let member of displayedMembers" [member]="member"></fc-members-entry>
+    </div>
+  </ng-container>
 </main>

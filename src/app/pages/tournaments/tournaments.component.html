@@ -1,4 +1,7 @@
 <main>
-  <h1>Turniere ({{tournamentCount | async}})</h1>
-  <fc-tournament-year *ngFor="let tournamentYear of (tournamentYears | async)" [tournamentYear]="tournamentYear"></fc-tournament-year>
+  <fc-loading-spinner *ngIf="!(tournamentYears | async)"></fc-loading-spinner>
+  <ng-container *ngIf="tournamentYears | async as tournamentYears">
+    <h1>Turniere ({{tournamentCount | async}})</h1>
+    <fc-tournament-year *ngFor="let tournamentYear of tournamentYears" [tournamentYear]="tournamentYear"></fc-tournament-year>
+  </ng-container>
 </main>

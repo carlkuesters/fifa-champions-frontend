@@ -1,5 +1,6 @@
 <main>
   <h1>Awards</h1>
+  <fc-loading-spinner *ngIf="!(awardYears | async)"></fc-loading-spinner>
   <ng-container *ngFor="let awardYear of (awardYears | async)">
     <h2>{{awardYear.year}}</h2>
     <div class="awards">

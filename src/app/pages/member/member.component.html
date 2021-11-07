@@ -1,57 +1,60 @@
-<main *ngIf="displayedMemberDetails | async as displayedMemberDetails">
-  <div class="title">
-    <h1>{{displayedMemberDetails.name}}</h1>
-    <div>Mitglied seit {{displayedMemberDetails.formattedJoinDate}}</div>
-  </div>
-  <div class="info">
-    <img [src]="displayedMemberDetails.image">
-    <dl>
-      <dt>Turniere</dt>
-      <dd>{{displayedMemberDetails.tournaments}}</dd>
-      <dt>Spiele</dt>
-      <dd>{{displayedMemberDetails.matches}}</dd>
-      <dt>Tore</dt>
-      <dd>{{displayedMemberDetails.goalsShot}}</dd>
-      <dt>Gegentore</dt>
-      <dd>{{displayedMemberDetails.goalsReceived}}</dd>
-      <dt>Siege</dt>
-      <dd>{{displayedMemberDetails.wins}}</dd>
-      <dt>Unentsch.</dt>
-      <dd>{{displayedMemberDetails.draws}}</dd>
-      <dt>Niederl.</dt>
-      <dd>{{displayedMemberDetails.losses}}</dd>
-    </dl>
-    <a [routerLink]="displayedMemberDetails.routeDuel">Duell-Bilanz</a>
-  </div>
-  <div class="content">
-    <fc-member-description [description]="displayedMemberDetails.description"></fc-member-description>
-    <dl class="rankings">
-      <dt>Weltrangliste:</dt>
-      <dd>{{displayedMemberDetails.currentRanking ? 'Platz ' + displayedMemberDetails.currentRanking : '-'}}</dd>
-      <dt>Höhepunkt:</dt>
-      <dd>{{displayedMemberDetails.bestRanking ? 'Platz ' + displayedMemberDetails.bestRanking.rank + ' (' + displayedMemberDetails.bestRanking.formattedDate + ')' : '-'}}</dd>
-    </dl>
-    <fc-member-ranking-chart [rankings]="displayedMemberDetails.allRankings"></fc-member-ranking-chart>
-    <h2>FC Awards</h2>
-    <ul class="awards">
-      <li *ngFor="let award of displayedMemberDetails.awards">
-        <img src="assets/images/award_100.png">
-        <span>{{award.title + ' ' + award.year}}</span>
-      </li>
-    </ul>
-    <h2>Turniere</h2>
-    <div class="button-row">
-      <button class="fa fa-trophy" (click)="sortTournamentResults(false)"></button>
-      <button class="fa fa-calendar" (click)="sortTournamentResults(true)"></button>
+<main>
+  <fc-loading-spinner *ngIf="!(displayedMemberDetails | async)"></fc-loading-spinner>
+  <ng-container *ngIf="displayedMemberDetails | async as displayedMemberDetails">
+    <div class="title">
+      <h1>{{displayedMemberDetails.name}}</h1>
+      <div>Mitglied seit {{displayedMemberDetails.formattedJoinDate}}</div>
     </div>
-    <fc-tournament-references [tournamentReferences]="displayedMemberDetails.tournamentResults"></fc-tournament-references>
-    <ng-container *ngIf="displayedMemberDetails.highestWin">
-      <h2>Höchster Sieg</h2>
-      <fc-tournament-references [tournamentReferences]="[displayedMemberDetails.highestWin]"></fc-tournament-references>
-    </ng-container>
-    <ng-container *ngIf="displayedMemberDetails.highestLoss">
-      <h2>Höchste Niederlage</h2>
-      <fc-tournament-references [tournamentReferences]="[displayedMemberDetails.highestLoss]"></fc-tournament-references>
-    </ng-container>
-  </div>
+    <div class="info">
+      <img [src]="displayedMemberDetails.image">
+      <dl>
+        <dt>Turniere</dt>
+        <dd>{{displayedMemberDetails.tournaments}}</dd>
+        <dt>Spiele</dt>
+        <dd>{{displayedMemberDetails.matches}}</dd>
+        <dt>Tore</dt>
+        <dd>{{displayedMemberDetails.goalsShot}}</dd>
+        <dt>Gegentore</dt>
+        <dd>{{displayedMemberDetails.goalsReceived}}</dd>
+        <dt>Siege</dt>
+        <dd>{{displayedMemberDetails.wins}}</dd>
+        <dt>Unentsch.</dt>
+        <dd>{{displayedMemberDetails.draws}}</dd>
+        <dt>Niederl.</dt>
+        <dd>{{displayedMemberDetails.losses}}</dd>
+      </dl>
+      <a [routerLink]="displayedMemberDetails.routeDuel">Duell-Bilanz</a>
+    </div>
+    <div class="content">
+      <fc-member-description [description]="displayedMemberDetails.description"></fc-member-description>
+      <dl class="rankings">
+        <dt>Weltrangliste:</dt>
+        <dd>{{displayedMemberDetails.currentRanking ? 'Platz ' + displayedMemberDetails.currentRanking : '-'}}</dd>
+        <dt>Höhepunkt:</dt>
+        <dd>{{displayedMemberDetails.bestRanking ? 'Platz ' + displayedMemberDetails.bestRanking.rank + ' (' + displayedMemberDetails.bestRanking.formattedDate + ')' : '-'}}</dd>
+      </dl>
+      <fc-member-ranking-chart [rankings]="displayedMemberDetails.allRankings"></fc-member-ranking-chart>
+      <h2>FC Awards</h2>
+      <ul class="awards">
+        <li *ngFor="let award of displayedMemberDetails.awards">
+          <img src="assets/images/award_100.png">
+          <span>{{award.title + ' ' + award.year}}</span>
+        </li>
+      </ul>
+      <h2>Turniere</h2>
+      <div class="button-row">
+        <button class="fa fa-trophy" (click)="sortTournamentResults(false)"></button>
+        <button class="fa fa-calendar" (click)="sortTournamentResults(true)"></button>
+      </div>
+      <fc-tournament-references [tournamentReferences]="displayedMemberDetails.tournamentResults"></fc-tournament-references>
+      <ng-container *ngIf="displayedMemberDetails.highestWin">
+        <h2>Höchster Sieg</h2>
+        <fc-tournament-references [tournamentReferences]="[displayedMemberDetails.highestWin]"></fc-tournament-references>
+      </ng-container>
+      <ng-container *ngIf="displayedMemberDetails.highestLoss">
+        <h2>Höchste Niederlage</h2>
+        <fc-tournament-references [tournamentReferences]="[displayedMemberDetails.highestLoss]"></fc-tournament-references>
+      </ng-container>
+    </div>
+  </ng-container>
 </main>

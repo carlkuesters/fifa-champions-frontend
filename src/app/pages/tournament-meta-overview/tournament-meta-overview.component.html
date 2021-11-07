@@ -1,18 +1,21 @@
 <main>
   <h1>{{title}}</h1>
-  <ul>
-    <li>Insgesamt: {{tournamentMetaTotalCount | async}}</li>
-  </ul>
-  <fc-random-member-info *ngIf="displayedIsolatedTournamentMeta | async as displayedIsolatedTournamentMeta"
-                         [memberId]="displayedIsolatedTournamentMeta.memberId"
-                         [memberName]="displayedIsolatedTournamentMeta.memberName"
-                         [memberImage]="displayedIsolatedTournamentMeta.memberImage"
-                         [text]="displayedIsolatedTournamentMeta.text"
-                         [youtubeVideoId]="displayedIsolatedTournamentMeta.youtubeVideoId"
-                         [tournamentType]="displayedIsolatedTournamentMeta.tournamentType"
-                         [tournamentDate]="displayedIsolatedTournamentMeta.tournamentDate"
-                         [locationName]="displayedIsolatedTournamentMeta.locationName"
-                         [routeTournament]="displayedIsolatedTournamentMeta.routeTournament"
-                         (displayNewRandomInfo)="displayNewRandomMeta()">
-  </fc-random-member-info>
+  <fc-loading-spinner *ngIf="!((tournamentMetaTotalCount | async) && (displayedIsolatedTournamentMeta | async))"></fc-loading-spinner>
+  <ng-container *ngIf="((tournamentMetaTotalCount | async) && (displayedIsolatedTournamentMeta | async))">
+    <ul>
+      <li>Insgesamt: {{tournamentMetaTotalCount | async}}</li>
+    </ul>
+    <fc-random-member-info *ngIf="displayedIsolatedTournamentMeta | async as displayedIsolatedTournamentMeta"
+                           [memberId]="displayedIsolatedTournamentMeta.memberId"
+                           [memberName]="displayedIsolatedTournamentMeta.memberName"
+                           [memberImage]="displayedIsolatedTournamentMeta.memberImage"
+                           [text]="displayedIsolatedTournamentMeta.text"
+                           [youtubeVideoId]="displayedIsolatedTournamentMeta.youtubeVideoId"
+                           [tournamentType]="displayedIsolatedTournamentMeta.tournamentType"
+                           [tournamentDate]="displayedIsolatedTournamentMeta.tournamentDate"
+                           [locationName]="displayedIsolatedTournamentMeta.locationName"
+                           [routeTournament]="displayedIsolatedTournamentMeta.routeTournament"
+                           (displayNewRandomInfo)="displayNewRandomMeta()">
+    </fc-random-member-info>
+  </ng-container>
 </main>
