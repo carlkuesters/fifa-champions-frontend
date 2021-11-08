@@ -57,8 +57,8 @@ export function mapDisplayedMemberDetails(
     awards,
     tournamentResults:
       mapDisplayedTournamentResults(memberDetails.tournamentResults, tournamentOverviews, sortTournamentResultsDateOrPlace),
-    highestWin: mapDisplayedHighestMatch(memberDetails.highestWin, tournamentOverviews, members),
-    highestLoss: mapDisplayedHighestMatch(memberDetails.highestLoss, tournamentOverviews, members),
+    highestWin: (memberDetails.highestWin ? mapDisplayedHighestMatch(memberDetails.highestWin, tournamentOverviews, members) : null),
+    highestLoss: (memberDetails.highestLoss ? mapDisplayedHighestMatch(memberDetails.highestLoss, tournamentOverviews, members) : null),
     routeDuel: '/duel/' + generateSeoId({ id: memberDetails.id, title: memberDetails.name }),
   };
 }

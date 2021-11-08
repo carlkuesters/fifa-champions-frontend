@@ -34,13 +34,15 @@
         <dd>{{displayedMemberDetails.bestRanking ? 'Platz ' + displayedMemberDetails.bestRanking.rank + ' (' + displayedMemberDetails.bestRanking.formattedDate + ')' : '-'}}</dd>
       </dl>
       <fc-member-ranking-chart [rankings]="displayedMemberDetails.allRankings"></fc-member-ranking-chart>
-      <h2>FC Awards</h2>
-      <ul class="awards">
-        <li *ngFor="let award of displayedMemberDetails.awards">
-          <img src="assets/images/award_100.png">
-          <span>{{award.title + ' ' + award.year}}</span>
-        </li>
-      </ul>
+      <ng-container *ngIf="displayedMemberDetails.awards.length > 0">
+        <h2>FC Awards</h2>
+        <ul class="awards">
+          <li *ngFor="let award of displayedMemberDetails.awards">
+            <img src="assets/images/award_100.png">
+            <span>{{award.title + ' ' + award.year}}</span>
+          </li>
+        </ul>
+      </ng-container>
       <h2>Turniere</h2>
       <div class="button-row">
         <button class="fa fa-trophy" (click)="sortTournamentResults(false)"></button>

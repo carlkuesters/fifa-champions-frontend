@@ -21,7 +21,7 @@ export class DisplayedMemberDetails {
   allRankings: MemberDetailsRanking[];
   awards: DisplayedMemberDetailsAward[];
   tournamentResults: DisplayedTournamentReference[];
-  highestWin: DisplayedTournamentReference;
-  highestLoss: DisplayedTournamentReference;
+  highestWin: DisplayedTournamentReference | null;
+  highestLoss: DisplayedTournamentReference | null;
   routeDuel: string;
 }
