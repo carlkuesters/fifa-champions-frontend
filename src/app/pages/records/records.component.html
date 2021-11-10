@@ -5,6 +5,7 @@
     <button *ngIf="sortAscOrDesc | async" class="fa fa-sort-amount-asc" (click)="sort(false)"></button>
     <button *ngIf="(sortAscOrDesc | async) === false" class="fa fa-sort-amount-desc" (click)="sort(true)"></button>
   </div>
+  <blockquote *ngIf="(selectedType | async) === 'elo'">Die <a href="https://de.wikipedia.org/wiki/Elo-Zahl">Elo-Zahl</a> ist eine Wertungszahl, die die Spielstärke von Schach- und Gospielern beschreibt. Das Konzept wurde inzwischen für verschiedene weitere Sportarten adaptiert.</blockquote>
   <fc-loading-spinner *ngIf="(selectedType | async) && !(records | async)"></fc-loading-spinner>
   <fc-ordered-players *ngIf="records | async as records" [players]="records"></fc-ordered-players>
 </main>

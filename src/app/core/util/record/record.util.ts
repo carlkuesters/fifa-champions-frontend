@@ -28,7 +28,9 @@ export function mapDisplayedRecords(records: Record[], type: string, sortAscOrDe
 }
 
 function getFormattedValue(value: number, type: string): string {
-  if (type === 'winrate') {
+  if (type === 'elo') {
+    return Math.round(value).toString();
+  } else if (type === 'winrate') {
     return (value * 100).toFixed(2) + '%';
   } else if (type === 'member_since') {
     return getFormattedDate_JoinDate(value);

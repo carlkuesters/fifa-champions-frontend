@@ -9,6 +9,7 @@ import {DropdownOption} from '../../model/dropdown-option.model';
 import {OrderedPlayerEntry} from '../../model/ordered-player-entry.model';
 
 const RECORD_TYPES: DropdownOption[] = [
+  { value: 'elo', title: 'Elo' },
   { value: 'winrate', title: 'Siegesrate' },
   { value: 'tournament_place', title: 'Platzierung / Turnier' },
   { value: 'tournament_participations', title: 'Turnierteilnahmen' },

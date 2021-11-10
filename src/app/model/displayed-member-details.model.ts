@@ -10,11 +10,12 @@ export class DisplayedMemberDetails {
   image: string;
   tournaments: number;
   matches: number;
+  goalsShot: number;
+  goalsReceived: number;
   wins: number;
   draws: number;
   losses: number;
-  goalsShot: number;
-  goalsReceived: number;
+  elo: number;
   description: MemberDescription;
   currentRanking: number | null;
   bestRanking: DisplayedMemberDetailsRanking | null;

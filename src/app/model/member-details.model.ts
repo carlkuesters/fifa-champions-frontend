@@ -22,4 +22,5 @@ export class MemberDetails {
   tournamentResults: MemberDetailsTournamentResult[];
   highestWin: MemberDetailsHighestMatch;
   highestLoss: MemberDetailsHighestMatch;
+  elo: number;
 }

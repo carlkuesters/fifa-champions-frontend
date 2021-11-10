@@ -29,24 +29,34 @@ export function mapDisplayedDuel(duel: Duel, members: Member[], tournamentOvervi
   const member1 = members.find(m => m.id === duel.memberId1);
   const member2 = members.find(m => m.id === duel.memberId2);
 
-  let favourite;
-  let favouritePercentageWin = getPercentage(duel.wins1, duel.matches.length);
-  const favouritePercentageDraw = getPercentage(duel.draws, duel.matches.length);
-  let favouritePercentageLoss = getPercentage(duel.wins2, duel.matches.length);
-  if (duel.wins1 > duel.wins2) {
-    favourite = member1.name;
-  } else {
-    favourite = ((duel.wins2 > duel.wins1) ? member2.name : 'Beide');
-    const tmp = favouritePercentageWin;
-    favouritePercentageWin = favouritePercentageLoss;
-    favouritePercentageLoss = tmp;
-  }
-
   let averageGoals1 = null;
   let averageGoals2 = null;
   if (duel.matches.length > 0) {
     averageGoals1 = Math.round(duel.goals1 / duel.matches.length);
     averageGoals2 = Math.round(duel.goals2 / duel.matches.length);
+  }
+
+  let favouriteByMatches;
+  let favouriteByMatchesPercentageWin = getPercentage(duel.wins1, duel.matches.length);
+  const favouriteByMatchesPercentageDraw = getPercentage(duel.draws, duel.matches.length);
+  let favouriteByMatchesPercentageLoss = getPercentage(duel.wins2, duel.matches.length);
+  if (duel.wins1 > duel.wins2) {
+    favouriteByMatches = member1.name;
+  } else {
+    favouriteByMatches = ((duel.wins2 > duel.wins1) ? member2.name : 'Beide');
+    const tmp = favouriteByMatchesPercentageWin;
+    favouriteByMatchesPercentageWin = favouriteByMatchesPercentageLoss;
+    favouriteByMatchesPercentageLoss = tmp;
+  }
+
+  let favouriteByElo;
+  let favouriteByEloWinProbability;
+  if (duel.eloWinProbability1 > duel.eloWinProbability2) {
+    favouriteByElo = member1.name;
+    favouriteByEloWinProbability = duel.eloWinProbability1;
+  } else {
+    favouriteByElo = ((duel.eloWinProbability2 > duel.eloWinProbability1) ? member2.name : 'Beide');
+    favouriteByEloWinProbability = duel.eloWinProbability2;
   }
 
   return {
@@ -64,10 +74,12 @@ export function mapDisplayedDuel(duel: Duel, members: Member[], tournamentOvervi
     averageGoals2,
     highestWin1: (duel.highestWin1 ? mapDisplayedDuelMatch(duel.highestWin1, tournamentOverviews) : null),
     highestWin2: (duel.highestWin2 ? mapDisplayedDuelMatch(duel.highestWin2, tournamentOverviews) : null),
-    favourite,
-    favouritePercentageWin,
-    favouritePercentageDraw,
-    favouritePercentageLoss,
+    favouriteByMatches,
+    favouriteByMatchesPercentageWin,
+    favouriteByMatchesPercentageDraw,
+    favouriteByMatchesPercentageLoss,
+    favouriteByElo,
+    favouriteByEloPercentageWin: Number((favouriteByEloWinProbability * 100).toFixed(2)),
     matches: duel.matches.map(match => mapDisplayedDuelMatch(match, tournamentOverviews)),
   };
 }

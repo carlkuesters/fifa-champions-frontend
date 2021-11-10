@@ -10,5 +10,7 @@ export class Duel {
   goals2: number;
   highestWin1: DuelMatch;
   highestWin2: DuelMatch;
+  eloWinProbability1: number;
+  eloWinProbability2: number;
   matches: DuelMatch[];
 }

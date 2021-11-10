@@ -20,7 +20,8 @@
         <ng-container *ngIf="displayedDuel.averageGoals1">{{displayedDuel.averageGoals1}} : {{displayedDuel.averageGoals2}}</ng-container>
         <ng-container *ngIf="!displayedDuel.averageGoals1">-</ng-container>
       </li>
-      <li>Favorit: {{displayedDuel.favourite}}, mit einer Bilanz von {{displayedDuel.favouritePercentageWin}}% Siegen, {{displayedDuel.favouritePercentageDraw}}% Unentschieden und {{displayedDuel.favouritePercentageLoss}}% Niederlagen</li>
+      <li>Favorit nach Duellen: {{displayedDuel.favouriteByMatches}}, mit einer Bilanz von {{displayedDuel.favouriteByMatchesPercentageWin}}% Siegen, {{displayedDuel.favouriteByMatchesPercentageDraw}}% Unentschieden und {{displayedDuel.favouriteByMatchesPercentageLoss}}% Niederlagen</li>
+      <li>Favorit nach Elo: {{displayedDuel.favouriteByElo}}, mit einer Sieges-Wahrscheinlichkeit von {{displayedDuel.favouriteByEloPercentageWin}}%</li>
     </ul>
     <ng-container *ngIf="displayedDuel.highestWin1">
       <h2>Höchster Sieg {{displayedDuel.memberName1}}</h2>

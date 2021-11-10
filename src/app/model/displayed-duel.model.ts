@@ -15,9 +15,11 @@ export class DisplayedDuel {
   averageGoals2: number | null;
   highestWin1: DisplayedTournamentReference | null;
   highestWin2: DisplayedTournamentReference | null;
-  favourite: string;
-  favouritePercentageWin: number;
-  favouritePercentageDraw: number;
-  favouritePercentageLoss: number;
+  favouriteByMatches: string;
+  favouriteByMatchesPercentageWin: number;
+  favouriteByMatchesPercentageDraw: number;
+  favouriteByMatchesPercentageLoss: number;
+  favouriteByElo: string;
+  favouriteByEloPercentageWin: number;
   matches: DisplayedTournamentReference[];
 }

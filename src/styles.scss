@@ -166,6 +166,23 @@ dd {
   flex-basis: 40%;
 }
 
+blockquote {
+  margin: $baseline-2 0px;
+  padding: 10px;
+  background: $color-lighter-grey;
+  border-left: 10px solid $color-light-grey;
+  quotes: '\201C' '\201D' '\2018' '\2019';
+
+  &:before {
+    content: open-quote;
+    vertical-align: -30px;
+    margin-right: 7px;
+    line-height: 0px;
+    font-size: 64px;
+    color: $color-light-grey;
+  }
+}
+
 @include bp-md {
   .sm-max {
     display: none;
