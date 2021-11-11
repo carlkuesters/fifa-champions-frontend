@@ -10,10 +10,10 @@ if [ -n "$VERSION" ]; then
 fi
 
 # Build
-sed -i 's/<base href=\"\/\">/<base href=\"\/new\/\">/g' src/index.html
 npm install
 npm run build
 
 # Deploy
+rm -rf "${TARGET}assets"
 rm -rf "${TARGET}"*
 mv dist/fifa-champions/* "${TARGET}"
