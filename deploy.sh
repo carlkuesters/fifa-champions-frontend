@@ -15,5 +15,5 @@ npm run build
 
 # Deploy
 rm -rf "${TARGET}assets"
-rm -rf "${TARGET}"*
+rm -f "${TARGET}"*
 mv dist/fifa-champions/* "${TARGET}"
