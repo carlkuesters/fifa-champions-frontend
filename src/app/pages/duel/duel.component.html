@@ -17,8 +17,8 @@
       <li>{{displayedDuel.memberName2}} schoss bisher: {{displayedDuel.totalGoals2}} Tore</li>
       <li>
         Durchschn. Ergebnis:
-        <ng-container *ngIf="displayedDuel.averageGoals1">{{displayedDuel.averageGoals1}} : {{displayedDuel.averageGoals2}}</ng-container>
-        <ng-container *ngIf="!displayedDuel.averageGoals1">-</ng-container>
+        <ng-container *ngIf="displayedDuel.averageGoals1 !== null">{{displayedDuel.averageGoals1}} : {{displayedDuel.averageGoals2}}</ng-container>
+        <ng-container *ngIf="displayedDuel.averageGoals1 === null">-</ng-container>
       </li>
       <li>Favorit nach Duellen: {{displayedDuel.favouriteByMatches}}, mit einer Bilanz von {{displayedDuel.favouriteByMatchesPercentageWin}}% Siegen, {{displayedDuel.favouriteByMatchesPercentageDraw}}% Unentschieden und {{displayedDuel.favouriteByMatchesPercentageLoss}}% Niederlagen</li>
       <li>Favorit nach Elo: {{displayedDuel.favouriteByElo}}, mit einer Sieges-Wahrscheinlichkeit von {{displayedDuel.favouriteByEloPercentageWin}}%</li>

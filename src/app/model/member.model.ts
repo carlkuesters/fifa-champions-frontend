@@ -4,4 +4,5 @@ export class Member {
   id: number;
   name: string;
   description: MemberDescription;
+  guest: boolean;
 }

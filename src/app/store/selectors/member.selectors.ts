@@ -12,7 +12,7 @@ export const getMembers = createSelector(
 );
 
 export const getMembersCount = createSelector(
-  getMembers, members => members ? members.length : null,
+  getMembers, members => members ? members.filter(member => !member.guest).length : null,
 );
 
 const getSortedMembers = createSelector(
@@ -22,7 +22,7 @@ const getSortedMembers = createSelector(
 );
 
 export const getDisplayedMembers = createSelector(
-  getSortedMembers, members => members.map(member => mapDisplayedMember(member)),
+  getSortedMembers, members => members.filter(member => !member.guest).map(member => mapDisplayedMember(member)),
 );
 
 export const getMembersDropdownOptions = createSelector<MemberState, Member[], DropdownOption[]>(
