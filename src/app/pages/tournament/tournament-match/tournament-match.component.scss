@@ -23,7 +23,7 @@ img {
   height: 28px;
 
   &:first-child {
-    margin-right: $baseline / 2;
+    margin-right: calc(#{$baseline} / 2);
 
     @media (min-width: $breakpoint-tournament-1) {
       margin-right: $baseline;
@@ -31,7 +31,7 @@ img {
   }
 
   &:last-child {
-    margin-left: $baseline / 2;
+    margin-left: calc(#{$baseline} / 2);
 
     @media (min-width: $breakpoint-tournament-1) {
       margin-left: $baseline;

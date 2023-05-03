@@ -17,7 +17,7 @@
 
     img {
       height: 28px;
-      margin-right: $baseline / 2;
+      margin-right: calc(#{$baseline} / 2);
     }
 
     span {

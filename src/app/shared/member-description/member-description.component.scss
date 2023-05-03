@@ -5,13 +5,13 @@ p {
   white-space: pre-wrap;
 
   &:first-of-type + p {
-    margin-top: ($baseline / 2);
+    margin-top: calc(#{$baseline} / 2);
   }
 }
 
 .label {
   display: inline-block;
-  margin-top: $baseline / 2;
+  margin-top: calc(#{$baseline} / 2);
   padding: 5px 8px;
   background: #058;
   color: $color-white;
