@@ -5,7 +5,6 @@ import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 
-// tslint:disable:max-line-length
 import {SharedModule} from '../shared/shared.module';
 import {AwardEffects} from '../store/effects/award.effects';
 import {DuelEffects} from '../store/effects/duel.effects';
@@ -59,7 +58,6 @@ import {RankingStoreFacadeService} from './services/ranking-store-facade/ranking
 import {RecordHttpService} from './services/record-http/record-http.service';
 import {RecordSettingStoreFacadeService} from './services/record-setting-store-facade/record-setting-store-facade.service';
 import {RecordStoreFacadeService} from './services/record-store-facade/record-store-facade.service';
-// tslint:enable:max-line-length
 
 @NgModule({
   imports: [

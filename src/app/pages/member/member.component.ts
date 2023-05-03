@@ -3,13 +3,11 @@ import {ActivatedRoute} from '@angular/router';
 
 import {Observable} from 'rxjs';
 
-// tslint:disable:max-line-length
 import {MemberDetailStoreFacadeService} from '../../core/services/member-detail-store-facade/member-detail-store-facade.service';
 import {MemberDetailSettingStoreFacadeService} from '../../core/services/member-detail-setting-store-facade/member-detail-setting-store-facade.service';
 import {MemberStoreFacadeService} from '../../core/services/member-store-facade/member-store-facade.service';
 import {TournamentOverviewStoreFacadeService} from '../../core/services/tournament-overview-store-facade/tournament-overview-store-facade.service';
 import {DisplayedMemberDetails} from '../../model/displayed-member-details.model';
-// tslint:enable:max-line-length
 
 @Component({
   selector: 'fc-member',

@@ -3,12 +3,10 @@ import {ActivatedRoute} from '@angular/router';
 
 import {Observable} from 'rxjs';
 
-// tslint:disable:max-line-length
 import {MemberStoreFacadeService} from '../../core/services/member-store-facade/member-store-facade.service';
 import {TournamentMetaOverviewStoreFacadeService} from '../../core/services/tournament-meta-overview-store-facade/tournament-meta-overview-store-facade.service';
 import {DisplayedIsolatedTournamentMeta} from '../../model/displayed-isolated-tournament-meta.model';
 import {TOURNAMENT_META_CONSTANTS} from '../../model/tournament-meta.constants';
-// tslint:enable:max-line-length
 
 @Component({
   selector: 'fc-tournament-meta-overview',
