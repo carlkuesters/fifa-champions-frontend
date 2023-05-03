@@ -30,13 +30,13 @@ div {
 img {
   flex: 0 0 24px;
   height: 24px;
-  margin-left: ($baseline / 2);
-  margin-right: ($baseline / 2);
+  margin-left: calc(#{$baseline} / 2);
+  margin-right: calc(#{$baseline} / 2);
 
   @media (min-width: $breakpoint-tournament-2) {
     flex-basis: 28px;
     height: 28px;
-    margin-left: ($baseline / 2);
+    margin-left: calc(#{$baseline} / 2);
     margin-right: 15px;
   }
 }

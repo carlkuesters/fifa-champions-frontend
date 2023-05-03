@@ -2,10 +2,8 @@ import {Component, OnInit} from '@angular/core';
 
 import {Observable} from 'rxjs';
 
-// tslint:disable:max-line-length
 import {TournamentYear} from '../../model/tournament-year.model';
 import {TournamentOverviewStoreFacadeService} from '../../core/services/tournament-overview-store-facade/tournament-overview-store-facade.service';
-// tslint:enable:max-line-length
 
 @Component({
   selector: 'fc-tournaments',

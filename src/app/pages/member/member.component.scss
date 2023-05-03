@@ -139,7 +139,7 @@ fc-member-ranking-chart {
   }
 
   button {
-    margin-right: $baseline / 2;
+    margin-right: calc(#{$baseline} / 2);
 
     @include bp-sm-max {
       flex-grow: 1;
