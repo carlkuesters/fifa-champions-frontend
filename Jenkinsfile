@@ -16,7 +16,7 @@ node {
             stage('E2E Tests') {
                 sh 'npm run e2e'
             }
-            stage('AOT Build') {
+            stage('Build') {
                 sh 'npm run build'
             }
         } finally {
