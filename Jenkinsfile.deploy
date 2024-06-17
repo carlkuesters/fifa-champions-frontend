@@ -5,25 +5,35 @@ pipeline {
         skipDefaultCheckout()
         ansiColor('xterm')
     }
+    parameters {
+        string(name: 'VERSION', defaultValue: 'master')
+    }
     stages {
         stage('Checkout') {
             steps {
                 checkout scm
+                sh 'git checkout $VERSION'
             }
         }
         stage('Build') {
             agent {
                 docker {
-                    image 'cypress/browsers:node-18.20.3-chrome-125.0.6422.141-1-ff-126.0.1-edge-125.0.2535.85-1'
+                    image 'node:18-alpine'
                     reuseNode true
                 }
             }
             steps {
                 sh 'npm install'
-                sh 'npm run lint'
-                sh 'npm run test -- --browsers=ChromeHeadlessInDocker'
-                sh 'npm run e2e'
                 sh 'npm run build'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'mv dist docker'
+                dir('docker') {
+                    sh 'docker compose build --no-cache'
+                    sh 'docker compose up -d'
+                }
             }
         }
     }
