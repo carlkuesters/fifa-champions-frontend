@@ -20,7 +20,7 @@ const GROUP_NAMES = ['A', 'B', 'C', 'D'];
 export function mapDisplayedTournamentDetails(tournamentDetails: TournamentDetails, members: Member[]): DisplayedTournamentDetails {
   return {
     title: getTournamentTitle(tournamentDetails.type, tournamentDetails.date),
-    location: tournamentDetails.location,
+    location: tournamentDetails.location ? tournamentDetails.location.name : '',
     groups: getDisplayedGroups(tournamentDetails, members),
     matches: getDisplayedMatches(tournamentDetails.results.matches, members),
     meta: getDisplayedTournamentMetas(tournamentDetails.meta, members)
