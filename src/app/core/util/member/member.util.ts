@@ -1,7 +1,7 @@
 import {DisplayedMember} from '../../../model/displayed-member.model';
 import {Member} from '../../../model/member.model';
 
-const MEMBER_IDS_WITHOUT_OWN_IMAGE = [16, 21, 25, 33, 37, 39, 40, 41, 42, 43, 44, 45, 47];
+const MEMBER_IDS_WITHOUT_OWN_IMAGE = [16, 21, 25, 33, 37, 39, 40, 41, 42, 43, 44, 45, 46];
 
 export function mapDisplayedMember(member: Member): DisplayedMember {
   return {
